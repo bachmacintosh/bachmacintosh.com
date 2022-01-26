@@ -2,6 +2,7 @@ import {getPage, getPageSlugs,} from "../lib/contentful/page";
 import Warning from "../components/layout/Warning";
 import {NextSeo,} from "next-seo";
 import DefaultLayout from "../components/DefaultLayout";
+import {Heading1,} from "../components/layout/Typography";
 
 export default function Page({page, preview,}) {
     return(
@@ -11,7 +12,7 @@ export default function Page({page, preview,}) {
                 description={page.description}
             />
             {preview && <Warning title="Preview Mode">This content has not been published yet. Make sure to publish it before going live.</Warning>}
-            <h1>{page.title}</h1>
+            <Heading1>{page.title}</Heading1>
         </DefaultLayout>
     );
 }

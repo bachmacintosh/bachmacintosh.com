@@ -2,6 +2,7 @@ import {NextSeo,} from "next-seo";
 import {getGtaSheets,} from "../../lib/google/sheets";
 import DefaultLayout from "../../components/DefaultLayout";
 import {Table, TableRow, TableColumn,} from "../../components/layout/Table";
+import {Heading1, Heading2,} from "../../components/layout/Typography";
 
 export default function GtaOnline({content,}) {
     return(
@@ -10,8 +11,8 @@ export default function GtaOnline({content,}) {
                 title="GTA Online"
                 description="Never a dull moment in the wonderful city of Los antos"
             />
-            <h1>GTA Online</h1>
-            <h2>Money Breakdown</h2>
+            <Heading1>GTA Online</Heading1>
+            <Heading2>Money Breakdown</Heading2>
             <Table headers={['Name', 'GTA Dollars', 'Shark Card USD',]}>
                 {content.summary.map((s, i) => (
                     s.summaryType === 'Money' && (
@@ -25,7 +26,7 @@ export default function GtaOnline({content,}) {
                     )
                 ))}
             </Table>
-            <h2>The Grind</h2>
+            <Heading2>The Grind</Heading2>
             <Table headers={['Name', 'Value',]}>
                 {content.summary.map((s, i) => (
                     s.summaryType === 'Grind' && (
