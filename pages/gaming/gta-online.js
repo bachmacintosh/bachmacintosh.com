@@ -1,9 +1,7 @@
 import {NextSeo,} from "next-seo";
 import {getGtaSheets,} from "../../lib/google/sheets";
 import DefaultLayout from "../../components/DefaultLayout";
-import Table from "../../components/layout/Table";
-import TableRow from "../../components/layout/TableRow";
-import TableColumn from "../../components/layout/TableColumn";
+import {Table, TableRow, TableColumn,} from "../../components/layout/Table";
 
 export default function GtaOnline({content,}) {
     return(

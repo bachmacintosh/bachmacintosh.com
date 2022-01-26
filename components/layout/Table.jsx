@@ -1,6 +1,4 @@
-import TableHeader from "./TableHeader";
-
-export default function Table({headers, children,}) {
+export function Table({headers, children,}) {
     return(
         <div className="flex flex-col">
             <div className="-mt-2 mb-5 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -22,5 +20,28 @@ export default function Table({headers, children,}) {
                 </div>
             </div>
         </div>
+    );
+}
+
+export function TableHeader({children,}) {
+    return(
+        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
+        >
+            {children}
+        </th>
+    );
+}
+
+export function TableRow({index, children,}) {
+    return(
+        <tr className={index % 2 === 0 ? 'bg-blue-standard' : 'bg-blue-galaxy'}>
+            {children}
+        </tr>
+    );
+}
+
+export function TableColumn({children,}) {
+    return(
+        <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-diamond">{children}</td>
     );
 }
