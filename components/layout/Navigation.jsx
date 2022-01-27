@@ -7,13 +7,13 @@ function classNames(...classes) {
 }
 
 const navigation = [
-    { name: 'Home', href: '/', current: true, },
-    { name: 'Blog', href: '#', current: false, },
-    { name: 'Dev', href: '#', current: false, },
-    { name: 'Music', href: '#', current: false, },
-    { name: 'Gaming', href: '#', current: false, },
-    { name: 'JPN', href: '#', current: false, },
-    { name: 'Etc.', href: '#', current: false, },
+    { name: 'Home', basePath: '/', href: '/', current: true, },
+    { name: 'Blog', basePath: 'blog', href: '#', current: false, },
+    { name: 'Dev', basePath: 'dev', href: '#', current: false, },
+    { name: 'Music', basePath: 'music', href: '#', current: false, },
+    { name: 'Gaming', basePath: 'gaming', href: '#', current: false, },
+    { name: 'JPN', basePath: 'jpn', href: '#', current: false, },
+    { name: 'Etc.', basePath: 'etc', href: '#', current: false, },
 ];
 
 export default function Navigation() {
@@ -47,7 +47,7 @@ export default function Navigation() {
                                                 key={item.name}
                                                 href={item.href}
                                                 className={classNames(
-                                                    item.href === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-standard hover:text-white',
+                                                    item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-standard hover:text-white',
                                                     'px-3 py-2 rounded-md text-sm font-medium'
                                                 )}
                                                 aria-current={item.current ? 'page' : undefined}
@@ -70,7 +70,7 @@ export default function Navigation() {
                                     as="a"
                                     href={item.href}
                                     className={classNames(
-                                        item.href === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-racing hover:text-white',
+                                        item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-racing hover:text-white',
                                         'block px-3 py-2 rounded-md text-base font-medium'
                                     )}
                                     aria-current={item.current ? 'page' : undefined}
