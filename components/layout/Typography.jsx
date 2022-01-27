@@ -24,6 +24,6 @@ export function Heading6({children,}) {
     return(<h6 className={`md:text-xl ${commonHeadingClasses}`}>{children}</h6>);
 }
 
-export function Paragraph({children,}) {
-    return(<p className="text-sm md:text-base text-white pb-4 indent-6">{children}</p>);
+export function Paragraph({noIndent, children,}) {
+    return(<p className={'text-sm md:text-base text-white pb-4 ' + (!noIndent ? 'indent-6' : '')}>{children}</p>);
 }
