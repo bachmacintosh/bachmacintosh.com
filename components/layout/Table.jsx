@@ -25,7 +25,7 @@ export function Table({headers, children,}) {
 
 export function TableHeader({children,}) {
     return(
-        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
+        <th scope="col" className="px-6 py-3 text-left text-xs md:text-base font-medium text-white uppercase tracking-wider"
         >
             {children}
         </th>
@@ -34,14 +34,14 @@ export function TableHeader({children,}) {
 
 export function TableRow({index, children,}) {
     return(
-        <tr className={index % 2 === 0 ? 'bg-blue-standard' : 'bg-blue-galaxy'}>
+        <tr className={(index % 2 === 0 ? 'bg-blue-standard' : 'bg-blue-galaxy')}>
             {children}
         </tr>
     );
 }
 
-export function TableColumn({children,}) {
+export function TableColumn({rowSpan, children,}) {
     return(
-        <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-diamond">{children}</td>
+        <td className="px-6 py-4 text-sm text-blue-diamond break-words border-b border-blue-diamond" rowSpan={rowSpan ? rowSpan : 1} >{children}</td>
     );
 }
