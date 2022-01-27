@@ -4,7 +4,7 @@ export function Table({headers, children,}) {
             <div className="-mt-2 mb-5 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="shadow overflow-hidden border-b border-blue-diamond">
-                        <table className="min-w-full divide-y divide-blue-diamond border-b border-blue-diamond">
+                        <table className="table-auto min-w-full divide-y divide-blue-diamond border-b border-blue-diamond">
                             <thead className="bg-blue-ultra">
                             <tr>
                                 {headers.map(function(h) {
@@ -40,8 +40,8 @@ export function TableRow({index, children,}) {
     );
 }
 
-export function TableColumn({rowSpan, children,}) {
+export function TableColumn({rowSpan, colSpan, children,}) {
     return(
-        <td className="px-6 py-4 text-sm text-blue-diamond break-words border-b border-blue-diamond" rowSpan={rowSpan ? rowSpan : 1} >{children}</td>
+        <td className="px-6 py-4 text-sm text-blue-diamond break-words border-b border-blue-diamond" rowSpan={rowSpan ? rowSpan : 1} colSpan={colSpan ? colSpan: 1} >{children}</td>
     );
 }
