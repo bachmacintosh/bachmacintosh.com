@@ -9,6 +9,7 @@ import {SmallButtonLink,} from "../../components/layout/Buttons";
 import {ExternalLinkIcon,} from "@heroicons/react/outline";
 
 export default function GtaOnline({content,}) {
+    console.log(content);
     return(
         <DefaultLayout>
             <NextSeo
