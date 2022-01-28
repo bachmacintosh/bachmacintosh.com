@@ -1,4 +1,4 @@
-const errorOnProd = process.env.NETLIFY ? 'error' : 'warn';
+const errorOnProd = (process.env.NETLIFY || process.env.CI) ? 'error' : 'warn';
 module.exports = {
   extends: "next/core-web-vitals",
   rules: {
