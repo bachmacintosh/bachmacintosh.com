@@ -1,3 +1,5 @@
+import {ExternalLinkIcon,} from "@heroicons/react/outline";
+
 const commonHeadingClasses = 'text-blue-diamond font-bold break-words my-5';
 
 export function Heading1({children,}) {
@@ -25,5 +27,28 @@ export function Heading6({children,}) {
 }
 
 export function Paragraph({noIndent, children,}) {
-    return(<p className={'text-sm md:text-base text-white pb-4 ' + (!noIndent ? 'indent-6' : '')}>{children}</p>);
+    return(<p className={'text-sm md:text-base text-white mb-4 ' + (!noIndent ? 'indent-6' : '')}>{children}</p>);
+}
+
+export function BlockQuote({children,}) {
+    return(<blockquote className="border-l-8 border-blue-mariner pl-2">{children}</blockquote>);
+}
+
+export function Hyperlink({href, type, children,}) {
+    if(type === 'external') {
+        return(<a className="flex flex-row align-middle text-blue-diamond hover:text-white underline" href={href} target="_blank" rel="nofollow noreferrer noopener">{children}
+            <ExternalLinkIcon className="w-4 h-4 mt-1.5" /></a> );
+    }
+}
+
+export function UnorderedList({children,}) {
+    return(<ul className="list-disc text-white ml-10">{children}</ul> );
+}
+
+export function OrderedList({children,}) {
+    return(<ol className="list-decimal text-white ml-10">{children}</ol> );
+}
+
+export function ListItem({children,}) {
+    return(<li>{children}</li>);
 }
