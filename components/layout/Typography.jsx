@@ -26,8 +26,8 @@ export function Heading6({children,}) {
     return(<h6 className={`md:text-xl ${commonHeadingClasses}`}>{children}</h6>);
 }
 
-export function Paragraph({noIndent, children,}) {
-    return(<p className={'text-sm md:text-base text-white mb-4 ' + (!noIndent ? 'indent-6' : '')}>{children}</p>);
+export function Paragraph({indent, children,}) {
+    return(<p className={'text-sm md:text-base text-white mb-4 ' + (indent ? 'indent-6' : '')}>{children}</p>);
 }
 
 export function BlockQuote({children,}) {
@@ -36,8 +36,7 @@ export function BlockQuote({children,}) {
 
 export function Hyperlink({href, type, children,}) {
     if(type === 'external') {
-        return(<a className="flex flex-row align-middle text-blue-diamond hover:text-white underline" href={href} target="_blank" rel="nofollow noreferrer noopener">{children}
-            <ExternalLinkIcon className="w-4 h-4 mt-1.5" /></a> );
+        return(<a className="text-blue-diamond hover:text-white underline" href={href} target="_blank" rel="nofollow noreferrer noopener">{children}<ExternalLinkIcon className="inline w-4 h-4" /></a> );
     }
 }
 
