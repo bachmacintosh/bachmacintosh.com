@@ -27,7 +27,10 @@ const markdownOptions = (content, indent) => ({
         [BLOCKS.LIST_ITEM]: (node) => {
             const UnTaggedChildren = documentToReactComponents(node, {
                 renderNode: {
-                    [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph indent={false}>{children}</Paragraph> ,
+                    [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph indent={false}>{children}</Paragraph>,
+                    [BLOCKS.UL_LIST]: (node, children) => <UnorderedList>{children}</UnorderedList>,
+                    [BLOCKS.OL_LIST]: (node, children) => <OrderedList>{children}</OrderedList>,
+                    [BLOCKS.LIST_ITEM]: (node, children) => <ListItem>{children}</ListItem>,
                 },
             });
             return (
