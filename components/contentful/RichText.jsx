@@ -13,7 +13,7 @@ import {
 } from "../layout/Typography";
 import Asset from "./Asset";
 
-const markdownOptions = (content) => ({
+const markdownOptions = (content, indent) => ({
     renderNode: {
         [BLOCKS.HEADING_1]: (node, children) => <Heading1>{children}</Heading1>,
         [BLOCKS.HEADING_2]: (node, children) => <Heading2>{children}</Heading2>,
@@ -21,16 +21,27 @@ const markdownOptions = (content) => ({
         [BLOCKS.HEADING_4]: (node, children) => <Heading4>{children}</Heading4>,
         [BLOCKS.HEADING_5]: (node, children) => <Heading5>{children}</Heading5>,
         [BLOCKS.HEADING_6]: (node, children) => <Heading6>{children}</Heading6>,
-        [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
+        [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph indent={indent}>{children}</Paragraph>,
         [BLOCKS.UL_LIST]: (node, children) => <UnorderedList>{children}</UnorderedList>,
         [BLOCKS.OL_LIST]: (node, children) => <OrderedList>{children}</OrderedList>,
-        [BLOCKS.LIST_ITEM]: (node, children) => <ListItem>{children}</ListItem>,
+        [BLOCKS.LIST_ITEM]: (node) => {
+            const UnTaggedChildren = documentToReactComponents(node, {
+                renderNode: {
+                    [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph indent={false}>{children}</Paragraph> ,
+                },
+            });
+            return (
+                <ListItem>
+                    {UnTaggedChildren}
+                </ListItem>
+            );
+        },
         [BLOCKS.QUOTE]: (node, children) => <BlockQuote>{children}</BlockQuote>,
         [BLOCKS.EMBEDDED_ASSET]: (node,) => <Asset id={node.data.target.sys.id} assets={content.links.assets.block} />,
         [INLINES.HYPERLINK]: (node, children) => <Hyperlink href={node.data.uri} type="external">{children}</Hyperlink>,
     },
 });
 
-export default function RichText({content,}) {
-    return documentToReactComponents(content.json, markdownOptions(content));
+export default function RichText({content, indentParagraphs,}) {
+    return documentToReactComponents(content.json, markdownOptions(content, indentParagraphs));
 }
