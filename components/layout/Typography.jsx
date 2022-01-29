@@ -41,11 +41,11 @@ export function Hyperlink({href, type, children,}) {
 }
 
 export function UnorderedList({children,}) {
-    return(<ul className="list-disc text-white ml-10">{children}</ul> );
+    return(<ul className="list-disc text-white ml-11">{children}</ul> );
 }
 
 export function OrderedList({children,}) {
-    return(<ol className="list-decimal text-white ml-10">{children}</ol> );
+    return(<ol className="list-decimal text-white ml-6">{children}</ol> );
 }
 
 export function ListItem({children,}) {
