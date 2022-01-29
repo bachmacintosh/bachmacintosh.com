@@ -12,7 +12,7 @@ export default function Page({page, preview,}) {
                 description={page.description}
             />
             {preview && <Warning title="Preview Mode">This content has not been published yet. Make sure to publish it before going live.</Warning>}
-            <RichText content={page.content} />
+            <RichText content={page.content} indentParagraphs={true} />
         </DefaultLayout>
     );
 }
