@@ -1,4 +1,5 @@
 import {ExternalLinkIcon,} from "@heroicons/react/outline";
+import Link from "next/link";
 
 const commonHeadingClasses = 'text-blue-diamond font-bold break-words my-5';
 
@@ -34,9 +35,11 @@ export function BlockQuote({children,}) {
     return(<blockquote className="border-l-8 border-blue-mariner pl-2">{children}</blockquote>);
 }
 
-export function Hyperlink({href, type, children,}) {
-    if(type === 'external') {
+export function Hyperlink({href, external, children,}) {
+    if(external === true) {
         return(<a className="text-blue-diamond hover:text-white underline" href={href} target="_blank" rel="nofollow noreferrer noopener">{children}<ExternalLinkIcon className="inline w-4 h-4" /></a> );
+    } else {
+        return(<Link href={href}><a className="text-blue-diamond hover:text-white underline">{children}</a></Link>);
     }
 }
 

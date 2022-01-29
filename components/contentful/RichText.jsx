@@ -30,7 +30,7 @@ const markdownOptions = (content, indent) => ({
                     [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph indent={false}>{children}</Paragraph>,
                     [BLOCKS.UL_LIST]: (node, children) => <UnorderedList>{children}</UnorderedList>,
                     [BLOCKS.OL_LIST]: (node, children) => <OrderedList>{children}</OrderedList>,
-                    [BLOCKS.LIST_ITEM]: (node, children) => <ListItem>{children}</ListItem>,
+                    [BLOCKS.LIST_ITEM]: (node, children) => (children),
                 },
             });
             return (
@@ -41,7 +41,7 @@ const markdownOptions = (content, indent) => ({
         },
         [BLOCKS.QUOTE]: (node, children) => <BlockQuote>{children}</BlockQuote>,
         [BLOCKS.EMBEDDED_ASSET]: (node,) => <Asset id={node.data.target.sys.id} assets={content.links.assets.block} />,
-        [INLINES.HYPERLINK]: (node, children) => <Hyperlink href={node.data.uri} type="external">{children}</Hyperlink>,
+        [INLINES.HYPERLINK]: (node, children) => <Hyperlink href={node.data.uri} external={true}>{children}</Hyperlink>,
     },
 });
 
