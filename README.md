@@ -2,7 +2,10 @@
 
 A website that will soon be live at https://bachmacintosh.com
 
-[![Tests](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/tests.yml/badge.svg)](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/tests.yml)
+| Item | Status |
+| ---- | ------ |
+| CI   | [![Tests](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/tests.yml/badge.svg)](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/tests.yml) |
+| Netlify | (soon) |
 
 ## Development
 
