@@ -1,6 +1,6 @@
-import { getPage, } from '../../lib/contentful/page';
+import { getPage, } from '../../../lib/contentful/page';
 
-export default async function preview(req, res) {
+export default async function page(req, res) {
     const { secret, slug, } = req.query;
     if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !slug) {
         return res.status(401).json({ message: 'Invalid token', });
