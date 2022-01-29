@@ -1,19 +1,14 @@
 import { Disclosure, } from '@headlessui/react';
 import { MenuIcon, XIcon, } from '@heroicons/react/outline';
 import {useRouter,} from 'next/router';
+import Link from "next/link";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
 const navigation = [
-    { name: 'Home', basePath: '/', href: '/', current: true, },
-    { name: 'Blog', basePath: 'blog', href: '#', current: false, },
-    { name: 'Dev', basePath: 'dev', href: '#', current: false, },
-    { name: 'Music', basePath: 'music', href: '#', current: false, },
-    { name: 'Gaming', basePath: 'gaming', href: '#', current: false, },
-    { name: 'JPN', basePath: 'jpn', href: '#', current: false, },
-    { name: 'Etc.', basePath: 'etc', href: '#', current: false, },
+    { name: 'Home', basePath: '/', href: '/', },
 ];
 
 export default function Navigation() {
@@ -43,17 +38,18 @@ export default function Navigation() {
                                 <div className="hidden md:block md:ml-6">
                                     <div className="flex space-x-4">
                                         {navigation.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-standard hover:text-white',
-                                                    'px-3 py-2 rounded-md text-sm font-medium'
-                                                )}
-                                                aria-current={item.current ? 'page' : undefined}
-                                            >
-                                                {item.name}
-                                            </a>
+                                            <Link key={item.name} href={item.href}>
+                                                <a
+                                                    key={item.name}
+                                                    className={classNames(
+                                                        item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-standard hover:text-white',
+                                                        'px-3 py-2 rounded-md text-sm font-medium'
+                                                    )}
+                                                    aria-current={item.basePath === basePath ? 'page' : undefined}
+                                                >
+                                                    {item.name}
+                                                </a>
+                                            </Link>
                                         ))}
                                     </div>
                                 </div>
@@ -65,18 +61,19 @@ export default function Navigation() {
                     <Disclosure.Panel className="md:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1">
                             {navigation.map((item) => (
-                                <Disclosure.Button
-                                    key={item.name}
-                                    as="a"
-                                    href={item.href}
-                                    className={classNames(
-                                        item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-racing hover:text-white',
-                                        'block px-3 py-2 rounded-md text-base font-medium'
-                                    )}
-                                    aria-current={item.current ? 'page' : undefined}
-                                >
-                                    {item.name}
-                                </Disclosure.Button>
+                                <Link key={item.name} href={item.href} passHref={true}>
+                                    <Disclosure.Button
+                                        key={item.name}
+                                        as="a"
+                                        className={classNames(
+                                            item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-racing hover:text-white',
+                                            'block px-3 py-2 rounded-md text-base font-medium'
+                                        )}
+                                        aria-current={item.basePath === basePath ? 'page' : undefined}
+                                    >
+                                        {item.name}
+                                    </Disclosure.Button>
+                                </Link>
                             ))}
                         </div>
                     </Disclosure.Panel>
