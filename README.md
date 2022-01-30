@@ -21,8 +21,17 @@ Available Commands
 # run dev server
 $ npm run dev
 
+# Build an optimized Next.js App
+$ npm run build
+
 # Export Static HTML
 $ npm run export
+
+# Combine build and export for deploying to Netlify
+$ npm run export:netlify
+
+# Start serving using the Next.js server
+$ npm run start
 
 # run ESLint
 $ npm run lint
