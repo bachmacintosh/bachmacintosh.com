@@ -25,11 +25,12 @@ jobs:
           runTests: false
       - name: Run ESLint
         run: npm run lint
+      - name: Build Next.js App
+        run: npm run build
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with:
           install: false
-          build: npm run build
           start: npm run start
           wait-on: http://localhost:3000
       - name: Test Static HTML Export
