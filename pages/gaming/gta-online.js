@@ -183,6 +183,30 @@ export default function GtaOnline({content,}) {
                     </>
                 )}
             </Disclosure>
+            <br />
+            <Disclosure>
+                {({open,}) => (
+                    <>
+                        <Disclosure.Button>
+                            <Heading2>[{open ? '-': '+'}] Safes</Heading2>
+                        </Disclosure.Button>
+                        <Disclosure.Panel>
+                            <Paragraph>This is a list of Safes that generate GTA Dollars as the game idles..</Paragraph>
+                            <Table headers={['Location', 'Safe Capacity', 'Money / In-Game Day', 'Money / 24 Hrs.', 'Days to Fill',]}>
+                                {content.safes.map((s, i) => (
+                                    <TableRow key={s.location} index={i}>
+                                        <TableColumn>{s.location}</TableColumn>
+                                        <TableColumn>{s.safeCapacity}</TableColumn>
+                                        <TableColumn>{s.moneyPerIgDay}</TableColumn>
+                                        <TableColumn>{s.moneyPer24Hours}</TableColumn>
+                                        <TableColumn>{s.daysToFill}</TableColumn>
+                                    </TableRow>
+                                ))}
+                            </Table>
+                        </Disclosure.Panel>
+                    </>
+                )}
+            </Disclosure>
         </>
     );
 }
