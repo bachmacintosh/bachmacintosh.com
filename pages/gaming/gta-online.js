@@ -13,7 +13,7 @@ export default function GtaOnline({content,}) {
         <>
             <NextSeo
                 title="GTA Online"
-                description="Never a dull moment in the wonderful city of Los antos"
+                description="Never a dull moment in the wonderful city of Los Santos"
             />
             <Heading1>GTA Online</Heading1>
             <Disclosure defaultOpen="open">
