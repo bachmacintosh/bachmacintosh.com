@@ -9,6 +9,10 @@ A website that will soon be live at https://bachmacintosh.com
 
 ## Development
 
+Create a `.env.local` file with values from the `ENVIRONMENT_VARIABLES` file.
+
+Create a `cypress.env.json` file with values from the `cypress.env-example.json` file.
+
 Install Dependencies
 
 ```shell
