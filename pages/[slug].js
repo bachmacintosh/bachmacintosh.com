@@ -3,19 +3,28 @@ import Warning from "../components/layout/Warning";
 import {NextSeo,} from "next-seo";
 import DefaultLayout from "../components/DefaultLayout";
 import RichText from "../components/contentful/RichText";
+import React from "react";
 
 export default function Page({page, preview,}) {
     return(
-        <DefaultLayout>
+        <>
             <NextSeo
                 title={page.title}
                 description={page.description}
             />
             {preview && <Warning title="Preview Mode">This content has not been published yet. Make sure to publish it before going live.</Warning>}
             <RichText content={page.content} indentParagraphs={true} />
-        </DefaultLayout>
+        </>
     );
 }
+
+Page.getLayout = function getLayout(page) {
+    return(
+        <DefaultLayout>
+            {page}
+        </DefaultLayout>
+    );
+};
 
 export async function getStaticProps({params, preview = false,}) {
     const page = await getPage(params.slug, preview);

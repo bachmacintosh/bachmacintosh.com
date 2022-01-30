@@ -10,7 +10,7 @@ import {ExternalLinkIcon,} from "@heroicons/react/outline";
 
 export default function GtaOnline({content,}) {
     return(
-        <DefaultLayout>
+        <>
             <NextSeo
                 title="GTA Online"
                 description="Never a dull moment in the wonderful city of Los antos"
@@ -183,9 +183,17 @@ export default function GtaOnline({content,}) {
                     </>
                 )}
             </Disclosure>
-        </DefaultLayout>
+        </>
     );
 }
+
+GtaOnline.getLayout = function getLayout(page) {
+    return(
+        <DefaultLayout>
+            {page}
+        </DefaultLayout>
+    );
+};
 
 export async function getStaticProps() {
     const content = await getGtaSheets();
