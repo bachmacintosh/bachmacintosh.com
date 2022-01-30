@@ -16,6 +16,11 @@ module.exports = {
           ultra: '#0055C4',
           standard: '#001B57',
         },
+        wanikani: {
+          radical: '#0093dd',
+          kanji: '#dd0093',
+          vocabulary: '#9300dd',
+        },
       },
       spacing: {
         256: '64rem',
