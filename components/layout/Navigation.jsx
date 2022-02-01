@@ -4,7 +4,7 @@ import {useRouter,} from 'next/router';
 import Link from "next/link";
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
+    return classes.filter(Boolean,).join(' ',);
 }
 
 const navigation = [
@@ -13,10 +13,10 @@ const navigation = [
 
 export default function Navigation() {
     const router = useRouter();
-    const basePath = router.asPath === '/' ? '/' : router.asPath.split('/')[1];
+    const basePath = router.asPath === '/' ? '/' : router.asPath.split('/',)[1];
     return (
         <Disclosure as="nav" className="bg-blue-racing fixed w-full z-10">
-            {({ open, }) => (
+            {({ open, },) => (
                 <>
                     <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                         <div className="relative flex items-center justify-between h-16">
@@ -37,20 +37,20 @@ export default function Navigation() {
                                 </div>
                                 <div className="hidden md:block md:ml-6">
                                     <div className="flex space-x-4">
-                                        {navigation.map((item) => (
+                                        {navigation.map((item,) => (
                                             <Link key={item.name} href={item.href}>
                                                 <a
                                                     key={item.name}
                                                     className={classNames(
                                                         item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-standard hover:text-white',
-                                                        'px-3 py-2 rounded-md text-sm font-medium'
+                                                        'px-3 py-2 rounded-md text-sm font-medium',
                                                     )}
                                                     aria-current={item.basePath === basePath ? 'page' : undefined}
                                                 >
                                                     {item.name}
                                                 </a>
                                             </Link>
-                                        ))}
+                                        ),)}
                                     </div>
                                 </div>
                             </div>
@@ -60,21 +60,21 @@ export default function Navigation() {
 
                     <Disclosure.Panel className="md:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1">
-                            {navigation.map((item) => (
+                            {navigation.map((item,) => (
                                 <Link key={item.name} href={item.href} passHref={true}>
                                     <Disclosure.Button
                                         key={item.name}
                                         as="a"
                                         className={classNames(
                                             item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-racing hover:text-white',
-                                            'block px-3 py-2 rounded-md text-base font-medium'
+                                            'block px-3 py-2 rounded-md text-base font-medium',
                                         )}
                                         aria-current={item.basePath === basePath ? 'page' : undefined}
                                     >
                                         {item.name}
                                     </Disclosure.Button>
                                 </Link>
-                            ))}
+                            ),)}
                         </div>
                     </Disclosure.Panel>
                 </>

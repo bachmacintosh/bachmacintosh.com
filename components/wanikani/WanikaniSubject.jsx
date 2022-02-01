@@ -1,19 +1,19 @@
 import {createRef, useState,} from "react";
 import {createPopper,} from "@popperjs/core";
 
-export default function WanikaniSubject({subjectType, meanings, href, children,}) {
-    const [tooltipShow, setTooltipShow,] = useState(false);
+export default function WanikaniSubject({subjectType, meanings, href, children,},) {
+    const [tooltipShow, setTooltipShow,] = useState(false,);
     const btnRef = createRef();
     const tooltipRef = createRef();
 
     const openLeftTooltip = () => {
         createPopper(btnRef.current, tooltipRef.current, {
             placement: "top",
-        });
-        setTooltipShow(true);
+        },);
+        setTooltipShow(true,);
     };
     const closeLeftTooltip = () => {
-        setTooltipShow(false);
+        setTooltipShow(false,);
     };
 
     let color = 'gray-500';

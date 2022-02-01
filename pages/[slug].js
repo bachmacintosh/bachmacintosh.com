@@ -5,7 +5,7 @@ import DefaultLayout from "../components/DefaultLayout";
 import RichText from "../components/contentful/RichText";
 import React from "react";
 
-export default function Page({page, preview,}) {
+export default function Page({page, preview,},) {
     return(
         <>
             <NextSeo
@@ -18,7 +18,7 @@ export default function Page({page, preview,}) {
     );
 }
 
-Page.getLayout = function getLayout(page) {
+Page.getLayout = function getLayout(page,) {
     return(
         <DefaultLayout>
             {page}
@@ -26,8 +26,8 @@ Page.getLayout = function getLayout(page) {
     );
 };
 
-export async function getStaticProps({params, preview = false,}) {
-    const page = await getPage(params.slug, preview);
+export async function getStaticProps({params, preview = false,},) {
+    const page = await getPage(params.slug, preview,);
 
     return {
         props: {
@@ -41,7 +41,7 @@ export async function getStaticPaths() {
     const slugs = await getPageSlugs();
 
     return {
-        paths: slugs?.map(({ slug, }) => `/${slug}`) ?? [],
+        paths: slugs?.map(({ slug, },) => `/${slug}`,) ?? [],
         fallback: false,
     };
 }
