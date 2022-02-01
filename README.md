@@ -41,6 +41,9 @@ $ npm run start
 # run ESLint
 $ npm run lint
 
+# run ESLint, fix anything that can be done automatically
+$ npm run lint:fix
+
 # run Cypress in-browser
 # Terminal 1
 $ npm run build
