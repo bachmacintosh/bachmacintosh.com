@@ -22,4 +22,6 @@ export default async function page(req, res,) {
     </html>`,
     );
     res.end();
+
+    return undefined;
 }
