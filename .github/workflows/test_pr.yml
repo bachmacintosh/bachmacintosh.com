@@ -1,8 +1,5 @@
 name: Tests (PR)
-on:
-  pull_request_target:
-    types:
-      - assigned
+on: pull_request_target
 permissions:
   actions: none
 env:
