@@ -40,7 +40,7 @@ const markdownOptions = (content, indent) => ({
             );
         },
         [BLOCKS.QUOTE]: (node, children) => <BlockQuote>{children}</BlockQuote>,
-        [BLOCKS.EMBEDDED_ASSET]: (node,) => <Asset id={node.data.target.sys.id} assets={content.links.assets.block} />,
+        [BLOCKS.EMBEDDED_ASSET]: (node) => <Asset id={node.data.target.sys.id} assets={content.links.assets.block} />,
         [INLINES.HYPERLINK]: (node, children) => <Hyperlink href={node.data.uri} external={true}>{children}</Hyperlink>,
     },
 });
