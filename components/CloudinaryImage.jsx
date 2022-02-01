@@ -1,31 +1,31 @@
 import Image from 'next/image';
 import {useState, useEffect,} from "react";
 
-export default function CloudinaryImage(props) {
-    const [error, setError,] = useState(null);
-    const [isLoaded, setIsLoaded,] = useState(false);
-    const [output, setOutput,] = useState([]);
+export default function CloudinaryImage(props,) {
+    const [error, setError,] = useState(null,);
+    const [isLoaded, setIsLoaded,] = useState(false,);
+    const [output, setOutput,] = useState([],);
     const getInfoUrl = 'https://res.cloudinary.com/bachman-io/fl_getinfo/' + props.src;
     useEffect(() => {
         let mounted = true;
-        fetch(getInfoUrl)
-            .then(res => res.json())
+        fetch(getInfoUrl,)
+            .then((res,) => res.json(),)
             .then(
-                (result) => {
+                (result,) => {
                     if(mounted) {
-                        setIsLoaded(true);
-                        setOutput(result.output);
+                        setIsLoaded(true,);
+                        setOutput(result.output,);
                     }
                 },
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
+                (error,) => {
+                    setIsLoaded(true,);
+                    setError(error,);
+                },
             );
         return function cleanup() {
             mounted = false;
         };
-    }, [getInfoUrl,]);
+    }, [getInfoUrl,],);
     if(error) {
         return(<p>Error!</p>);
     } else if (!isLoaded || output.length === 0) {
