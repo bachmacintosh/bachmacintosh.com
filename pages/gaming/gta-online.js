@@ -27,27 +27,27 @@ export default function GtaOnline({content,},) {
                             </Paragraph>
                             <Heading3>Money Breakdown</Heading3>
                             <Table headers={['Name', 'GTA Dollars', 'Shark Card USD',]}>
-                                {content.summary.map((s, i,) => (
-                                    s.summaryType === 'Money' && (
-                                        <TableRow key={s.title} index={i}>
+                                {content.summary.map((row, index,) => (
+                                    row.summaryType === 'Money' && (
+                                        <TableRow key={row.title} index={index}>
                                             <TableColumn>
-                                                <span className="font-bold">{s.title}</span>
+                                                <span className="font-bold">{row.title}</span>
                                             </TableColumn>
-                                            <TableColumn>{s.gtaDollars}</TableColumn>
-                                            <TableColumn>{s.sharkCardUsd}</TableColumn>
+                                            <TableColumn>{row.gtaDollars}</TableColumn>
+                                            <TableColumn>{row.sharkCardUsd}</TableColumn>
                                         </TableRow>
                                     )
                                 ),)}
                             </Table>
                             <Heading3>The Grind</Heading3>
                             <Table headers={['Name', 'Value',]}>
-                                {content.summary.map((s, i,) => (
-                                    s.summaryType === 'Grind' && (
-                                        <TableRow key={s.title} index={i}>
+                                {content.summary.map((row, index,) => (
+                                    row.summaryType === 'Grind' && (
+                                        <TableRow key={row.title} index={index}>
                                             <TableColumn>
-                                                <span className="font-bold">{s.title}</span>
+                                                <span className="font-bold">{row.title}</span>
                                             </TableColumn>
-                                            <TableColumn>{s.gtaDollars}</TableColumn>
+                                            <TableColumn>{row.gtaDollars}</TableColumn>
                                         </TableRow>
                                     )
                                 ),)}
@@ -66,19 +66,19 @@ export default function GtaOnline({content,},) {
                         <Disclosure.Panel>
                             <Paragraph noIndent={true}>This is a list of all the things I want to buy in GTA Online. If something has a zero time/money remaining, it means I have enough GTA$ to buy it, but am waiting for a sale or am otherwise putting it off until my grinding is done (see Summary tab).</Paragraph>
                             <Table headers={['Item', 'Buy At', '', 'Total', 'Remaining',]}>
-                                {content.wishList.map((w,i,) => (
-                                    <React.Fragment key={i}>
-                                        <TableRow index={i}>
-                                            <TableColumn rowSpan="2">{w.item}</TableColumn>
-                                            <TableColumn rowSpan="2">{w.buyAt}</TableColumn>
+                                {content.wishList.map((row,index,) => (
+                                    <React.Fragment key={index}>
+                                        <TableRow index={index}>
+                                            <TableColumn rowSpan="2">{row.item}</TableColumn>
+                                            <TableColumn rowSpan="2">{row.buyAt}</TableColumn>
                                             <TableColumn><span className="font-bold">Cost</span> </TableColumn>
-                                            <TableColumn>{w.cost}</TableColumn>
-                                            <TableColumn>{w.moneyToGrind.charAt(0,) === '-' ? '$0' : w.moneyToGrind}</TableColumn>
+                                            <TableColumn>{row.cost}</TableColumn>
+                                            <TableColumn>{row.moneyToGrind.charAt(0,) === '-' ? '$0' : row.moneyToGrind}</TableColumn>
                                         </TableRow>
-                                        <TableRow index={i}>
+                                        <TableRow index={index}>
                                             <TableColumn><span className="font-bold">Grind Days</span></TableColumn>
-                                            <TableColumn>{w.totalGrindDays}</TableColumn>
-                                            <TableColumn>{w.daysToGrind.charAt(0,) === '-' ? '0' : w.daysToGrind}</TableColumn>
+                                            <TableColumn>{row.totalGrindDays}</TableColumn>
+                                            <TableColumn>{row.daysToGrind.charAt(0,) === '-' ? '0' : row.daysToGrind}</TableColumn>
                                         </TableRow>
                                     </React.Fragment>
                                 ),)}
@@ -97,8 +97,8 @@ export default function GtaOnline({content,},) {
                         <Disclosure.Panel>
                             <Paragraph>This is a log of year-to-date earnings in GTA.</Paragraph>
                             <Table headers={['Date', 'Balance', 'Earnings',]}>
-                                {content.earnings.map((row, i,) => (
-                                    <TableRow key={row.balanceDate} index={i}>
+                                {content.earnings.map((row, index,) => (
+                                    <TableRow key={row.balanceDate} index={index}>
                                         <TableColumn>{row.balanceDate}</TableColumn>
                                         <TableColumn>{row.balance}</TableColumn>
                                         <TableColumn>
@@ -122,21 +122,21 @@ export default function GtaOnline({content,},) {
                         </Disclosure.Button>
                         <Disclosure.Panel>
                             <Paragraph noIndent={true}>These are all the properties I own in the game and their worth.</Paragraph>
-                            {content.properties.map((p,) => (
-                                <React.Fragment key={p.propertyType}>
-                                    <Heading3>{p.propertyType}</Heading3>
+                            {content.properties.map((group,) => (
+                                <React.Fragment key={group.propertyType}>
+                                    <Heading3>{group.propertyType}</Heading3>
                                     <Table headers={['Name', 'Location', 'Cost',]}>
-                                        {p.items.map((item, i,) => (
-                                            <React.Fragment key={i}>
-                                                <TableRow index={i}>
-                                                    <TableColumn rowSpan="2">{item.propertyName}</TableColumn>
-                                                    <TableColumn>{item.location}</TableColumn>
-                                                    <TableColumn>{item.cost}</TableColumn>
+                                        {group.items.map((row, index,) => (
+                                            <React.Fragment key={index}>
+                                                <TableRow index={index}>
+                                                    <TableColumn rowSpan="2">{row.propertyName}</TableColumn>
+                                                    <TableColumn>{row.location}</TableColumn>
+                                                    <TableColumn>{row.cost}</TableColumn>
                                                 </TableRow>
-                                                <TableRow index={i}>
+                                                <TableRow index={index}>
                                                     <TableColumn colSpan="2">
-                                                        <SmallButtonLink href={item.gtaWikiLink}>GTA Wiki<ExternalLinkIcon className="w-3 h-3"/></SmallButtonLink>
-                                                        <SmallButtonLink href={item.gtaBaseLink}>GTA Base<ExternalLinkIcon className="w-3 h-3"/></SmallButtonLink>
+                                                        <SmallButtonLink href={row.gtaWikiLink}>GTA Wiki<ExternalLinkIcon className="w-3 h-3"/></SmallButtonLink>
+                                                        <SmallButtonLink href={row.gtaBaseLink}>GTA Base<ExternalLinkIcon className="w-3 h-3"/></SmallButtonLink>
                                                     </TableColumn>
                                                 </TableRow>
                                             </React.Fragment>
@@ -157,21 +157,21 @@ export default function GtaOnline({content,},) {
                         </Disclosure.Button>
                         <Disclosure.Panel>
                             <Paragraph noIndent={true}>These are all the vehicles I own in the game and their worth.</Paragraph>
-                            {content.vehicles.map((v,) => (
-                                <React.Fragment key={v.location}>
-                                    <Heading3>{v.location}</Heading3>
+                            {content.vehicles.map((group,) => (
+                                <React.Fragment key={group.location}>
+                                    <Heading3>{group.location}</Heading3>
                                     <Table headers={['Floor', 'Name', 'Cost',]}>
-                                        {v.items.map((item, i,) => (
-                                            <React.Fragment key={i}>
-                                                <TableRow index={i}>
-                                                    <TableColumn rowSpan="2">{item.floor}</TableColumn>
-                                                    <TableColumn>{item.vehicleName}</TableColumn>
-                                                    <TableColumn>{item.cost}</TableColumn>
+                                        {group.items.map((row, index,) => (
+                                            <React.Fragment key={index}>
+                                                <TableRow index={index}>
+                                                    <TableColumn rowSpan="2">{row.floor}</TableColumn>
+                                                    <TableColumn>{row.vehicleName}</TableColumn>
+                                                    <TableColumn>{row.cost}</TableColumn>
                                                 </TableRow>
-                                                <TableRow index={i}>
+                                                <TableRow index={index}>
                                                     <TableColumn colSpan="2">
-                                                        <SmallButtonLink href={item.gtaWikiLink}>GTA Wiki<ExternalLinkIcon className="w-3 h-3"/></SmallButtonLink>
-                                                        <SmallButtonLink href={item.gtaBaseLink}>GTA Base<ExternalLinkIcon className="w-3 h-3"/></SmallButtonLink>
+                                                        <SmallButtonLink href={row.gtaWikiLink}>GTA Wiki<ExternalLinkIcon className="w-3 h-3"/></SmallButtonLink>
+                                                        <SmallButtonLink href={row.gtaBaseLink}>GTA Base<ExternalLinkIcon className="w-3 h-3"/></SmallButtonLink>
                                                     </TableColumn>
                                                 </TableRow>
                                             </React.Fragment>
@@ -193,13 +193,13 @@ export default function GtaOnline({content,},) {
                         <Disclosure.Panel>
                             <Paragraph>This is a list of Safes that generate GTA Dollars as the game idles..</Paragraph>
                             <Table headers={['Location', 'Safe Capacity', 'Money / In-Game Day', 'Money / 24 Hrs.', 'Days to Fill',]}>
-                                {content.safes.map((s, i,) => (
-                                    <TableRow key={s.location} index={i}>
-                                        <TableColumn>{s.location}</TableColumn>
-                                        <TableColumn>{s.safeCapacity}</TableColumn>
-                                        <TableColumn>{s.moneyPerIgDay}</TableColumn>
-                                        <TableColumn>{s.moneyPer24Hours}</TableColumn>
-                                        <TableColumn>{s.daysToFill}</TableColumn>
+                                {content.safes.map((row, index,) => (
+                                    <TableRow key={row.location} index={index}>
+                                        <TableColumn>{row.location}</TableColumn>
+                                        <TableColumn>{row.safeCapacity}</TableColumn>
+                                        <TableColumn>{row.moneyPerIgDay}</TableColumn>
+                                        <TableColumn>{row.moneyPer24Hours}</TableColumn>
+                                        <TableColumn>{row.daysToFill}</TableColumn>
                                     </TableRow>
                                 ),)}
                             </Table>
