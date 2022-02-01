@@ -97,13 +97,13 @@ export default function GtaOnline({content,},) {
                         <Disclosure.Panel>
                             <Paragraph>This is a log of year-to-date earnings in GTA.</Paragraph>
                             <Table headers={['Date', 'Balance', 'Earnings',]}>
-                                {content.earnings.map((e, i,) => (
-                                    <TableRow key={e.balanceDate} index={i}>
-                                        <TableColumn>{e.balanceDate}</TableColumn>
-                                        <TableColumn>{e.balance}</TableColumn>
+                                {content.earnings.map((row, i,) => (
+                                    <TableRow key={row.balanceDate} index={i}>
+                                        <TableColumn>{row.balanceDate}</TableColumn>
+                                        <TableColumn>{row.balance}</TableColumn>
                                         <TableColumn>
-                                            <span className={e.earnings.charAt(0,) === '-' ? 'text-orange-300' : 'text-blue-diamond'}>
-                                            {e.earnings}
+                                            <span className={row.earnings.charAt(0,) === '-' ? 'text-orange-300' : 'text-blue-diamond'}>
+                                            {row.earnings}
                                             </span>
                                         </TableColumn>
                                     </TableRow>
