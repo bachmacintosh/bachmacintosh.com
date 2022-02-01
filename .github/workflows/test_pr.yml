@@ -1,0 +1,42 @@
+name: Tests (PR)
+on:
+  pull_request_target:
+    types:
+      - assigned
+permissions:
+  actions: none
+env:
+  CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+  CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+  CONTENTFUL_PREVIEW_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_PREVIEW_ACCESS_TOKEN }}
+  CONTENTFUL_PREVIEW_SECRET: ${{ secrets.CONTENTFUL_PREVIEW_SECRET }}
+  GOOGLE_SHEETS_CLIENT_EMAIL: ${{ secrets.GOOGLE_SHEETS_CLIENT_EMAIL }}
+  GOOGLE_SHEETS_PRIVATE_KEY: ${{ secrets.GOOGLE_SHEETS_PRIVATE_KEY }}
+  GOOGLE_SHEETS_GTA_SHEET_ID: ${{ secrets.GOOGLE_SHEETS_GTA_SHEET_ID }}
+  CYPRESS_PREVIEW_SECRET: ${{ secrets.CYPRESS_PREVIEW_SECRET }}
+jobs:
+  run-tests:
+    name: Test Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+      - name: Install Dependencies
+        uses: cypress-io/github-action@v2
+        with:
+          runTests: false
+      - name: Run ESLint
+        run: npm run lint
+      - name: Build Next.js App
+        run: npm run build
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          start: npm run start
+          wait-on: http://localhost:3000
+      - name: Test Static HTML Export
+        run: npm run export
