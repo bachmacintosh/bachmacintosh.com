@@ -37,18 +37,18 @@ export function BlockQuote({ children, },) {
 
 export function Hyperlink({ href, external, children, },) {
   if (external === true) {
-    return <a className="text-blue-diamond hover:text-white underline" href={href} target="_blank" rel="nofollow noreferrer noopener">{children}<ExternalLinkIcon className="inline w-4 h-4" /></a> ;
+    return <a className="text-blue-diamond hover:text-white underline" href={href} target="_blank" rel="nofollow noreferrer noopener">{children}<ExternalLinkIcon className="inline w-4 h-4" /></a>;
   } else {
     return <Link href={href}><a className="text-blue-diamond hover:text-white underline">{children}</a></Link>;
   }
 }
 
 export function UnorderedList({ children, },) {
-  return <ul className="list-disc text-white ml-11">{children}</ul> ;
+  return <ul className="list-disc text-white ml-11">{children}</ul>;
 }
 
 export function OrderedList({ children, },) {
-  return <ol className="list-decimal text-white ml-6">{children}</ol> ;
+  return <ol className="list-decimal text-white ml-6">{children}</ol>;
 }
 
 export function ListItem({ children, },) {
