@@ -224,7 +224,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            content: content,
+            content,
         },
     };
 }
