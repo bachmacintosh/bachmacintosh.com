@@ -17,9 +17,9 @@ export default function CloudinaryImage(props,) {
                         setOutput(result.output,);
                     }
                 },
-                (error,) => {
+                (notFound,) => {
                     setIsLoaded(true,);
-                    setError(error,);
+                    setError(notFound,);
                 },
             );
         return function cleanup() {
