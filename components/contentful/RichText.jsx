@@ -30,7 +30,7 @@ const markdownOptions = (content, indent,) => ({
           [BLOCKS.PARAGRAPH]: (childNode, children,) => <Paragraph indent={false}>{children}</Paragraph>,
           [BLOCKS.UL_LIST]: (childNode, children,) => <UnorderedList>{children}</UnorderedList>,
           [BLOCKS.OL_LIST]: (childNode, children,) => <OrderedList>{children}</OrderedList>,
-          [BLOCKS.LIST_ITEM]: (childNode, children,) => (children),
+          [BLOCKS.LIST_ITEM]: (childNode, children,) => children,
         },
       },);
       return (

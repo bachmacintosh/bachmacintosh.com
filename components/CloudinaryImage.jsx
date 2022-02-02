@@ -5,7 +5,7 @@ export default function CloudinaryImage(props,) {
   const [error, setError,] = useState(null,);
   const [isLoaded, setIsLoaded,] = useState(false,);
   const [output, setOutput,] = useState([],);
-  const getInfoUrl = `https://res.cloudinary.com/bachman-io/fl_getinfo/${  props.src}`;
+  const getInfoUrl = `https://res.cloudinary.com/bachman-io/fl_getinfo/${ props.src}`;
   useEffect(() => {
     let mounted = true;
     fetch(getInfoUrl,)
@@ -27,9 +27,9 @@ export default function CloudinaryImage(props,) {
     };
   }, [getInfoUrl,],);
   if (error) {
-    return (<p>Error!</p>);
+    return <p>Error!</p>;
   } else if (!isLoaded || output.length === 0) {
-    return (<p>Loading...</p>);
+    return <p>Loading...</p>;
   } else {
     return (
       <figure>
