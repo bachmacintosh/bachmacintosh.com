@@ -1,4 +1,4 @@
-import {Hyperlink,} from "./Typography";
+import { Hyperlink, } from "./Typography";
 export default function Footer() {
     return(
         <>

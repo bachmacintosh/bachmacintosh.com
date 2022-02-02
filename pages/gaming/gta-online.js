@@ -1,14 +1,14 @@
-import {Heading1, Heading2, Heading3, Paragraph,} from "../../components/layout/Typography";
-import {Table, TableColumn, TableRow,} from "../../components/layout/Table";
+import { Heading1, Heading2, Heading3, Paragraph, } from "../../components/layout/Typography";
+import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
-import {ExternalLinkIcon,} from "@heroicons/react/outline";
-import {NextSeo,} from "next-seo";
+import { ExternalLinkIcon, } from "@heroicons/react/outline";
+import { NextSeo, } from "next-seo";
 import React from 'react';
-import {SmallButtonLink,} from "../../components/layout/Buttons";
-import {getGtaSheets,} from "../../lib/google/sheets";
+import { SmallButtonLink, } from "../../components/layout/Buttons";
+import { getGtaSheets, } from "../../lib/google/sheets";
 
-export default function GtaOnline({content,},) {
+export default function GtaOnline({ content, },) {
     return(
         <>
             <NextSeo
@@ -17,7 +17,7 @@ export default function GtaOnline({content,},) {
             />
             <Heading1>GTA Online</Heading1>
             <Disclosure defaultOpen="open">
-                {({open,},) => (
+                {({ open, },) => (
                     <>
                         <Disclosure.Button>
                             <Heading2>[{open ? '-': '+'}] Summary</Heading2>
@@ -58,7 +58,7 @@ export default function GtaOnline({content,},) {
             </Disclosure>
             <br/>
             <Disclosure>
-                {({open,},) => (
+                {({ open, },) => (
                     <>
                         <Disclosure.Button>
                             <Heading2>[{open ? '-': '+'}] Wish List</Heading2>
@@ -89,7 +89,7 @@ export default function GtaOnline({content,},) {
             </Disclosure>
             <br />
             <Disclosure>
-                {({open,},) => (
+                {({ open, },) => (
                     <>
                         <Disclosure.Button>
                             <Heading2>[{open ? '-': '+'}] Earnings</Heading2>
@@ -115,7 +115,7 @@ export default function GtaOnline({content,},) {
             </Disclosure>
             <br />
             <Disclosure>
-                {({open,},) => (
+                {({ open, },) => (
                     <>
                         <Disclosure.Button>
                             <Heading2>[{open ? '-': '+'}] Properties</Heading2>
@@ -150,7 +150,7 @@ export default function GtaOnline({content,},) {
             </Disclosure>
             <br />
             <Disclosure>
-                {({open,},) => (
+                {({ open, },) => (
                     <>
                         <Disclosure.Button>
                             <Heading2>[{open ? '-': '+'}] Vehicles</Heading2>
@@ -185,7 +185,7 @@ export default function GtaOnline({content,},) {
             </Disclosure>
             <br />
             <Disclosure>
-                {({open,},) => (
+                {({ open, },) => (
                     <>
                         <Disclosure.Button>
                             <Heading2>[{open ? '-': '+'}] Safes</Heading2>

@@ -1,11 +1,11 @@
-import {getPage, getPageSlugs, getPreviewPage,} from "../lib/contentful/page";
+import { getPage, getPageSlugs, getPreviewPage, } from "../lib/contentful/page";
 import DefaultLayout from "../components/DefaultLayout";
-import {NextSeo,} from "next-seo";
+import { NextSeo, } from "next-seo";
 import React from "react";
 import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
 
-export default function Page({page, preview,},) {
+export default function Page({ page, preview, },) {
     return(
         <>
             <NextSeo
@@ -26,7 +26,7 @@ Page.getLayout = function getLayout(page,) {
     );
 };
 
-export async function getStaticProps({params, preview = false,},) {
+export async function getStaticProps({ params, preview = false, },) {
     let page = null;
     if(preview) {
         page = await getPreviewPage(params.slug,);

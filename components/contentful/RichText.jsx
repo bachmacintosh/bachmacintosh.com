@@ -1,4 +1,4 @@
-import {BLOCKS, INLINES,} from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, } from '@contentful/rich-text-types';
 import {
     BlockQuote,
     Heading1,
@@ -45,6 +45,6 @@ const markdownOptions = (content, indent,) => ({
     },
 });
 
-export default function RichText({content, indentParagraphs,},) {
+export default function RichText({ content, indentParagraphs, },) {
     return documentToReactComponents(content.json, markdownOptions(content, indentParagraphs,),);
 }

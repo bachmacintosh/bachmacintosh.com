@@ -1,7 +1,7 @@
 import Footer from "./layout/Footer";
 import Navigation from "./layout/Navigation";
 
-export default function DefaultLayout({ children,},) {
+export default function DefaultLayout({ children, },) {
     return (
         <>
             <Navigation />

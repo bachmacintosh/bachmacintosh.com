@@ -1,17 +1,17 @@
-import {Heading1, Heading2, Heading3, Hyperlink, Paragraph,} from "../../components/layout/Typography";
-import {Table, TableColumn, TableRow,} from "../../components/layout/Table";
+import { Heading1, Heading2, Heading3, Hyperlink, Paragraph, } from "../../components/layout/Typography";
+import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
-import {ExternalLinkIcon,} from "@heroicons/react/outline";
+import { ExternalLinkIcon, } from "@heroicons/react/outline";
 import FlexWrapper from "../../components/layout/FlexWrapper";
-import {NextSeo,} from "next-seo";
+import { NextSeo, } from "next-seo";
 import ProgressBar from "../../components/layout/ProgressBar";
 import React from 'react';
-import {SmallButtonLink,} from "../../components/layout/Buttons";
+import { SmallButtonLink, } from "../../components/layout/Buttons";
 import WanikaniSubject from "../../components/wanikani/WanikaniSubject";
-import {getWkSheets,} from "../../lib/google/sheets";
+import { getWkSheets, } from "../../lib/google/sheets";
 
-export default function Wanikani({content,},) {
+export default function Wanikani({ content, },) {
     return(
         <>
             <NextSeo

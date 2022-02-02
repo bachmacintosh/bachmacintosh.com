@@ -1,7 +1,7 @@
 import { MenuIcon, XIcon, } from '@heroicons/react/outline';
 import { Disclosure, } from '@headlessui/react';
 import Link from "next/link";
-import {useRouter,} from 'next/router';
+import { useRouter, } from 'next/router';
 
 function classNames(...classes) {
     return classes.filter(Boolean,).join(' ',);

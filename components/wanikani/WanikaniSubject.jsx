@@ -1,7 +1,7 @@
-import {createRef, useState,} from "react";
-import {createPopper,} from "@popperjs/core";
+import { createRef, useState, } from "react";
+import { createPopper, } from "@popperjs/core";
 
-export default function WanikaniSubject({subjectType, meanings, href, children,},) {
+export default function WanikaniSubject({ subjectType, meanings, href, children, },) {
     const [tooltipShow, setTooltipShow,] = useState(false,);
     const btnRef = createRef();
     const tooltipRef = createRef();
@@ -34,7 +34,7 @@ export default function WanikaniSubject({subjectType, meanings, href, children,}
                        onMouseLeave={closeLeftTooltip}
                        ref={btnRef}
                        href={href} target="_blank" rel="nofollow noreferrer noopener"
-                       style={{fontFamily: 'Noto Sans JP',}}
+                       style={{ fontFamily: 'Noto Sans JP', }}
                     >
                         {children}
                     </a>
