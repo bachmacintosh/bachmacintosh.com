@@ -4,20 +4,20 @@ import { NextSeo, } from "next-seo";
 
 export default function Home() {
   return (
-      <>
-          <NextSeo
-              title="Home"
-              description="A short description goes here."
-          />
-          <Heading1>BachMacintosh</Heading1>
-      </>
+    <>
+      <NextSeo
+        title="Home"
+        description="A short description goes here."
+      />
+      <Heading1>BachMacintosh</Heading1>
+    </>
   );
 }
 
 Home.getLayout = function getLayout(page,) {
-    return(
-        <DefaultLayout>
-            {page}
-        </DefaultLayout>
-    );
+  return(
+    <DefaultLayout>
+      {page}
+    </DefaultLayout>
+  );
 };
