@@ -3,7 +3,9 @@ import { DefaultSeo, } from "next-seo";
 import SEO from "../next-seo.config";
 
 function MyApp ({ Component, pageProps, },) {
-  const getLayout = Component.getLayout || ((page,) => page);
+  const getLayout = Component.getLayout || ((page,) => {
+    return page;
+  });
   return getLayout(
     <>
       <DefaultSeo {...SEO} />

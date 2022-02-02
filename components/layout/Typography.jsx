@@ -32,14 +32,27 @@ export function Paragraph ({ indent, children, },) {
 }
 
 export function BlockQuote ({ children, },) {
-  return <blockquote className="border-l-8 border-blue-mariner pl-2">{children}</blockquote>;
+  return <blockquote
+    className="border-l-8 border-blue-mariner pl-2">
+    {children}
+  </blockquote>;
 }
 
 export function Hyperlink ({ href, external, children, },) {
   if (external === true) {
-    return <a className="text-blue-diamond hover:text-white underline" href={href} target="_blank" rel="nofollow noreferrer noopener">{children}<ExternalLinkIcon className="inline w-4 h-4" /></a>;
+    return <a
+      className="text-blue-diamond hover:text-white underline"
+      href={href}
+      target="_blank"
+      rel="nofollow noreferrer noopener">
+      {children}<ExternalLinkIcon className="inline w-4 h-4" />
+    </a>;
   } else {
-    return <Link href={href}><a className="text-blue-diamond hover:text-white underline">{children}</a></Link>;
+    return <Link href={href}>
+      <a className="text-blue-diamond hover:text-white underline">
+        {children}
+      </a>
+    </Link>;
   }
 }
 

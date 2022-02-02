@@ -1,4 +1,7 @@
-import { Heading1, Heading2, Heading3, Hyperlink, Paragraph, } from "../../components/layout/Typography";
+import {
+  Heading1, Heading2,
+  Heading3, Hyperlink, Paragraph,
+} from "../../components/layout/Typography";
 import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
@@ -16,10 +19,20 @@ export default function Wanikani ({ content, },) {
     <>
       <NextSeo
         title="WaniKani"
-        description="Learning kanji ain't easy, but we can make it better with spaced repitition... and burning things, sort of."
+        description={`Learning kanji ain't easy, but we can make it better with
+          spaced repitition... and burning things, sort of.`}
       />
       <Heading1>WaniKani</Heading1>
-      <Paragraph indent={false}>Showing stats for user: <Hyperlink external={true} href={content.profileUrl}>{content.username}</Hyperlink></Paragraph>
+      <Paragraph
+        indent={false}>
+        Showing stats for user:
+        {" "}
+        <Hyperlink
+          external={true}
+          href={content.profileUrl}>
+          {content.username}
+        </Hyperlink>
+      </Paragraph>
       <Heading2>Level Progression</Heading2>
       <ProgressBar percent={Math.floor(content.level / 60 * 100,)}>{`${content.level} / 60`}</ProgressBar>
       <Table headers={["Level", "Type", "Count", "Items",]}>

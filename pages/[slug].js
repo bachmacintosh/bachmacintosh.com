@@ -50,7 +50,9 @@ export async function getStaticPaths () {
   const slugs = await getPageSlugs();
 
   return {
-    paths: slugs?.map(({ slug, },) => `/${slug}`,) ?? [],
+    paths: slugs?.map(({ slug, },) => {
+      return `/${slug}`;
+    },) ?? [],
     fallback: false,
   };
 }

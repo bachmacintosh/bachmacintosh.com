@@ -2,7 +2,9 @@ import { getPreviewPage, getPreviewSlugs, } from "../../../lib/contentful/page";
 
 export default async function page (req, res,) {
   const slugs = await getPreviewSlugs();
-  const foundItem = slugs.find(({ slug, },) => slug === req.query.slug, );
+  const foundItem = slugs.find(({ slug, },) => {
+    return slug === req.query.slug;
+  }, );
 
   if (req.query.secret !== process.env.CONTENTFUL_PREVIEW_SECRET
     || !req.query.slug) {

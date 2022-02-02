@@ -9,7 +9,9 @@ export default function CloudinaryImage (props,) {
   useEffect(() => {
     let mounted = true;
     fetch(getInfoUrl,)
-      .then((res,) => res.json(),)
+      .then((res,) => {
+        return res.json();
+      },)
       .then(
         (result,) => {
           if (mounted) {
@@ -33,8 +35,15 @@ export default function CloudinaryImage (props,) {
   } else {
     return (
       <figure>
-        <Image alt={props.alt} src={props.src} width={output.width} height={1080} />
-        <figcaption className="text-gray-400 mb-3 text-sm">{props.alt}</figcaption>
+        <Image
+          alt={props.alt}
+          src={props.src}
+          width={output.width}
+          height={1080} />
+        <figcaption
+          className="text-gray-400 mb-3 text-sm">
+          {props.alt}
+        </figcaption>
       </figure>
     );
   }
