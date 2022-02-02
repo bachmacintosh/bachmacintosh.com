@@ -28,7 +28,7 @@ export default function WanikaniSubject({subjectType, meanings, href, children,}
         <>
             <div className="flex flex-wrap">
                 <div className="text-center">
-                    <a className={color + " text-white font-bold text-sm px-1 py-1 shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"}
+                    <a className={`${color  } text-white font-bold text-sm px-1 py-1 shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1`}
                        type="button"
                        onMouseEnter={openLeftTooltip}
                        onMouseLeave={closeLeftTooltip}
@@ -39,7 +39,7 @@ export default function WanikaniSubject({subjectType, meanings, href, children,}
                         {children}
                     </a>
                     <div
-                        className={(tooltipShow ? "" : "hidden ") + "h-auto border-0 inline z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words"}
+                        className={`${tooltipShow ? "" : "hidden "  }h-auto border-0 inline z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words`}
                         ref={tooltipRef}
                     >
                         <div>
