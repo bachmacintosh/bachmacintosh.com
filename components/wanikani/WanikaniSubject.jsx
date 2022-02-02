@@ -7,9 +7,7 @@ export default function WanikaniSubject({ subjectType, meanings, href, children,
   const tooltipRef = createRef();
 
   const openLeftTooltip = () => {
-    createPopper(btnRef.current, tooltipRef.current, {
-      placement: "top",
-    },);
+    createPopper(btnRef.current, tooltipRef.current, { placement: "top", },);
     setTooltipShow(true,);
   };
   const closeLeftTooltip = () => {

@@ -114,9 +114,5 @@ Wanikani.getLayout = function getLayout(page,) {
 export async function getStaticProps() {
   const content = await getWkSheets();
 
-  return {
-    props: {
-      content,
-    },
-  };
+  return { props: { content, }, };
 }

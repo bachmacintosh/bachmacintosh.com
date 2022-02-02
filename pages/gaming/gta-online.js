@@ -1,5 +1,7 @@
-import { Heading1, Heading2, Heading3,
-  Paragraph, } from "../../components/layout/Typography";
+import {
+  Heading1, Heading2, Heading3,
+  Paragraph,
+} from "../../components/layout/Typography";
 import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
@@ -227,9 +229,5 @@ GtaOnline.getLayout = function getLayout(page,) {
 export async function getStaticProps() {
   const content = await getGtaSheets();
 
-  return {
-    props: {
-      content,
-    },
-  };
+  return { props: { content, }, };
 }
