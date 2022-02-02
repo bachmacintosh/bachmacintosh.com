@@ -1,12 +1,12 @@
-import React from 'react';
-import {NextSeo,} from "next-seo";
-import {getGtaSheets,} from "../../lib/google/sheets";
+import {Heading1, Heading2, Heading3, Paragraph,} from "../../components/layout/Typography";
+import {Table, TableColumn, TableRow,} from "../../components/layout/Table";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
-import {Table, TableRow, TableColumn,} from "../../components/layout/Table";
-import {Heading1, Heading2, Heading3, Paragraph,} from "../../components/layout/Typography";
-import {SmallButtonLink,} from "../../components/layout/Buttons";
 import {ExternalLinkIcon,} from "@heroicons/react/outline";
+import {NextSeo,} from "next-seo";
+import React from 'react';
+import {SmallButtonLink,} from "../../components/layout/Buttons";
+import {getGtaSheets,} from "../../lib/google/sheets";
 
 export default function GtaOnline({content,},) {
     return(

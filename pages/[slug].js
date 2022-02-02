@@ -1,9 +1,9 @@
-import {getPage, getPreviewPage, getPageSlugs,} from "../lib/contentful/page";
-import Warning from "../components/layout/Warning";
-import {NextSeo,} from "next-seo";
+import {getPage, getPageSlugs, getPreviewPage,} from "../lib/contentful/page";
 import DefaultLayout from "../components/DefaultLayout";
-import RichText from "../components/contentful/RichText";
+import {NextSeo,} from "next-seo";
 import React from "react";
+import RichText from "../components/contentful/RichText";
+import Warning from "../components/layout/Warning";
 
 export default function Page({page, preview,},) {
     return(

@@ -1,6 +1,6 @@
-import { NextSeo, } from "next-seo";
 import DefaultLayout from "../components/DefaultLayout";
 import {Heading1,} from "../components/layout/Typography";
+import { NextSeo, } from "next-seo";
 
 export default function Home() {
   return (
