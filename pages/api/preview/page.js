@@ -1,16 +1,16 @@
-import { getPage, } from '../../../lib/contentful/page';
+import {getPreviewPage, getPreviewSlugs,} from '../../../lib/contentful/page';
 
 export default async function page(req, res,) {
-    const regex = /^[a-zA-Z0-9-_]+$/;
-    const found = req.query.slug.match(regex,);
-    const pageSlug = found.length > 0 ? found[0] : false;
+    const {slug, secret,} = req.query;
+    const slugs = await getPreviewSlugs();
+    const foundItem = slugs.find(({slug,},) => slug === req.query.slug, );
 
-    if (req.query.secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !pageSlug) {
+    if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !slug) {
         return res.status(401,).json({ message: 'Invalid token', },);
     }
-    const page = await getPage(pageSlug, true,);
+    const page = await getPreviewPage(foundItem?.slug,);
 
-    if (!pageSlug) {
+    if (!foundItem) {
         return res.status(401,).json({ message: 'Invalid slug', },);
     }
 

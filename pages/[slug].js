@@ -1,4 +1,4 @@
-import {getPage, getPageSlugs,} from "../lib/contentful/page";
+import {getPage, getPreviewPage, getPageSlugs,} from "../lib/contentful/page";
 import Warning from "../components/layout/Warning";
 import {NextSeo,} from "next-seo";
 import DefaultLayout from "../components/DefaultLayout";
@@ -27,7 +27,12 @@ Page.getLayout = function getLayout(page,) {
 };
 
 export async function getStaticProps({params, preview = false,},) {
-    const page = await getPage(params.slug, preview,);
+    let page = null;
+    if(preview) {
+        page = await getPreviewPage(params.slug,);
+    } else {
+        page = await getPage(params.slug,);
+    }
 
     return {
         props: {
