@@ -1,7 +1,7 @@
 import { useEffect, useState, } from "react";
 import Image from "next/image";
 
-export default function CloudinaryImage(props,) {
+export default function CloudinaryImage (props,) {
   const [error, setError,] = useState(null,);
   const [isLoaded, setIsLoaded,] = useState(false,);
   const [output, setOutput,] = useState([],);
@@ -22,7 +22,7 @@ export default function CloudinaryImage(props,) {
           setError(notFound,);
         },
       );
-    return function cleanup() {
+    return function cleanup () {
       mounted = false;
     };
   }, [getInfoUrl,],);

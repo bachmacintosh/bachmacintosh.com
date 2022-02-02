@@ -5,7 +5,7 @@ import React from "react";
 import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
 
-export default function Page({ page, preview, },) {
+export default function Page ({ page, preview, },) {
   return (
     <>
       <NextSeo
@@ -22,7 +22,7 @@ export default function Page({ page, preview, },) {
   );
 }
 
-Page.getLayout = function getLayout(page,) {
+Page.getLayout = function getLayout (page,) {
   return (
     <DefaultLayout>
       {page}
@@ -30,7 +30,7 @@ Page.getLayout = function getLayout(page,) {
   );
 };
 
-export async function getStaticProps({ params, preview = false, },) {
+export async function getStaticProps ({ params, preview = false, },) {
   let page = null;
   if (preview) {
     page = await getPreviewPage(params.slug,);
@@ -46,7 +46,7 @@ export async function getStaticProps({ params, preview = false, },) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths () {
   const slugs = await getPageSlugs();
 
   return {

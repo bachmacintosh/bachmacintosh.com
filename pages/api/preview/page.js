@@ -1,6 +1,6 @@
 import { getPreviewPage, getPreviewSlugs, } from "../../../lib/contentful/page";
 
-export default async function page(req, res,) {
+export default async function page (req, res,) {
   const slugs = await getPreviewSlugs();
   const foundItem = slugs.find(({ slug, },) => slug === req.query.slug, );
 

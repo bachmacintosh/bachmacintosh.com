@@ -11,7 +11,7 @@ import React from "react";
 import { SmallButtonLink, } from "../../components/layout/Buttons";
 import { getGtaSheets, } from "../../lib/google/sheets";
 
-export default function GtaOnline({ content, },) {
+export default function GtaOnline ({ content, },) {
   return (
     <>
       <NextSeo
@@ -218,7 +218,7 @@ export default function GtaOnline({ content, },) {
   );
 }
 
-GtaOnline.getLayout = function getLayout(page,) {
+GtaOnline.getLayout = function getLayout (page,) {
   return (
     <DefaultLayout>
       {page}
@@ -226,7 +226,7 @@ GtaOnline.getLayout = function getLayout(page,) {
   );
 };
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   const content = await getGtaSheets();
 
   return { props: { content, }, };

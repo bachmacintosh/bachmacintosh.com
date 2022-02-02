@@ -45,6 +45,6 @@ const markdownOptions = (content, indent,) => ({
   },
 });
 
-export default function RichText({ content, indentParagraphs, },) {
+export default function RichText ({ content, indentParagraphs, },) {
   return documentToReactComponents(content.json, markdownOptions(content, indentParagraphs,),);
 }

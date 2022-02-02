@@ -11,7 +11,7 @@ import { SmallButtonLink, } from "../../components/layout/Buttons";
 import WanikaniSubject from "../../components/wanikani/WanikaniSubject";
 import { getWkSheets, } from "../../lib/google/sheets";
 
-export default function Wanikani({ content, },) {
+export default function Wanikani ({ content, },) {
   return (
     <>
       <NextSeo
@@ -103,7 +103,7 @@ export default function Wanikani({ content, },) {
   );
 }
 
-Wanikani.getLayout = function getLayout(page,) {
+Wanikani.getLayout = function getLayout (page,) {
   return (
     <DefaultLayout>
       {page}
@@ -111,7 +111,7 @@ Wanikani.getLayout = function getLayout(page,) {
   );
 };
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   const content = await getWkSheets();
 
   return { props: { content, }, };

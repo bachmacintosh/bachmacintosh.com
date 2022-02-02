@@ -3,13 +3,13 @@ import { Disclosure, } from "@headlessui/react";
 import Link from "next/link";
 import { useRouter, } from "next/router";
 
-function classNames(...classes) {
+function classNames (...classes) {
   return classes.filter(Boolean,).join(" ",);
 }
 
 const navigation = [{ name: "Home", basePath: "/", href: "/", },];
 
-export default function Navigation() {
+export default function Navigation () {
   const router = useRouter();
   const basePath = router.asPath === "/" ? "/" : router.asPath.split("/",)[1];
   return (

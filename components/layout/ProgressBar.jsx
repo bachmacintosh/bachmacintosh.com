@@ -1,4 +1,4 @@
-export default function ProgressBar({ percent, children, },) {
+export default function ProgressBar ({ percent, children, },) {
   return (
     <div className="relative pt-1">
       <div className="overflow-hidden h-10 mb-4 text-xs flex rounded bg-blue-racing">

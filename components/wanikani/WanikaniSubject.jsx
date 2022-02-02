@@ -1,7 +1,7 @@
 import { createRef, useState, } from "react";
 import { createPopper, } from "@popperjs/core";
 
-export default function WanikaniSubject({ subjectType, meanings, href, children, },) {
+export default function WanikaniSubject ({ subjectType, meanings, href, children, },) {
   const [tooltipShow, setTooltipShow,] = useState(false,);
   const btnRef = createRef();
   const tooltipRef = createRef();

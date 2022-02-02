@@ -2,7 +2,7 @@ import DefaultLayout from "../components/DefaultLayout";
 import { Heading1, } from "../components/layout/Typography";
 import { NextSeo, } from "next-seo";
 
-export default function Home() {
+export default function Home () {
   return (
     <>
       <NextSeo
@@ -14,7 +14,7 @@ export default function Home() {
   );
 }
 
-Home.getLayout = function getLayout(page,) {
+Home.getLayout = function getLayout (page,) {
   return (
     <DefaultLayout>
       {page}
