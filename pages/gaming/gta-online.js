@@ -22,7 +22,7 @@ export default function GtaOnline ({ content, },) {
       <Disclosure defaultOpen="open">
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? "-": "+"}] Summary</Heading2>
+            <Heading2>[{open ? "-" : "+"}] Summary</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph noIndent={true}>
@@ -63,7 +63,7 @@ export default function GtaOnline ({ content, },) {
       <Disclosure>
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? "-": "+"}] Wish List</Heading2>
+            <Heading2>[{open ? "-" : "+"}] Wish List</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph noIndent={true}>
@@ -108,7 +108,7 @@ export default function GtaOnline ({ content, },) {
       <Disclosure>
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? "-": "+"}] Earnings</Heading2>
+            <Heading2>[{open ? "-" : "+"}] Earnings</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph>This is a log of year-to-date earnings in GTA.</Paragraph>
@@ -132,7 +132,7 @@ export default function GtaOnline ({ content, },) {
       <Disclosure>
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? "-": "+"}] Properties</Heading2>
+            <Heading2>[{open ? "-" : "+"}] Properties</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph noIndent={true}>These are all the properties I own in the game and their worth.</Paragraph>
@@ -164,7 +164,7 @@ export default function GtaOnline ({ content, },) {
       <Disclosure>
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? "-": "+"}] Vehicles</Heading2>
+            <Heading2>[{open ? "-" : "+"}] Vehicles</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph noIndent={true}>These are all the vehicles I own in the game and their worth.</Paragraph>
@@ -196,7 +196,7 @@ export default function GtaOnline ({ content, },) {
       <Disclosure>
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? "-": "+"}] Safes</Heading2>
+            <Heading2>[{open ? "-" : "+"}] Safes</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph>This is a list of Safes that generate GTA Dollars as the game idles..</Paragraph>
