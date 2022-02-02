@@ -22,11 +22,10 @@ export default function Navigation() {
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-blue-diamond hover:text-white hover:bg-blue-standard focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-diamond">
                   <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
-                  )}
+                  {open ?
+                    (<XIcon className="block h-6 w-6" aria-hidden="true" />) :
+                    (<MenuIcon className="block h-6 w-6" aria-hidden="true" />)
+                  }
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center md:items-stretch md:justify-start">
