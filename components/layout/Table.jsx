@@ -7,9 +7,7 @@ export function Table({headers, children,},) {
                         <table className="table-auto min-w-full divide-y divide-blue-diamond border-b border-blue-diamond">
                             <thead className="bg-blue-ultra">
                             <tr>
-                                {headers.map(function(header,) {
-                                    return(<TableHeader key={header}>{header}</TableHeader>);
-                                },)}
+                                {headers.map((header,) => (<TableHeader key={header}>{header}</TableHeader>),)}
                             </tr>
                             </thead>
                             <tbody>
