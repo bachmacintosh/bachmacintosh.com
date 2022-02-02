@@ -47,26 +47,26 @@ export default function Wanikani({ content, },) {
           <TableColumn>20</TableColumn>
           <TableColumn>
             <FlexWrapper>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
-              <WanikaniSubject subjectType="kanji" meanings='One, Two, Three, Four' href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
+              <WanikaniSubject subjectType="kanji" meanings="One, Two, Three, Four" href="https://www.wanikani.com/radicals/ground">死</WanikaniSubject>
             </FlexWrapper>
           </TableColumn>
         </TableRow>
