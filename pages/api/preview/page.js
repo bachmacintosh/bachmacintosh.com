@@ -1,4 +1,4 @@
-import { getPreviewPage, getPreviewSlugs, } from '../../../lib/contentful/page';
+import { getPreviewPage, getPreviewSlugs, } from "../../../lib/contentful/page";
 
 export default async function page(req, res,) {
   const slugs = await getPreviewSlugs();
@@ -6,12 +6,12 @@ export default async function page(req, res,) {
 
   if (req.query.secret !== process.env.CONTENTFUL_PREVIEW_SECRET
     || !req.query.slug) {
-    return res.status(401,).json({ message: 'Invalid token', },);
+    return res.status(401,).json({ message: "Invalid token", },);
   }
   const pageResult = await getPreviewPage(foundItem?.slug,);
 
   if (!foundItem) {
-    return res.status(401,).json({ message: 'Invalid slug', },);
+    return res.status(401,).json({ message: "Invalid slug", },);
   }
 
   res.setPreviewData({},);

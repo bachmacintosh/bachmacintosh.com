@@ -1,17 +1,17 @@
-import { MenuIcon, XIcon, } from '@heroicons/react/outline';
-import { Disclosure, } from '@headlessui/react';
+import { MenuIcon, XIcon, } from "@heroicons/react/outline";
+import { Disclosure, } from "@headlessui/react";
 import Link from "next/link";
-import { useRouter, } from 'next/router';
+import { useRouter, } from "next/router";
 
 function classNames(...classes) {
-  return classes.filter(Boolean,).join(' ',);
+  return classes.filter(Boolean,).join(" ",);
 }
 
-const navigation = [{ name: 'Home', basePath: '/', href: '/', },];
+const navigation = [{ name: "Home", basePath: "/", href: "/", },];
 
 export default function Navigation() {
   const router = useRouter();
-  const basePath = router.asPath === '/' ? '/' : router.asPath.split('/',)[1];
+  const basePath = router.asPath === "/" ? "/" : router.asPath.split("/",)[1];
   return (
     <Disclosure as="nav" className="bg-blue-racing fixed w-full z-10">
       {({ open, },) => <>
@@ -37,10 +37,10 @@ export default function Navigation() {
                     <a
                       key={item.name}
                       className={classNames(
-                        item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-standard hover:text-white',
-                        'px-3 py-2 rounded-md text-sm font-medium',
+                        item.basePath === basePath ? "bg-blue-standard text-white" : "text-blue-diamond hover:bg-blue-standard hover:text-white",
+                        "px-3 py-2 rounded-md text-sm font-medium",
                       )}
-                      aria-current={item.basePath === basePath ? 'page' : null}
+                      aria-current={item.basePath === basePath ? "page" : null}
                     >
                       {item.name}
                     </a>
@@ -60,10 +60,10 @@ export default function Navigation() {
                 key={item.name}
                 as="a"
                 className={classNames(
-                  item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-racing hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium',
+                  item.basePath === basePath ? "bg-blue-standard text-white" : "text-blue-diamond hover:bg-blue-racing hover:text-white",
+                  "block px-3 py-2 rounded-md text-base font-medium",
                 )}
-                aria-current={item.basePath === basePath ? 'page' : null}
+                aria-current={item.basePath === basePath ? "page" : null}
               >
                 {item.name}
               </Disclosure.Button>

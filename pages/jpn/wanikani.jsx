@@ -6,7 +6,7 @@ import { ExternalLinkIcon, } from "@heroicons/react/outline";
 import FlexWrapper from "../../components/layout/FlexWrapper";
 import { NextSeo, } from "next-seo";
 import ProgressBar from "../../components/layout/ProgressBar";
-import React from 'react';
+import React from "react";
 import { SmallButtonLink, } from "../../components/layout/Buttons";
 import WanikaniSubject from "../../components/wanikani/WanikaniSubject";
 import { getWkSheets, } from "../../lib/google/sheets";
@@ -22,23 +22,23 @@ export default function Wanikani({ content, },) {
       <Paragraph indent={false}>Showing stats for user: <Hyperlink external={true} href={content.profileUrl}>{content.username}</Hyperlink></Paragraph>
       <Heading2>Level Progression</Heading2>
       <ProgressBar percent={Math.floor(content.level / 60 * 100,)}>{`${content.level } / 60`}</ProgressBar>
-      <Table headers={['Level', 'Type', 'Count', 'Items',]}>
+      <Table headers={["Level", "Type", "Count", "Items",]}>
         <TableRow index={1}>
           <TableColumn rowSpan={3}>1</TableColumn>
           <TableColumn>Radicals</TableColumn>
           <TableColumn>10</TableColumn>
           <TableColumn>
             <FlexWrapper>
-              <WanikaniSubject subjectType="radical" meanings={'Eye'} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
-              <WanikaniSubject subjectType="radical" meanings={'Eye'} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
-              <WanikaniSubject subjectType="radical" meanings={'Eye'} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
-              <WanikaniSubject subjectType="radical" meanings={'Eye'} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
-              <WanikaniSubject subjectType="radical" meanings={'Eye'} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
-              <WanikaniSubject subjectType="radical" meanings={'Eye'} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
-              <WanikaniSubject subjectType="radical" meanings={'Eye'} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
-              <WanikaniSubject subjectType="radical" meanings={'Eye'} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
-              <WanikaniSubject subjectType="radical" meanings={'Eye'} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
-              <WanikaniSubject subjectType="radical" meanings={'Eye'} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
+              <WanikaniSubject subjectType="radical" meanings={"Eye"} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
+              <WanikaniSubject subjectType="radical" meanings={"Eye"} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
+              <WanikaniSubject subjectType="radical" meanings={"Eye"} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
+              <WanikaniSubject subjectType="radical" meanings={"Eye"} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
+              <WanikaniSubject subjectType="radical" meanings={"Eye"} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
+              <WanikaniSubject subjectType="radical" meanings={"Eye"} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
+              <WanikaniSubject subjectType="radical" meanings={"Eye"} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
+              <WanikaniSubject subjectType="radical" meanings={"Eye"} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
+              <WanikaniSubject subjectType="radical" meanings={"Eye"} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
+              <WanikaniSubject subjectType="radical" meanings={"Eye"} href="https://www.wanikani.com/radicals/ground">目</WanikaniSubject>
             </FlexWrapper>
           </TableColumn>
         </TableRow>

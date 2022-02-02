@@ -1,4 +1,4 @@
-import { BLOCKS, INLINES, } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, } from "@contentful/rich-text-types";
 import {
   BlockQuote,
   Heading1,
@@ -11,7 +11,7 @@ import {
   Paragraph, UnorderedList,
 } from "../layout/Typography";
 import Asset from "./Asset";
-import { documentToReactComponents, } from '@contentful/rich-text-react-renderer';
+import { documentToReactComponents, } from "@contentful/rich-text-react-renderer";
 
 const markdownOptions = (content, indent,) => ({
   renderNode: {

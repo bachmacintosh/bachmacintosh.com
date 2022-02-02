@@ -7,7 +7,7 @@ import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
 import { ExternalLinkIcon, } from "@heroicons/react/outline";
 import { NextSeo, } from "next-seo";
-import React from 'react';
+import React from "react";
 import { SmallButtonLink, } from "../../components/layout/Buttons";
 import { getGtaSheets, } from "../../lib/google/sheets";
 
@@ -22,7 +22,7 @@ export default function GtaOnline({ content, },) {
       <Disclosure defaultOpen="open">
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? '-': '+'}] Summary</Heading2>
+            <Heading2>[{open ? "-": "+"}] Summary</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph noIndent={true}>
@@ -31,8 +31,8 @@ export default function GtaOnline({ content, },) {
                 current financial situation.
             </Paragraph>
             <Heading3>Money Breakdown</Heading3>
-            <Table headers={['Name', 'GTA Dollars', 'Shark Card USD',]}>
-              {content.summary.map((row, index,) => row.summaryType === 'Money'
+            <Table headers={["Name", "GTA Dollars", "Shark Card USD",]}>
+              {content.summary.map((row, index,) => row.summaryType === "Money"
                     && <TableRow key={row.title} index={index}>
                       <TableColumn>
                         <span className="font-bold">{row.title}</span>
@@ -44,8 +44,8 @@ export default function GtaOnline({ content, },) {
                 ,)}
             </Table>
             <Heading3>The Grind</Heading3>
-            <Table headers={['Name', 'Value',]}>
-              {content.summary.map((row, index,) => row.summaryType === 'Grind'
+            <Table headers={["Name", "Value",]}>
+              {content.summary.map((row, index,) => row.summaryType === "Grind"
                     && <TableRow key={row.title} index={index}>
                       <TableColumn>
                         <span className="font-bold">{row.title}</span>
@@ -63,7 +63,7 @@ export default function GtaOnline({ content, },) {
       <Disclosure>
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? '-': '+'}] Wish List</Heading2>
+            <Heading2>[{open ? "-": "+"}] Wish List</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph noIndent={true}>
@@ -75,7 +75,7 @@ export default function GtaOnline({ content, },) {
               {` `}
                 putting it off until my grinding is done (see Summary tab).
             </Paragraph>
-            <Table headers={['Item', 'Buy At', '', 'Total', 'Remaining',]}>
+            <Table headers={["Item", "Buy At", "", "Total", "Remaining",]}>
               {content.wishList.map((row,index,) => <React.Fragment key={index}>
                 <TableRow index={index}>
                   <TableColumn rowSpan="2">{row.item}</TableColumn>
@@ -86,8 +86,8 @@ export default function GtaOnline({ content, },) {
                   <TableColumn>{row.cost}</TableColumn>
                   <TableColumn>
                     {
-                      row.moneyToGrind.charAt(0,) === '-'
-                        ? '$0'
+                      row.moneyToGrind.charAt(0,) === "-"
+                        ? "$0"
                         : row.moneyToGrind
                     }
                   </TableColumn>
@@ -95,7 +95,7 @@ export default function GtaOnline({ content, },) {
                 <TableRow index={index}>
                   <TableColumn><span className="font-bold">Grind Days</span></TableColumn>
                   <TableColumn>{row.totalGrindDays}</TableColumn>
-                  <TableColumn>{row.daysToGrind.charAt(0,) === '-' ? '0' : row.daysToGrind}</TableColumn>
+                  <TableColumn>{row.daysToGrind.charAt(0,) === "-" ? "0" : row.daysToGrind}</TableColumn>
                 </TableRow>
               </React.Fragment>
                 ,)}
@@ -108,16 +108,16 @@ export default function GtaOnline({ content, },) {
       <Disclosure>
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? '-': '+'}] Earnings</Heading2>
+            <Heading2>[{open ? "-": "+"}] Earnings</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph>This is a log of year-to-date earnings in GTA.</Paragraph>
-            <Table headers={['Date', 'Balance', 'Earnings',]}>
+            <Table headers={["Date", "Balance", "Earnings",]}>
               {content.earnings.map((row, index,) => <TableRow key={row.balanceDate} index={index}>
                 <TableColumn>{row.balanceDate}</TableColumn>
                 <TableColumn>{row.balance}</TableColumn>
                 <TableColumn>
-                  <span className={row.earnings.charAt(0,) === '-' ? 'text-orange-300' : 'text-blue-diamond'}>
+                  <span className={row.earnings.charAt(0,) === "-" ? "text-orange-300" : "text-blue-diamond"}>
                     {row.earnings}
                   </span>
                 </TableColumn>
@@ -132,13 +132,13 @@ export default function GtaOnline({ content, },) {
       <Disclosure>
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? '-': '+'}] Properties</Heading2>
+            <Heading2>[{open ? "-": "+"}] Properties</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph noIndent={true}>These are all the properties I own in the game and their worth.</Paragraph>
             {content.properties.map((group,) => <React.Fragment key={group.propertyType}>
               <Heading3>{group.propertyType}</Heading3>
-              <Table headers={['Name', 'Location', 'Cost',]}>
+              <Table headers={["Name", "Location", "Cost",]}>
                 {group.items.map((row, index,) => <React.Fragment key={index}>
                   <TableRow index={index}>
                     <TableColumn rowSpan="2">{row.propertyName}</TableColumn>
@@ -164,13 +164,13 @@ export default function GtaOnline({ content, },) {
       <Disclosure>
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? '-': '+'}] Vehicles</Heading2>
+            <Heading2>[{open ? "-": "+"}] Vehicles</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph noIndent={true}>These are all the vehicles I own in the game and their worth.</Paragraph>
             {content.vehicles.map((group,) => <React.Fragment key={group.location}>
               <Heading3>{group.location}</Heading3>
-              <Table headers={['Floor', 'Name', 'Cost',]}>
+              <Table headers={["Floor", "Name", "Cost",]}>
                 {group.items.map((row, index,) => <React.Fragment key={index}>
                   <TableRow index={index}>
                     <TableColumn rowSpan="2">{row.floor}</TableColumn>
@@ -196,11 +196,11 @@ export default function GtaOnline({ content, },) {
       <Disclosure>
         {({ open, },) => <>
           <Disclosure.Button>
-            <Heading2>[{open ? '-': '+'}] Safes</Heading2>
+            <Heading2>[{open ? "-": "+"}] Safes</Heading2>
           </Disclosure.Button>
           <Disclosure.Panel>
             <Paragraph>This is a list of Safes that generate GTA Dollars as the game idles..</Paragraph>
-            <Table headers={['Location', 'Safe Capacity', 'Money / In-Game Day', 'Money / 24 Hrs.', 'Days to Fill',]}>
+            <Table headers={["Location", "Safe Capacity", "Money / In-Game Day", "Money / 24 Hrs.", "Days to Fill",]}>
               {content.safes.map((row, index,) => <TableRow key={row.location} index={index}>
                 <TableColumn>{row.location}</TableColumn>
                 <TableColumn>{row.safeCapacity}</TableColumn>

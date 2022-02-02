@@ -1,5 +1,5 @@
 import { useEffect, useState, } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function CloudinaryImage(props,) {
   const [error, setError,] = useState(null,);

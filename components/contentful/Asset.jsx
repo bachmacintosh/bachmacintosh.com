@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function Asset({ id, assets, },) {
   const asset = assets?.find((object,) => object.sys.id === id,);

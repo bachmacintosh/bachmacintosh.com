@@ -14,13 +14,13 @@ export default function WanikaniSubject({ subjectType, meanings, href, children,
     setTooltipShow(false,);
   };
 
-  let color = 'gray-500';
-  if (subjectType === 'radical') {
-    color = 'bg-wanikani-radical';
-  } else if (subjectType === 'kanji') {
-    color = 'bg-wanikani-kanji';
-  } else if (subjectType === 'vocabulary') {
-    color = 'bg-wanikani-vocabulary';
+  let color = "gray-500";
+  if (subjectType === "radical") {
+    color = "bg-wanikani-radical";
+  } else if (subjectType === "kanji") {
+    color = "bg-wanikani-kanji";
+  } else if (subjectType === "vocabulary") {
+    color = "bg-wanikani-vocabulary";
   }
   return (
     <>
@@ -32,7 +32,7 @@ export default function WanikaniSubject({ subjectType, meanings, href, children,
             onMouseLeave={closeLeftTooltip}
             ref={btnRef}
             href={href} target="_blank" rel="nofollow noreferrer noopener"
-            style={{ fontFamily: 'Noto Sans JP', }}
+            style={{ fontFamily: "Noto Sans JP", }}
           >
             {children}
           </a>

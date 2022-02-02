@@ -1,7 +1,7 @@
 import { ExternalLinkIcon, } from "@heroicons/react/outline";
 import Link from "next/link";
 
-const commonHeadingClasses = 'text-blue-diamond font-bold break-words my-5';
+const commonHeadingClasses = "text-blue-diamond font-bold break-words my-5";
 
 export function Heading1({ children, },) {
   return <h1 className={`text-4xl md:text-6xl ${commonHeadingClasses}`}>{children}</h1>;
@@ -28,7 +28,7 @@ export function Heading6({ children, },) {
 }
 
 export function Paragraph({ indent, children, },) {
-  return <p className={`text-sm md:text-base text-white mb-4 ${ indent ? 'indent-6' : ''}`}>{children}</p>;
+  return <p className={`text-sm md:text-base text-white mb-4 ${ indent ? "indent-6" : ""}`}>{children}</p>;
 }
 
 export function BlockQuote({ children, },) {
