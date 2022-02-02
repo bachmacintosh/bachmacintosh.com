@@ -1,4 +1,5 @@
-import { Heading1, Heading2, Heading3, Paragraph, } from "../../components/layout/Typography";
+import { Heading1, Heading2, Heading3,
+  Paragraph, } from "../../components/layout/Typography";
 import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
@@ -23,7 +24,10 @@ export default function GtaOnline({ content, },) {
               <Heading2>[{open ? '-': '+'}] Summary</Heading2>
             </Disclosure.Button>
             <Disclosure.Panel>
-              <Paragraph noIndent={true}>Here is a quick overview of my GTA online account and its current financial situation.
+              <Paragraph noIndent={true}>
+                Here is a quick overview of my GTA online account and its
+                {` `}
+                current financial situation.
               </Paragraph>
               <Heading3>Money Breakdown</Heading3>
               <Table headers={['Name', 'GTA Dollars', 'Shark Card USD',]}>
@@ -64,16 +68,32 @@ export default function GtaOnline({ content, },) {
               <Heading2>[{open ? '-': '+'}] Wish List</Heading2>
             </Disclosure.Button>
             <Disclosure.Panel>
-              <Paragraph noIndent={true}>This is a list of all the things I want to buy in GTA Online. If something has a zero time/money remaining, it means I have enough GTA$ to buy it, but am waiting for a sale or am otherwise putting it off until my grinding is done (see Summary tab).</Paragraph>
+              <Paragraph noIndent={true}>
+                This is a list of all the things I want to buy in GTA Online. If
+                {` `}
+                something has a zero time/money remaining, it means I have
+                {` `}
+                enough GTA$ to buy it, but am waiting for a sale or am otherwise
+                {` `}
+                putting it off until my grinding is done (see Summary tab).
+              </Paragraph>
               <Table headers={['Item', 'Buy At', '', 'Total', 'Remaining',]}>
                 {content.wishList.map((row,index,) => (
                   <React.Fragment key={index}>
                     <TableRow index={index}>
                       <TableColumn rowSpan="2">{row.item}</TableColumn>
                       <TableColumn rowSpan="2">{row.buyAt}</TableColumn>
-                      <TableColumn><span className="font-bold">Cost</span> </TableColumn>
+                      <TableColumn>
+                        <span className="font-bold">Cost</span>
+                      </TableColumn>
                       <TableColumn>{row.cost}</TableColumn>
-                      <TableColumn>{row.moneyToGrind.charAt(0,) === '-' ? '$0' : row.moneyToGrind}</TableColumn>
+                      <TableColumn>
+                        {
+                          row.moneyToGrind.charAt(0,) === '-'
+                            ? '$0'
+                            : row.moneyToGrind
+                        }
+                      </TableColumn>
                     </TableRow>
                     <TableRow index={index}>
                       <TableColumn><span className="font-bold">Grind Days</span></TableColumn>

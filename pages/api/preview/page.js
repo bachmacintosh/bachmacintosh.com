@@ -4,7 +4,8 @@ export default async function page(req, res,) {
   const slugs = await getPreviewSlugs();
   const foundItem = slugs.find(({ slug, },) => slug === req.query.slug, );
 
-  if (req.query.secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !req.query.slug) {
+  if (req.query.secret !== process.env.CONTENTFUL_PREVIEW_SECRET
+    || !req.query.slug) {
     return res.status(401,).json({ message: 'Invalid token', },);
   }
   const pageResult = await getPreviewPage(foundItem?.slug,);
@@ -18,10 +19,12 @@ export default async function page(req, res,) {
   const url = `/${pageResult.slug}`;
 
   res.write(
-    `<!DOCTYPE html><html lang="en"><head><meta http-equiv="Refresh" content="0; url=${url}" />
-    <script>window.location.href = '${url}'</script>
-    </head>
-    </html>`,
+    `<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Refresh" content="0; url=${url}" />
+<script>window.location.href = '${url}'</script>
+</head>
+</html>`,
   );
   res.end();
 
