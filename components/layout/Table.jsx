@@ -1,5 +1,5 @@
 export function Table({ headers, children, },) {
-  return(
+  return (
     <div className="flex flex-col">
       <div className="-mt-2 mb-5 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -22,7 +22,7 @@ export function Table({ headers, children, },) {
 }
 
 export function TableHeader({ children, },) {
-  return(
+  return (
     <th scope="col" className="px-6 py-3 text-left text-xs md:text-base font-medium text-white uppercase tracking-wider"
     >
       {children}
@@ -31,7 +31,7 @@ export function TableHeader({ children, },) {
 }
 
 export function TableRow({ index, children, },) {
-  return(
+  return (
     <tr className={(index % 2 === 0 ? 'bg-blue-standard' : 'bg-blue-galaxy')}>
       {children}
     </tr>
@@ -39,7 +39,7 @@ export function TableRow({ index, children, },) {
 }
 
 export function TableColumn({ rowSpan, colSpan, children, },) {
-  return(
+  return (
     <td className="px-6 py-4 text-sm text-blue-diamond break-words border-b border-blue-diamond" rowSpan={rowSpan ? rowSpan : 1} colSpan={colSpan ? colSpan: 1} >{children}</td>
   );
 }

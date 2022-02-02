@@ -9,7 +9,7 @@ import { SmallButtonLink, } from "../../components/layout/Buttons";
 import { getGtaSheets, } from "../../lib/google/sheets";
 
 export default function GtaOnline({ content, },) {
-  return(
+  return (
     <>
       <NextSeo
         title="GTA Online"
@@ -212,7 +212,7 @@ export default function GtaOnline({ content, },) {
 }
 
 GtaOnline.getLayout = function getLayout(page,) {
-  return(
+  return (
     <DefaultLayout>
       {page}
     </DefaultLayout>

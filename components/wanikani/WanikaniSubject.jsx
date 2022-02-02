@@ -17,14 +17,14 @@ export default function WanikaniSubject({ subjectType, meanings, href, children,
   };
 
   let color = 'gray-500';
-  if(subjectType === 'radical') {
+  if (subjectType === 'radical') {
     color = 'bg-wanikani-radical';
   } else if (subjectType === 'kanji') {
     color = 'bg-wanikani-kanji';
   } else if (subjectType === 'vocabulary') {
     color = 'bg-wanikani-vocabulary';
   }
-  return(
+  return (
     <>
       <div className="flex flex-wrap">
         <div className="text-center">

@@ -12,7 +12,7 @@ export default function CloudinaryImage(props,) {
       .then((res,) => res.json(),)
       .then(
         (result,) => {
-          if(mounted) {
+          if (mounted) {
             setIsLoaded(true,);
             setOutput(result.output,);
           }
@@ -26,12 +26,12 @@ export default function CloudinaryImage(props,) {
       mounted = false;
     };
   }, [getInfoUrl,],);
-  if(error) {
-    return(<p>Error!</p>);
+  if (error) {
+    return (<p>Error!</p>);
   } else if (!isLoaded || output.length === 0) {
-    return(<p>Loading...</p>);
+    return (<p>Loading...</p>);
   } else {
-    return(
+    return (
       <figure>
         <Image alt={props.alt} src={props.src} width={output.width} height={1080} />
         <figcaption className="text-gray-400 mb-3 text-sm">{props.alt}</figcaption>

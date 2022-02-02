@@ -6,7 +6,7 @@ import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
 
 export default function Page({ page, preview, },) {
-  return(
+  return (
     <>
       <NextSeo
         title={page.title}
@@ -19,7 +19,7 @@ export default function Page({ page, preview, },) {
 }
 
 Page.getLayout = function getLayout(page,) {
-  return(
+  return (
     <DefaultLayout>
       {page}
     </DefaultLayout>
@@ -28,7 +28,7 @@ Page.getLayout = function getLayout(page,) {
 
 export async function getStaticProps({ params, preview = false, },) {
   let page = null;
-  if(preview) {
+  if (preview) {
     page = await getPreviewPage(params.slug,);
   } else {
     page = await getPage(params.slug,);

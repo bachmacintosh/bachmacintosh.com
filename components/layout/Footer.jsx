@@ -1,6 +1,6 @@
 import { Hyperlink, } from "./Typography";
 export default function Footer() {
-  return(
+  return (
     <>
       <hr className="border-blue-diamond" />
       <span className="text-xs text-gray-400">

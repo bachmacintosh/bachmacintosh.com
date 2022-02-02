@@ -12,7 +12,7 @@ import WanikaniSubject from "../../components/wanikani/WanikaniSubject";
 import { getWkSheets, } from "../../lib/google/sheets";
 
 export default function Wanikani({ content, },) {
-  return(
+  return (
     <>
       <NextSeo
         title="WaniKani"
@@ -104,7 +104,7 @@ export default function Wanikani({ content, },) {
 }
 
 Wanikani.getLayout = function getLayout(page,) {
-  return(
+  return (
     <DefaultLayout>
       {page}
     </DefaultLayout>

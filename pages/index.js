@@ -15,7 +15,7 @@ export default function Home() {
 }
 
 Home.getLayout = function getLayout(page,) {
-  return(
+  return (
     <DefaultLayout>
       {page}
     </DefaultLayout>
