@@ -45,7 +45,7 @@ export default function Navigation() {
                                                         item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-standard hover:text-white',
                                                         'px-3 py-2 rounded-md text-sm font-medium',
                                                     )}
-                                                    aria-current={item.basePath === basePath ? 'page' : undefined}
+                                                    aria-current={item.basePath === basePath ? 'page' : null}
                                                 >
                                                     {item.name}
                                                 </a>
@@ -69,7 +69,7 @@ export default function Navigation() {
                                             item.basePath === basePath ? 'bg-blue-standard text-white' : 'text-blue-diamond hover:bg-blue-racing hover:text-white',
                                             'block px-3 py-2 rounded-md text-base font-medium',
                                         )}
-                                        aria-current={item.basePath === basePath ? 'page' : undefined}
+                                        aria-current={item.basePath === basePath ? 'page' : null}
                                     >
                                         {item.name}
                                     </Disclosure.Button>

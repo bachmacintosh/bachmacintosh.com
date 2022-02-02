@@ -25,5 +25,5 @@ export default async function page(req, res,) {
     );
     res.end();
 
-    return undefined;
+    return null;
 }
