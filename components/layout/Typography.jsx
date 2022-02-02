@@ -28,7 +28,7 @@ export function Heading6 ({ children, },) {
 }
 
 export function Paragraph ({ indent, children, },) {
-  return <p className={`text-sm md:text-base text-white mb-4 ${ indent ? "indent-6" : ""}`}>{children}</p>;
+  return <p className={`text-sm md:text-base text-white mb-4 ${indent ? "indent-6" : ""}`}>{children}</p>;
 }
 
 export function BlockQuote ({ children, },) {

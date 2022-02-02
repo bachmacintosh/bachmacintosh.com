@@ -21,7 +21,7 @@ export default function Wanikani ({ content, },) {
       <Heading1>WaniKani</Heading1>
       <Paragraph indent={false}>Showing stats for user: <Hyperlink external={true} href={content.profileUrl}>{content.username}</Hyperlink></Paragraph>
       <Heading2>Level Progression</Heading2>
-      <ProgressBar percent={Math.floor(content.level / 60 * 100,)}>{`${content.level } / 60`}</ProgressBar>
+      <ProgressBar percent={Math.floor(content.level / 60 * 100,)}>{`${content.level} / 60`}</ProgressBar>
       <Table headers={["Level", "Type", "Count", "Items",]}>
         <TableRow index={1}>
           <TableColumn rowSpan={3}>1</TableColumn>
