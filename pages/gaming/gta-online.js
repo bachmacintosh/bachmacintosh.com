@@ -32,8 +32,8 @@ export default function GtaOnline({ content, },) {
             </Paragraph>
             <Heading3>Money Breakdown</Heading3>
             <Table headers={['Name', 'GTA Dollars', 'Shark Card USD',]}>
-              {content.summary.map((row, index,) => row.summaryType === 'Money' &&
-                    <TableRow key={row.title} index={index}>
+              {content.summary.map((row, index,) => row.summaryType === 'Money'
+                    && <TableRow key={row.title} index={index}>
                       <TableColumn>
                         <span className="font-bold">{row.title}</span>
                       </TableColumn>
@@ -45,8 +45,8 @@ export default function GtaOnline({ content, },) {
             </Table>
             <Heading3>The Grind</Heading3>
             <Table headers={['Name', 'Value',]}>
-              {content.summary.map((row, index,) => row.summaryType === 'Grind' &&
-                    <TableRow key={row.title} index={index}>
+              {content.summary.map((row, index,) => row.summaryType === 'Grind'
+                    && <TableRow key={row.title} index={index}>
                       <TableColumn>
                         <span className="font-bold">{row.title}</span>
                       </TableColumn>
