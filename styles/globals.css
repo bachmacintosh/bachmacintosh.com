@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+svg.radical {
+    stroke: #fff;
+    stroke-width: 120;
+    fill: none;
+    stroke-linecap: square;
+    stroke-miterlimit: 2;
+    width: 1em;
+    vertical-align: middle;
+}
