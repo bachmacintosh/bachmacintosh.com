@@ -209,7 +209,7 @@ module.exports = {
     "no-multi-spaces": "error",
     "no-multiple-empty-lines": "error",
     "no-tabs": "error",
-    "no-trailing-spaces": "error",
+    "no-trailing-spaces": ["error", { skipBlankLines: true, },],
     "no-whitespace-before-property": "error",
     "nonblock-statement-body-position": "error",
     "object-curly-newline": ["error", { multiline: true, },],
