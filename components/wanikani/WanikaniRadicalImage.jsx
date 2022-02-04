@@ -15,7 +15,7 @@ export default function WaniKaniRadicalImage (
     setTooltipShow(false,);
   };
 
-  let color = "gray-500";
+  let color = "bg-gray-500";
   if (subjectType === "radical") {
     color = "bg-wanikani-radical";
   } else if (subjectType === "kanji") {
@@ -27,7 +27,7 @@ export default function WaniKaniRadicalImage (
     <>
       <div className="flex flex-wrap">
         <div className="text-center">
-          <a className={`${color} block w-6 h-7 fill-white px-2 py-2 shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1`}
+          <a className={`${color} block w-7 h-7 fill-white px-2 py-2 shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1`}
             type="button"
             onMouseEnter={openLeftTooltip}
             onMouseLeave={closeLeftTooltip}

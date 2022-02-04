@@ -15,7 +15,7 @@ export default function WanikaniSubject (
     setTooltipShow(false,);
   };
 
-  let color = "gray-500";
+  let color = "bg-gray-500";
   if (subjectType === "radical") {
     color = "bg-wanikani-radical";
   } else if (subjectType === "kanji") {
