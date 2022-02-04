@@ -45,8 +45,18 @@ export default function Wanikani ({ content, },) {
       </Paragraph>
       <Heading2>Summary</Heading2>
       <Heading3>Level Progression</Heading3>
+      <Paragraph>
+        WaniKani has 60 levels to go through. This is my progress.
+      </Paragraph>
       <ProgressBar percent={Math.floor(content.level / 60 * 100,)}>{`${content.level} / 60`}</ProgressBar>
       <Heading3>SRS Distribution</Heading3>
+      <Paragraph>
+        As you learn items in WaniKani, they are reviewed again at different
+        {" "}
+        intervals. Unlocked items still need to be learned in lessons.
+        {" "}
+        Burned items no longer need reviews as they are learned.
+      </Paragraph>
       <Table
         headers={["Stage Name", "Radicals", "Kanji", "Vocabulary", "Total",]}>
         {content.srsDistribution.map((row, index,) => {
@@ -68,6 +78,9 @@ export default function Wanikani ({ content, },) {
               <Heading2>[{open ? "-" : "+"}] Recent Unlocks</Heading2>
             </Disclosure.Button>
             <Disclosure.Panel>
+              <Paragraph>
+                These are items that were unlocked in the past 30 days.
+              </Paragraph>
               <Table headers={["Level", "Type", "Count", "Items",]}>
                 {
                   content.recentUnlocks === null
@@ -141,6 +154,11 @@ export default function Wanikani ({ content, },) {
               <Heading2>[{open ? "-" : "+"}] Critical Condition Items</Heading2>
             </Disclosure.Button>
             <Disclosure.Panel>
+              <Paragraph>
+                Any items here have a percentage correct {"<"} 75%, and may
+                {" "}
+                require additional review to learn them.
+              </Paragraph>
               <Table headers={["Level", "Type", "Count", "Items",]}>
                 {
                   content.criticalCondition === null
@@ -216,6 +234,13 @@ export default function Wanikani ({ content, },) {
               <Heading2>[{open ? "-" : "+"}] Recently Burned Items</Heading2>
             </Disclosure.Button>
             <Disclosure.Panel>
+              <Paragraph>
+                These items have recently left the review queue, as I have
+                {" "}
+                demonstrated their being committed to memory, i.e. they are
+                {" "}
+                learned.
+              </Paragraph>
               <Table headers={["Level", "Type", "Count", "Items",]}>
                 {
                   content.recentlyBurned === null
@@ -295,6 +320,12 @@ export default function Wanikani ({ content, },) {
               <Heading2>[{open ? "-" : "+"}] Study Queue</Heading2>
             </Disclosure.Button>
             <Disclosure.Panel>
+              <Paragraph>
+                These items are ready to be learned/reviewed sometime today.
+              </Paragraph>
+              <Paragraph>
+                This section is updated every day around 12:00AM and 4:00PM ET.
+              </Paragraph>
               <Heading3>Lessons Available Now</Heading3>
               <Table headers={["Level", "Type", "Count", "Items",]}>
                 {
@@ -480,6 +511,11 @@ export default function Wanikani ({ content, },) {
               <Heading2>[{open ? "-" : "+"}] All Level Details</Heading2>
             </Disclosure.Button>
             <Disclosure.Panel>
+              <Paragraph>
+                This is every subject taught by WaniKani, up to my current
+                {" "}
+                level. Gray items are not in the review queue yet.
+              </Paragraph>
               <Table headers={["Level", "Type", "Count", "Items",]}>
                 {
                   content.details === null
