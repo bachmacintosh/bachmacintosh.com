@@ -65,7 +65,7 @@ export default function GtaOnline ({ content, },) {
         }
         }
       </Disclosure>
-      <br/>
+      <hr />
       <Disclosure>
         {({ open, },) => {
           return <>
@@ -122,7 +122,7 @@ export default function GtaOnline ({ content, },) {
         }
         }
       </Disclosure>
-      <br />
+      <hr />
       <Disclosure>
         {({ open, },) => {
           return <>
@@ -155,7 +155,8 @@ export default function GtaOnline ({ content, },) {
         }
         }
       </Disclosure>
-      <br /><Disclosure>
+      <hr />
+      <Disclosure>
         {({ open, },) => {
           return <>
             <Disclosure.Button>
@@ -203,7 +204,7 @@ export default function GtaOnline ({ content, },) {
         }
         }
       </Disclosure>
-      <br />
+      <hr />
       <Disclosure>
         {({ open, },) => {
           return <>
@@ -249,7 +250,7 @@ export default function GtaOnline ({ content, },) {
         }
         }
       </Disclosure>
-      <br />
+      <hr />
       <Disclosure>
         {({ open, },) => {
           return <>
