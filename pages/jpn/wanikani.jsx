@@ -235,6 +235,81 @@ export default function Wanikani ({ content, },) {
             },)
         }
       </Table>
+      <Heading2>Details</Heading2>
+      <Table headers={["Level", "Type", "Count", "Items",]}>
+        {
+          content.details === null
+            ? <TableRow index={1}>
+              <TableColumn
+                colSpan={4}>
+                There are no details to display.
+              </TableColumn>
+            </TableRow>
+            : content.details.map((group, index,) => {
+              return <React.Fragment key={group.level}>
+                <TableRow index={index}>
+                  <TableColumn rowSpan={3}>{group.level}</TableColumn>
+                  <TableColumn>Radicals</TableColumn>
+                  <TableColumn>{group.radicals.length}</TableColumn>
+                  <TableColumn>{group.radicals.length === 0
+                    ? "(None)"
+                    : <FlexWrapper>{group.radicals.map((radical, radIdx,) => {
+                      return radical.characters
+                        ? <WanikaniSubject
+                          key={radIdx}
+                          subjectType={radical.stage === null
+                            ? "locked"
+                            : "radical"}
+                          meanings={radical.meanings}
+                          href={radical.url}>
+                          {radical.characters}
+                        </WanikaniSubject>
+                        : <WanikaniRadicalImage
+                          key={radIdx}
+                          subjectType={radical.stage === null
+                            ? "locked"
+                            : "radical"}
+                          meanings={radical.meanings}
+                          href={radical.url}
+                          svg={radical.characterImage}/>;
+                    },)}</FlexWrapper>}</TableColumn>
+                </TableRow>
+                <TableRow key={`${group.level}-kanji`} index={index}>
+                  <TableColumn>Kanji</TableColumn>
+                  <TableColumn>{group.kanji.length}</TableColumn>
+                  <TableColumn>{group.kanji.length === 0
+                    ? "(None)"
+                    : <FlexWrapper>{group.kanji.map((kanji, kanIdx,) => {
+                      return <WanikaniSubject
+                        key={kanIdx}
+                        subjectType={kanji.stage === null ? "locked" : "kanji"}
+                        meanings={kanji.meanings}
+                        href={kanji.url}>
+                        {kanji.characters}
+                      </WanikaniSubject>;
+                    },)}</FlexWrapper>}</TableColumn>
+                </TableRow>
+                <TableRow key={`${group.level}-vocabulary`} index={index}>
+                  <TableColumn>Kanji</TableColumn>
+                  <TableColumn>{group.vocabulary.length}</TableColumn>
+                  <TableColumn>{group.vocabulary.length === 0
+                    ? "(None)"
+                    : <FlexWrapper>{group.vocabulary.map((vocab, vocIdx,) => {
+                      return <WanikaniSubject
+                        key={vocIdx}
+                        subjectType={vocab.stage === null
+                          ? "locked"
+                          : "vocabulary"}
+                        meanings={vocab.meanings}
+                        href={vocab.url}>
+                        {vocab.characters}
+                      </WanikaniSubject>;
+                    },)}</FlexWrapper>}</TableColumn>
+                </TableRow>
+              </React.Fragment>;
+            },)
+        }
+      </Table>
     </>
   );
 }
