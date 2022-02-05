@@ -1,11 +1,11 @@
-export function Table ({ headers, children, },) {
+export function Table ({ id, headers, children, },) {
   return (
     <div className="flex flex-col">
       <div className="-mt-2 mb-5 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div
           className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-blue-diamond">
-            <table
+            <table id={id}
               className="table-auto min-w-full divide-y divide-blue-diamond
               border-b border-blue-diamond">
               <thead className="bg-blue-ultra">
