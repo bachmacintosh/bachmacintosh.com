@@ -81,7 +81,8 @@ export default function Wanikani ({ content, },) {
               <Paragraph>
                 These are items that were unlocked in the past 30 days.
               </Paragraph>
-              <Table headers={["Level", "Type", "Count", "Items",]}>
+              <Table id={"recent-unlocks-table"}
+                headers={["Level", "Type", "Count", "Items",]}>
                 {
                   content.recentUnlocks === null
                     ? <TableRow index={1}>
@@ -159,7 +160,8 @@ export default function Wanikani ({ content, },) {
                 {" "}
                 require additional review to learn them.
               </Paragraph>
-              <Table headers={["Level", "Type", "Count", "Items",]}>
+              <Table id={"critical-condition-table"}
+                headers={["Level", "Type", "Count", "Items",]}>
                 {
                   content.criticalCondition === null
                     ? <TableRow index={1}>
@@ -241,13 +243,14 @@ export default function Wanikani ({ content, },) {
                 {" "}
                 learned.
               </Paragraph>
-              <Table headers={["Level", "Type", "Count", "Items",]}>
+              <Table id={"recently-burned-table"}
+                headers={["Level", "Type", "Count", "Items",]}>
                 {
                   content.recentlyBurned === null
                     ? <TableRow index={1}>
                       <TableColumn
                         colSpan={4}>
-                        There are no recent unlocks in the past 30 days.
+                        There are no recently burned items in the past 30 days.
                       </TableColumn>
                     </TableRow>
                     : content.recentlyBurned.map((group, index,) => {
@@ -327,7 +330,8 @@ export default function Wanikani ({ content, },) {
                 This section is updated every day around 12:00AM and 4:00PM ET.
               </Paragraph>
               <Heading3>Lessons Available Now</Heading3>
-              <Table headers={["Level", "Type", "Count", "Items",]}>
+              <Table id={"study-queue-table-l"}
+                headers={["Level", "Type", "Count", "Items",]}>
                 {
                   content.studyQueue.lessons === null
                     ? <TableRow index={1}>
@@ -409,7 +413,8 @@ export default function Wanikani ({ content, },) {
               { reviews === null
                 ? <>
                   <Heading3>Reviews</Heading3>
-                  <Table headers={["Level", "Type", "Count", "Items",]}>
+                  <Table id={"study-queue-table-r0"}
+                    headers={["Level", "Type", "Count", "Items",]}>
                     <TableRow index={1}>
                       <TableColumn colSpan={4}>
                         There are no Reviews in the queue for today.
@@ -420,7 +425,8 @@ export default function Wanikani ({ content, },) {
                 : reviews.map((collection, colIdx,) => {
                   return <React.Fragment key={colIdx}>
                     <Heading3>{`Reviews Available Today At ${collection.time}`}</Heading3>
-                    <Table headers={["Level", "Type", "Count", "Items",]}>
+                    <Table id={`study-queue-table-r${colIdx}`}
+                      headers={["Level", "Type", "Count", "Items",]}>
                       {
                         collection.items.map((group, index,) => {
                           return <React.Fragment key={group.level}>
@@ -516,7 +522,8 @@ export default function Wanikani ({ content, },) {
                 {" "}
                 level. Gray items are not in the review queue yet.
               </Paragraph>
-              <Table headers={["Level", "Type", "Count", "Items",]}>
+              <Table id={"details-table"}
+                headers={["Level", "Type", "Count", "Items",]}>
                 {
                   content.details === null
                     ? <TableRow index={1}>
