@@ -2,11 +2,12 @@
 
 A website that will soon be live at https://bachmacintosh.com
 
-| Item | Status                                                                                                                                                                                                              |
-| ---- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CI   | [![Tests](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/test_main.yml/badge.svg?branch=main&event=push)](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/test_main.yml) |
-| CodeQL  | [![CodeQL](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/codeql-analysis.yml)                                                                                                                                                                                                                    |
-| Netlify | (soon)                                                                                                                                                                                                              |
+| Item                                                         | Status                                                                                                                                                                                                              |
+|--------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [CI](https://en.wikipedia.org/wiki/Continuous_integration)                                                       | [![Tests](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/test_main.yml/badge.svg?branch=main&event=push)](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/test_main.yml) |
+| [CodeQL](https://codeql.github.com/)                         | [![CodeQL](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/codeql-analysis.yml)                                                                                                                                                                                                                    |
+| [Code Coverage](https://en.wikipedia.org/wiki/Code_coverage) | [![Coverage Status](https://coveralls.io/repos/github/bachmacintosh/bachmacintosh.com/badge.svg)](https://coveralls.io/github/bachmacintosh/bachmacintosh.com) |
+| [Netlify](https://www.netlify.com/)                          | (soon)                                                                                                                                                                                                              |
 
 ## Development
 
