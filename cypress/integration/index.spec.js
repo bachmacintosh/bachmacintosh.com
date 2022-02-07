@@ -3,5 +3,6 @@ describe('Home Page', () => {
         // Start from the index page
         cy.visit('/');
         cy.contains('BachMacintosh');
+        cy.get("#footer").contains("Copyright")
     });
 });
