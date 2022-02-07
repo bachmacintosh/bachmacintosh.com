@@ -14,8 +14,10 @@
   },
   "nyc": {
     "exclude": [
-      "pages/api/__coverage__.js"
-    ]
+      "pages/api/__coverage__.js",
+      "lib/**/*.js"
+    ],
+    "excludeAfterRemap": true
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.11.1",
