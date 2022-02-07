@@ -11,4 +11,28 @@ describe('Contentful Page Dynamic Route', () => {
         cy.contains('Privacy Policy');
         cy.contains('By email');
     });
+    it("should throw a 401 if there is no slug or secret", () => {
+        cy.request({
+            url: "/api/preview/page",
+            failOnStatusCode: false
+        }).then((response) => {
+            expect(response.status).to.eq(401);
+        });
+        cy.request({
+            url: `/api/preview/page?secret=${Cypress.env('PREVIEW_SECRET')}`,
+            failOnStatusCode: false
+        }).then((response) => {
+            expect(response.status).to.eq(401);
+        });
+    });
+
+    it("should throw a 401 if the slug is bad", () => {
+        cy.request({
+            url: `/api/preview/page?secret=${Cypress.env('PREVIEW_SECRET')}&slug=known-bad-slug`,
+            failOnStatusCode: false
+        }).then((response) => {
+            expect(response.status).to.eq(401);
+        });
+    });
+
 });
