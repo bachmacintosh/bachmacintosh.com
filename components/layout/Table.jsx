@@ -48,7 +48,8 @@ export function TableRow ({ index, children, },) {
 export function TableColumn ({ rowSpan, colSpan, children, },) {
   return (
     <td
-      className="px-6 py-4 text-sm text-blue-diamond break-words border-b
+      className="
+      px-6 py-2 align-top text-sm text-blue-diamond break-words border-b
       border-blue-diamond"
       rowSpan={rowSpan ? rowSpan : 1} colSpan={colSpan ? colSpan : 1} >
       {children}
