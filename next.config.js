@@ -2,6 +2,7 @@ const dateOptions = {
   dateStyle: "short",
   timeStyle: "short",
   hour12: false,
+  timeZone: "America/New_York",
 };
 module.exports = {
   reactStrictMode: true,
