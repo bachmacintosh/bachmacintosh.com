@@ -40,7 +40,7 @@ export default function Anime ({ anime, },) {
             </Disclosure.Button>
             <Disclosure.Panel>
               <Paragraph>
-                Anime in my Watching list with 1 or more episodes completed.
+                Anime in my (Re)Watching list with 1 or more episodes completed.
               </Paragraph>
               <Table
                 headers={[
@@ -207,6 +207,85 @@ export default function Anime ({ anime, },) {
         {({ open, },) => {
           return <>
             <Disclosure.Button>
+              <Heading3>[{open ? "-" : "+"}] Commit to Watch</Heading3>
+            </Disclosure.Button>
+            <Disclosure.Panel>
+              <Paragraph>
+                This is an anime randomly picked from my Planning list every
+                {" "}
+                site build; I can add it to my Watch Pool if we need a new
+                {" "}
+                anime to consider watching.
+              </Paragraph>
+              <Table
+                headers={["Title", "Format", "Length", "Avg. Score",]}>
+                {anime.commitToWatch === null
+                  ? <TableRow index={1}>
+                    <TableColumn colSpan={4}>
+                      There is no anime in my Planning list at this time.
+                    </TableColumn>
+                  </TableRow>
+                  : anime.commitToWatch.map((item,) => {
+                    return (
+                      <React.Fragment key={item.media.title.native}>
+                        <TableRow index={1}>
+                          <TableColumn colSpan={4}>
+                            <TitleLink href={item.media.siteUrl}
+                              meanings={item.media.title.english === null
+                                ? item.media.title.romaji
+                                : item.media.title.english}>
+                              {item.media.title.native}
+                            </TitleLink>
+                          </TableColumn>
+                        </TableRow>
+                        <TableRow index={1}>
+                          <TableColumn rowSpan={2}>
+                            <AniListImage src={item.media.coverImage.large}
+                              alt={item.media.title.english === null
+                                ? item.media.title.romaji
+                                : item.media.title.english}
+                            />
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {(item.media.format
+                                .charAt(0,).toUpperCase()
+                                + item.media.format.slice(1,))}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {`${item.media.duration} min.`}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {item.media.averageScore / 10}
+                            </span>
+                          </TableColumn>
+                        </TableRow>
+                        <TableRow index={1}>
+                          <TableColumn colSpan={3}>
+                            <p
+                              className="text-sm md:text-base text-white"
+                              dangerouslySetInnerHTML={
+                                { __html: item.media.description, }
+                              } />
+                          </TableColumn>
+                        </TableRow>
+                      </React.Fragment>
+                    );
+                  },)}
+              </Table>
+            </Disclosure.Panel>
+          </>;
+        }}
+      </Disclosure>
+      <br />
+      <Disclosure>
+        {({ open, },) => {
+          return <>
+            <Disclosure.Button>
               <Heading3>[{open ? "-" : "+"}] Top 10 Best</Heading3>
             </Disclosure.Button>
             <Disclosure.Panel>
@@ -303,8 +382,354 @@ export default function Anime ({ anime, },) {
       <Paragraph>
         These sections contain data from the Completed, Planning, Dropped, and
         {" "}
-        Paused anime lists.
+        Paused anime lists. Just a heads up -- these lists are very long.
       </Paragraph>
+      <Disclosure>
+        {({ open, },) => {
+          return <>
+            <Disclosure.Button>
+              <Heading3>[{open ? "-" : "+"}] Completed</Heading3>
+            </Disclosure.Button>
+            <Disclosure.Panel>
+              <Paragraph>
+                These anime have had all their episodes watched, and are
+                {" "}
+                therefore considered completed. Note that this is by season,
+                {" "}
+                not entire series.
+              </Paragraph>
+              <Table
+                headers={[
+                  "Title",
+                  "Format",
+                  "Length",
+                  "Avg. Score",
+                  "My Score",
+                ]}>
+                {anime.details.completed === null
+                  ? <TableRow index={1}>
+                    <TableColumn colSpan={5}>
+                      There is no anime in the Completed at this time.
+                    </TableColumn>
+                  </TableRow>
+                  : anime.details.completed.map((item,) => {
+                    return (
+                      <React.Fragment key={item.media.title.native}>
+                        <TableRow index={1}>
+                          <TableColumn colSpan={5}>
+                            <TitleLink href={item.media.siteUrl}
+                              meanings={item.media.title.english === null
+                                ? item.media.title.romaji
+                                : item.media.title.english}>
+                              {item.media.title.native}
+                            </TitleLink>
+                          </TableColumn>
+                        </TableRow>
+                        <TableRow index={1}>
+                          <TableColumn rowSpan={2}>
+                            <AniListImage src={item.media.coverImage.large}
+                              alt={item.media.title.english === null
+                                ? item.media.title.romaji
+                                : item.media.title.english}
+                            />
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {(item.media.format
+                                .charAt(0,).toUpperCase()
+                                + item.media.format.slice(1,))}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {`${item.media.duration} min.`}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {item.media.averageScore / 10}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {item.score}
+                            </span>
+                          </TableColumn>
+                        </TableRow>
+                        <TableRow index={1}>
+                          <TableColumn colSpan={4}>
+                            <p
+                              className="text-sm md:text-base text-white"
+                              dangerouslySetInnerHTML={
+                                { __html: item.media.description, }
+                              } />
+                          </TableColumn>
+                        </TableRow>
+                      </React.Fragment>
+                    );
+                  },)}
+              </Table>
+            </Disclosure.Panel>
+          </>;
+        }}
+      </Disclosure>
+      <br />
+      <Disclosure>
+        {({ open, },) => {
+          return <>
+            <Disclosure.Button>
+              <Heading3>[{open ? "-" : "+"}] Planning</Heading3>
+            </Disclosure.Button>
+            <Disclosure.Panel>
+              <Paragraph>
+                This is a list of anime I plan to watch eventually. The above
+                {" "}
+                Commit to Watch tool pics a random entry from this list to add
+                {" "}
+                to my Watch Pool.
+              </Paragraph>
+              <Table
+                headers={["Title", "Format", "Length", "Avg. Score",]}>
+                {anime.details.planning === null
+                  ? <TableRow index={1}>
+                    <TableColumn colSpan={4}>
+                      There is no anime in my Planning list at this time.
+                    </TableColumn>
+                  </TableRow>
+                  : anime.details.planning.map((item,) => {
+                    return (
+                      <React.Fragment key={item.media.title.native}>
+                        <TableRow index={1}>
+                          <TableColumn colSpan={4}>
+                            <TitleLink href={item.media.siteUrl}
+                              meanings={item.media.title.english === null
+                                ? item.media.title.romaji
+                                : item.media.title.english}>
+                              {item.media.title.native}
+                            </TitleLink>
+                          </TableColumn>
+                        </TableRow>
+                        <TableRow index={1}>
+                          <TableColumn rowSpan={2}>
+                            <AniListImage src={item.media.coverImage.large}
+                              alt={item.media.title.english === null
+                                ? item.media.title.romaji
+                                : item.media.title.english}
+                            />
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {(item.media.format
+                                .charAt(0,).toUpperCase()
+                                + item.media.format.slice(1,))}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {`${item.media.duration} min.`}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {item.media.averageScore / 10}
+                            </span>
+                          </TableColumn>
+                        </TableRow>
+                        <TableRow index={1}>
+                          <TableColumn colSpan={3}>
+                            <p
+                              className="text-sm md:text-base text-white"
+                              dangerouslySetInnerHTML={
+                                { __html: item.media.description, }
+                              } />
+                          </TableColumn>
+                        </TableRow>
+                      </React.Fragment>
+                    );
+                  },)}
+              </Table>
+            </Disclosure.Panel>
+          </>;
+        }}
+      </Disclosure>
+      <br />
+      <Disclosure>
+        {({ open, },) => {
+          return <>
+            <Disclosure.Button>
+              <Heading3>[{open ? "-" : "+"}] Paused</Heading3>
+            </Disclosure.Button>
+            <Disclosure.Panel>
+              <Paragraph>
+                These anime were stopped before their completion; I hope to
+                {" "}
+                resume/restart them in the future.
+              </Paragraph>
+              <Table
+                headers={[
+                  "Title",
+                  "Format",
+                  "Length",
+                  "Progress",
+                  "Avg. Score",
+                ]}>
+                {anime.details.paused === null
+                  ? <TableRow index={1}>
+                    <TableColumn colSpan={5}>
+                      I am not watching any anime at this time.
+                    </TableColumn>
+                  </TableRow>
+                  : anime.details.paused.map((item,) => {
+                    return (
+                      <React.Fragment key={item.media.title.native}>
+                        <TableRow index={1}>
+                          <TableColumn colSpan={5}>
+                            <TitleLink href={item.media.siteUrl}
+                              meanings={item.media.title.english === null
+                                ? item.media.title.romaji
+                                : item.media.title.english}>
+                              {item.media.title.native}
+                            </TitleLink>
+                          </TableColumn>
+                        </TableRow>
+                        <TableRow index={1}>
+                          <TableColumn rowSpan={2}>
+                            <AniListImage src={item.media.coverImage.large}
+                              alt={item.media.title.english === null
+                                ? item.media.title.romaji
+                                : item.media.title.english}
+                            />
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {(item.media.format
+                                .charAt(0,).toUpperCase()
+                                + item.media.format.slice(1,))}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {`${item.media.duration} min.`}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {`${item.progress} / ${item.media.episodes}`}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {item.media.averageScore / 10}
+                            </span>
+                          </TableColumn>
+                        </TableRow>
+                        <TableRow index={1}>
+                          <TableColumn colSpan={5}>
+                            <p
+                              className="text-sm md:text-base text-white"
+                              dangerouslySetInnerHTML={
+                                { __html: item.media.description, }
+                              } />
+                          </TableColumn>
+                        </TableRow>
+                      </React.Fragment>
+                    );
+                  },)}
+              </Table>
+            </Disclosure.Panel>
+          </>;
+        }}
+      </Disclosure>
+      <br />
+      <Disclosure>
+        {({ open, },) => {
+          return <>
+            <Disclosure.Button>
+              <Heading3>[{open ? "-" : "+"}] Dropped</Heading3>
+            </Disclosure.Button>
+            <Disclosure.Panel>
+              <Paragraph>
+                These anime were dropped before their completion, and I have no
+                {" "}
+                plans to resume/restart them. Some were because they were bad,
+                {" "}
+                others because they did not hold my interest.
+              </Paragraph>
+              <Table
+                headers={[
+                  "Title",
+                  "Format",
+                  "Length",
+                  "Progress",
+                  "My Score",
+                ]}>
+                {anime.details.dropped === null
+                  ? <TableRow index={1}>
+                    <TableColumn colSpan={5}>
+                      I have no dropped anime at this time.
+                    </TableColumn>
+                  </TableRow>
+                  : anime.details.dropped.map((item,) => {
+                    return (
+                      <React.Fragment key={item.media.title.native}>
+                        <TableRow index={1}>
+                          <TableColumn colSpan={5}>
+                            <TitleLink href={item.media.siteUrl}
+                              meanings={item.media.title.english === null
+                                ? item.media.title.romaji
+                                : item.media.title.english}>
+                              {item.media.title.native}
+                            </TitleLink>
+                          </TableColumn>
+                        </TableRow>
+                        <TableRow index={1}>
+                          <TableColumn rowSpan={2}>
+                            <AniListImage src={item.media.coverImage.large}
+                              alt={item.media.title.english === null
+                                ? item.media.title.romaji
+                                : item.media.title.english}
+                            />
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {(item.media.format
+                                .charAt(0,).toUpperCase()
+                                + item.media.format.slice(1,))}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {`${item.media.duration} min.`}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {`${item.progress} / ${item.media.episodes}`}
+                            </span>
+                          </TableColumn>
+                          <TableColumn>
+                            <span className="text-sm md:text-base text-white">
+                              {item.score}
+                            </span>
+                          </TableColumn>
+                        </TableRow>
+                        <TableRow index={1}>
+                          <TableColumn colSpan={5}>
+                            <p
+                              className="text-sm md:text-base text-white"
+                              dangerouslySetInnerHTML={
+                                { __html: item.media.description, }
+                              } />
+                          </TableColumn>
+                        </TableRow>
+                      </React.Fragment>
+                    );
+                  },)}
+              </Table>
+            </Disclosure.Panel>
+          </>;
+        }}
+      </Disclosure>
     </>
   );
 }
