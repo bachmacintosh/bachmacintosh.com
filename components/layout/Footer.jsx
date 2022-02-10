@@ -1,5 +1,11 @@
 import { Hyperlink, } from "./Typography";
 export default function Footer () {
+  const dateOptions = {
+    dateStyle: "short",
+    timeStyle: "short",
+    hour12: false,
+  };
+  const buildTime = new Date().toLocaleString("en-US", dateOptions,);
   return (
     <>
       <hr className="border-blue-diamond" />
@@ -11,7 +17,8 @@ export default function Footer () {
         {" "}
         <Hyperlink href={"/privacy"} external={false}>Privacy</Hyperlink>
         <br />
-                        Version {process.env.NEXT_PUBLIC_APP_VERSION}
+        Version {process.env.NEXT_PUBLIC_APP_VERSION} | Site last updated on
+        {` ${buildTime}`}
       </span>
     </>
   );
