@@ -3,4 +3,6 @@ export default {
     title: undefined,
     titleTemplate: "%s | BachMacintosh",
     defaultTitle: "BachMacintosh",
+    dangerouslySetAllPagesToNoIndex: true,
+    dangerouslySetAllPagesToNoFollow: true,
 };
