@@ -10,5 +10,8 @@ module.exports = {
     loader: "cloudinary",
     path: "https://res.cloudinary.com/bachman-io/",
   },
-  env: { buildTime: new Date().toLocaleString("en-US", dateOptions,), },
+  env: {
+    version: "0.2",
+    buildTime: new Date().toLocaleString("en-US", dateOptions,),
+  },
 };
