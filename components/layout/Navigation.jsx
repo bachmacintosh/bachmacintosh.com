@@ -7,7 +7,10 @@ function classNames (...classes) {
   return classes.filter(Boolean,).join(" ",);
 }
 
-const navigation = [{ name: "Home", basePath: "/", href: "/", },];
+const navigation = [
+  { name: "Home", basePath: "/", href: "/", },
+  { name: "JPN", basePath: "jpn", href: "/jpn", },
+];
 
 export default function Navigation () {
   const router = useRouter();
