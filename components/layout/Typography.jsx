@@ -111,3 +111,11 @@ export function OrderedList ({ children, },) {
 export function ListItem ({ children, },) {
   return <li>{children}</li>;
 }
+
+export function ErrorCode ({ children, },) {
+  return <span
+    className="block text-8xl md:text-9xl my-6 text-orange-300 font-bold
+    text-center">
+    { children }
+  </span>;
+}
