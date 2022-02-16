@@ -11,6 +11,15 @@ import React from "react";
 import { getAnime, } from "../../lib/anilist/anime";
 
 export default function Anime ({ anime, },) {
+  const formats = {
+    TV: "TV",
+    TV_SHORT: "TV - Short",
+    MOVIE: "Movie",
+    SPECIAL: "Special",
+    OVA: "OVA",
+    ONA: "ONA",
+    MUSIC: "Music Video",
+  };
   return (
     <>
       <NextSeo
@@ -79,9 +88,7 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {(item.media.format
-                                .charAt(0,).toUpperCase()
-                        + item.media.format.slice(1,))}
+                              {formats[item.media.format]}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -169,9 +176,7 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {(item.media.format
-                                .charAt(0,).toUpperCase()
-                        + item.media.format.slice(1,))}
+                              {formats[item.media.format]}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -248,9 +253,7 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {(item.media.format
-                                .charAt(0,).toUpperCase()
-                                + item.media.format.slice(1,))}
+                              {formats[item.media.format]}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -334,9 +337,7 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {(item.media.format
-                                .charAt(0,).toUpperCase()
-                              + item.media.format.slice(1,))}
+                              {formats[item.media.format]}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -435,9 +436,7 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {(item.media.format
-                                .charAt(0,).toUpperCase()
-                                + item.media.format.slice(1,))}
+                              {formats[item.media.format]}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -519,9 +518,9 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {(item.media.format
-                                .charAt(0,).toUpperCase()
-                                + item.media.format.slice(1,))}
+                              {item.media.format
+                                ? formats[item.media.format]
+                                : "???"}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -602,9 +601,7 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {(item.media.format
-                                .charAt(0,).toUpperCase()
-                                + item.media.format.slice(1,))}
+                              {formats[item.media.format]}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -692,9 +689,7 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {(item.media.format
-                                .charAt(0,).toUpperCase()
-                                + item.media.format.slice(1,))}
+                              {formats[item.media.format]}
                             </span>
                           </TableColumn>
                           <TableColumn>
