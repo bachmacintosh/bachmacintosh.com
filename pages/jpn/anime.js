@@ -10,7 +10,7 @@ import { NextSeo, } from "next-seo";
 import React from "react";
 import { getAnime, } from "../../lib/anilist/anime";
 
-export default function Anime ({ anime, },) {
+export default function Anime ({ anime, updatedAt, },) {
   const formats = {
     TV: "TV",
     TV_SHORT: "TV - Short",
@@ -725,6 +725,8 @@ export default function Anime ({ anime, },) {
           </>;
         }}
       </Disclosure>
+      <hr/>
+      <Paragraph>{`Page Last Updated at ${updatedAt}`}</Paragraph>
     </>
   );
 }
@@ -739,5 +741,12 @@ Anime.getLayout = function getLayout (page,) {
 
 export async function getStaticProps () {
   const anime = await getAnime();
-  return { props: { anime, }, };
+  const dateOptions = {
+    dateStyle: "short",
+    timeStyle: "short",
+    hour12: false,
+    timeZone: "America/New_York",
+  };
+  const updatedAt = new Date().toLocaleString("en-US", dateOptions,);
+  return { props: { anime, updatedAt, }, };
 }

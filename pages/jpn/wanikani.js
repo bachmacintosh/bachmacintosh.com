@@ -15,7 +15,7 @@ WanikaniRadicalImage
 import WanikaniSubject from "../../components/wanikani/WanikaniSubject";
 import { getWkSheets, } from "../../lib/google/sheets";
 
-export default function Wanikani ({ content, },) {
+export default function Wanikani ({ content, updatedAt, },) {
   let reviews = [];
   for (const [key, value,] of Object.entries(content.studyQueue.reviews,)) {
     if (content.studyQueue.reviews[key] !== null) {
@@ -606,6 +606,8 @@ export default function Wanikani ({ content, },) {
           </>;
         }}
       </Disclosure>
+      <hr/>
+      <Paragraph>{`Page Last Updated at ${updatedAt}`}</Paragraph>
     </>
   );
 }
@@ -620,6 +622,13 @@ Wanikani.getLayout = function getLayout (page,) {
 
 export async function getStaticProps () {
   const content = await getWkSheets();
+  const dateOptions = {
+    dateStyle: "short",
+    timeStyle: "short",
+    hour12: false,
+    timeZone: "America/New_York",
+  };
+  const updatedAt = new Date().toLocaleString("en-US", dateOptions,);
 
-  return { props: { content, }, };
+  return { props: { content, updatedAt, }, };
 }
