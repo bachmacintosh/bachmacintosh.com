@@ -8,6 +8,6 @@ export default async function handler (req, res,) {
     await res.unstable_revalidate("/jpn/wanikani",);
     return res.json({ revalidated: true, },);
   } catch (error) {
-    return res.status(500,).send(error,);
+    return res.status(500,).send("Error revalidating pages.",);
   }
 }
