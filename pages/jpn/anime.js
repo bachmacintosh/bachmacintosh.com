@@ -748,5 +748,5 @@ export async function getStaticProps () {
     timeZone: "America/New_York",
   };
   const updatedAt = new Date().toLocaleString("en-US", dateOptions,);
-  return { props: { anime, updatedAt, }, };
+  return { props: { anime, updatedAt, }, revalidate: 86400, };
 }
