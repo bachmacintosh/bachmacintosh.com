@@ -630,5 +630,5 @@ export async function getStaticProps () {
   };
   const updatedAt = new Date().toLocaleString("en-US", dateOptions,);
 
-  return { props: { content, updatedAt, }, revalidate: 86400, };
+  return { props: { content, updatedAt, }, };
 }
