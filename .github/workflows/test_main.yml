@@ -33,5 +33,7 @@ jobs:
           install: false
           start: npm run start
           wait-on: http://localhost:3000
-      - name: Test Static HTML Export
-        run: npm run export
+      - name: Trigger Netlify Build
+        run: |
+        curl -X POST ${{ secrets.NETLIFY_BUILD_HOOK }}
+        echo "Netlify Build Triggered"
