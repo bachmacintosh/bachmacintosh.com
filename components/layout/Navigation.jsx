@@ -9,6 +9,7 @@ function classNames (...classes) {
 
 const navigation = [
   { name: "Home", basePath: "/", href: "/", },
+  { name: "Gaming", basePath: "gaming", href: "/gaming", },
   { name: "JPN", basePath: "jpn", href: "/jpn", },
 ];
 
