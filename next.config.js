@@ -6,6 +6,7 @@ const dateOptions = {
 };
 module.exports = {
   reactStrictMode: true,
+  swcMinify: true,
   images: { domains: ["s4.anilist.co",], loader: "custom", },
   env: {
     version: "0.3",
