@@ -1,6 +1,7 @@
 import { MenuIcon, XIcon, } from "@heroicons/react/outline";
 import { Disclosure, } from "@headlessui/react";
 import Link from "next/link";
+import React from "react";
 import { useRouter, } from "next/router";
 
 function classNames (...classes) {
@@ -12,6 +13,35 @@ const navigation = [
   { name: "Gaming", basePath: "gaming", href: "/gaming", },
   { name: "JPN", basePath: "jpn", href: "/jpn", },
 ];
+
+const MobileLink = React.forwardRef(({ item, basePath, }, ref,) => {
+  MobileLink.displayName = "MobileLink";
+  return <Link href={item.href} passHref>
+    <MobileAnchor basePath={basePath} item={item} ref={ref} />
+  </Link>;
+},);
+
+const MobileAnchor = React.forwardRef(
+  ({ item, basePath, onClick, href, }, ref,) => {
+    MobileAnchor.displayName = "MobileAnchor";
+    return (
+      <a
+        className={classNames(
+          item.basePath === basePath
+            ? "bg-blue-standard text-white"
+            : "text-blue-diamond hover:bg-blue-racing"
+          + "hover:text-white",
+          "block px-3 py-2 rounded-md text-base font-medium",
+        )}
+        aria-current={item.basePath === basePath ? "page" : null}
+        href={href}
+        ref={ref}
+        onClick={onClick}
+      >
+        {item.name}
+      </a>
+    );
+  },);
 
 export default function Navigation () {
   const router = useRouter();
@@ -76,22 +106,13 @@ export default function Navigation () {
           <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item,) => {
-                return <Link key={item.name} href={item.href} passHref={true}>
+                return (
                   <Disclosure.Button
                     key={item.name}
-                    as="a"
-                    className={classNames(
-                      item.basePath === basePath
-                        ? "bg-blue-standard text-white"
-                        : "text-blue-diamond hover:bg-blue-racing"
-                        + "hover:text-white",
-                      "block px-3 py-2 rounded-md text-base font-medium",
-                    )}
-                    aria-current={item.basePath === basePath ? "page" : null}
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                </Link>;
+                    as={MobileLink}
+                    item={item}
+                    basePath={basePath}
+                  />);
               }
                 ,)}
             </div>

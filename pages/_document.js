@@ -9,7 +9,6 @@ export default function Document () {
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans:wght@400;700&display=swap"
           rel="stylesheet" />
-        <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "f05c4e5bd9704045b8497e033a19daf3"}' />
       </Head>
       <body className="bg-blue-galaxy">
         <Main />
