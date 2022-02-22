@@ -17,7 +17,7 @@ import { getPageSEO, } from "../../lib/seo";
 import { getWkSheets, } from "../../lib/google/sheets";
 import { useRouter, } from "next/router";
 
-export default function Wanikani ({ content, updatedAt, },) {
+export default function Wanikani ({ content, },) {
   const title = "WaniKani";
   const description = "Learning kanji ain't easy, but we can make it better "
     + "spaced repetition... and burning things, sort of.";
@@ -615,8 +615,8 @@ export default function Wanikani ({ content, updatedAt, },) {
           </>;
         }}
       </Disclosure>
-      <hr/>
-      <Paragraph>{`Page Last Updated at ${updatedAt}`}</Paragraph>
+      {/* <hr/>
+      <Paragraph>{`Page Last Updated at ${updatedAt}`}</Paragraph>*/}
     </>
   );
 }

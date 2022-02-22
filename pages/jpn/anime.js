@@ -12,7 +12,7 @@ import { getAnime, } from "../../lib/anilist/anime";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Anime ({ anime, updatedAt, },) {
+export default function Anime ({ anime, },) {
   const title = "Anime";
   const description = "Fun facts about Collin Bachman's anime watching habits.";
   const router = useRouter();
@@ -728,8 +728,8 @@ export default function Anime ({ anime, updatedAt, },) {
           </>;
         }}
       </Disclosure>
-      <hr/>
-      <Paragraph>{`Page Last Updated at ${updatedAt}`}</Paragraph>
+      {/* <hr/>
+      <Paragraph>{`Page Last Updated at ${updatedAt}`}</Paragraph>*/}
     </>
   );
 }
