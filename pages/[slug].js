@@ -4,14 +4,15 @@ import { NextSeo, } from "next-seo";
 import React from "react";
 import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
+import { getPageSEO, } from "../lib/seo";
+import { useRouter, } from "next/router";
 
 export default function Page ({ page, preview, },) {
+  const { title, description, } = page;
+  const router = useRouter();
   return (
     <>
-      <NextSeo
-        title={page.title}
-        description={page.description}
-      />
+      <NextSeo {...getPageSEO(title, description, router,)} />
       {preview && <Warning title="Preview Mode">
         This content has not been published yet.
         {` `}

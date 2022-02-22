@@ -9,8 +9,14 @@ import { Disclosure, } from "@headlessui/react";
 import { NextSeo, } from "next-seo";
 import React from "react";
 import { getAnime, } from "../../lib/anilist/anime";
+import { getPageSEO, } from "../../lib/seo";
+import { useRouter, } from "next/router";
 
 export default function Anime ({ anime, updatedAt, },) {
+  const title = "Anime";
+  const description = "Fun facts about Collin Bachman's anime watching habits.";
+  const router = useRouter();
+
   const formats = {
     TV: "TV",
     TV_SHORT: "TV - Short",
@@ -22,10 +28,7 @@ export default function Anime ({ anime, updatedAt, },) {
   };
   return (
     <>
-      <NextSeo
-        title="Anime"
-        description="Fun facts about Collin Bachman's anime watching habits."
-      />
+      <NextSeo {...getPageSEO(title, description, router,)} />
       <Heading1>Anime</Heading1>
       <Paragraph>You can check out more info on my AniList profile:
         {" "}

@@ -4,15 +4,17 @@ import {
 } from "../../components/layout/Typography";
 import DefaultLayout from "../../components/DefaultLayout";
 import { NextSeo, } from "next-seo";
+import { getPageSEO, } from "../../lib/seo";
+import { useRouter, } from "next/router";
 
 export default function Jpn () {
+  const title = "Japanese";
+  const description = "All the latest info on Collin Bachman's Japanese "
+    + "learning";
+  const router = useRouter();
   return (
     <>
-      <NextSeo
-        title="Japanese"
-        description="All the latest info on Collin Bachman's Japanese language
-        learning"
-      />
+      <NextSeo {...getPageSEO(title, description, router,)} />
       <Heading1 style={{ fontFamily: "Noto Sans JP", }}>
         Japanese - 日本語
       </Heading1>

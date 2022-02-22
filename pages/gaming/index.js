@@ -4,15 +4,16 @@ import {
 } from "../../components/layout/Typography";
 import DefaultLayout from "../../components/DefaultLayout";
 import { NextSeo, } from "next-seo";
+import { getPageSEO, } from "../../lib/seo";
+import { useRouter, } from "next/router";
 
 export default function Gaming () {
+  const title = "Gaming";
+  const description = "Collin G. Bachman's gaming-related stuff goes here.";
+  const router = useRouter();
   return (
     <>
-      <NextSeo
-        title="Gaming"
-        description="1v1 Collin Bachman in a game he doesn't know how to play,
-        for the content"
-      />
+      <NextSeo {...getPageSEO(title, description, router,)} />
       <Heading1>
         Gaming
       </Heading1>

@@ -13,9 +13,16 @@ import
 WanikaniRadicalImage
   from "../../components/wanikani/WanikaniRadicalImage";
 import WanikaniSubject from "../../components/wanikani/WanikaniSubject";
+import { getPageSEO, } from "../../lib/seo";
 import { getWkSheets, } from "../../lib/google/sheets";
+import { useRouter, } from "next/router";
 
 export default function Wanikani ({ content, updatedAt, },) {
+  const title = "WaniKani";
+  const description = "Learning kanji ain't easy, but we can make it better "
+    + "spaced repetition... and burning things, sort of.";
+  const router = useRouter();
+
   let reviews = [];
   for (const [key, value,] of Object.entries(content.studyQueue.reviews,)) {
     if (content.studyQueue.reviews[key] !== null) {
@@ -27,11 +34,7 @@ export default function Wanikani ({ content, updatedAt, },) {
   }
   return (
     <>
-      <NextSeo
-        title="WaniKani"
-        description={`Learning kanji ain't easy, but we can make it better with
-          spaced repetition... and burning things, sort of.`}
-      />
+      <NextSeo {...getPageSEO(title, description, router,)} />
       <Heading1>WaniKani</Heading1>
       <Paragraph
         indent={false}>

@@ -10,14 +10,16 @@ import { NextSeo, } from "next-seo";
 import React from "react";
 import { SmallButtonLink, } from "../../components/layout/Buttons";
 import { getGtaSheets, } from "../../lib/google/sheets";
+import { getPageSEO, } from "../../lib/seo";
+import { useRouter, } from "next/router";
 
 export default function GtaOnline ({ content, },) {
+  const title = "GTA Online";
+  const description = "BachMacintosh in the wonderful city of Los Santos";
+  const router = useRouter();
   return (
     <>
-      <NextSeo
-        title="GTA Online"
-        description="Never a dull moment in the wonderful city of Los Santos"
-      />
+      <NextSeo {...getPageSEO(title, description, router,)} />
       <Heading1>GTA Online</Heading1>
       <Disclosure defaultOpen="open">
         {({ open, },) => {
