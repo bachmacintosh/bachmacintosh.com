@@ -520,7 +520,9 @@ export default function Wanikani ({ content, updatedAt, },) {
               <Paragraph>
                 This is every subject taught by WaniKani, up to my current
                 {" "}
-                level. Gray items are not in the review queue yet.
+                level. Gold items are Burned. Gray items are not in the lesson
+                {" "}
+                queue yet.
               </Paragraph>
               <Table id={"details-table"}
                 headers={["Level", "Type", "Count", "Items",]}>
@@ -548,6 +550,7 @@ export default function Wanikani ({ content, updatedAt, },) {
                                     subjectType={radical.stage === null
                                       ? "locked"
                                       : "radical"}
+                                    stage={radical.stage}
                                     meanings={radical.meanings}
                                     href={radical.url}>
                                     {radical.characters}
@@ -557,6 +560,7 @@ export default function Wanikani ({ content, updatedAt, },) {
                                     subjectType={radical.stage === null
                                       ? "locked"
                                       : "radical"}
+                                    stage={radical.stage}
                                     meanings={radical.meanings}
                                     href={radical.url}
                                     svg={radical.characterImage}/>;
@@ -574,6 +578,7 @@ export default function Wanikani ({ content, updatedAt, },) {
                                   subjectType={kanji.stage === null
                                     ? "locked"
                                     : "kanji"}
+                                  stage={kanji.stage}
                                   meanings={kanji.meanings}
                                   href={kanji.url}>
                                   {kanji.characters}
@@ -592,6 +597,7 @@ export default function Wanikani ({ content, updatedAt, },) {
                                   subjectType={vocab.stage === null
                                     ? "locked"
                                     : "vocabulary"}
+                                  stage={vocab.stage}
                                   meanings={vocab.meanings}
                                   href={vocab.url}>
                                   {vocab.characters}
