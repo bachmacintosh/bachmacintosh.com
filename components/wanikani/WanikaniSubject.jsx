@@ -2,7 +2,7 @@ import { createRef, useState, } from "react";
 import { createPopper, } from "@popperjs/core";
 
 export default function WanikaniSubject (
-  { subjectType, meanings, href, children, },) {
+  { subjectType, stage, meanings, href, children, },) {
   const [tooltipShow, setTooltipShow,] = useState(false,);
   const btnRef = createRef();
   const tooltipRef = createRef();
@@ -16,7 +16,9 @@ export default function WanikaniSubject (
   };
 
   let color = "bg-gray-500";
-  if (subjectType === "radical") {
+  if (stage === "9") {
+    color = "bg-yellow-600";
+  } else if (subjectType === "radical") {
     color = "bg-wanikani-radical";
   } else if (subjectType === "kanji") {
     color = "bg-wanikani-kanji";
