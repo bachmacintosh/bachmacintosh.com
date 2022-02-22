@@ -125,7 +125,7 @@ export default function Wanikani ({ content, updatedAt, },) {
                               },)}</FlexWrapper>}</TableColumn>
                         </TableRow>
                         <TableRow key={`${group.level}-vocabulary`} index={index}>
-                          <TableColumn>Kanji</TableColumn>
+                          <TableColumn>Vocabulary</TableColumn>
                           <TableColumn>{group.vocabulary.length}</TableColumn>
                           <TableColumn>{group.vocabulary.length === 0
                             ? "(None)"
@@ -206,7 +206,7 @@ export default function Wanikani ({ content, updatedAt, },) {
                               },)}</FlexWrapper>}</TableColumn>
                         </TableRow>
                         <TableRow key={`${group.level}-vocabulary`} index={index}>
-                          <TableColumn>Kanji</TableColumn>
+                          <TableColumn>Vocabulary</TableColumn>
                           <TableColumn>{group.vocabulary.length}</TableColumn>
                           <TableColumn>{group.vocabulary.length === 0
                             ? "(None)"
@@ -293,7 +293,7 @@ export default function Wanikani ({ content, updatedAt, },) {
                               },)}</FlexWrapper>}</TableColumn>
                         </TableRow>
                         <TableRow key={`${group.level}-vocabulary`} index={index}>
-                          <TableColumn>Kanji</TableColumn>
+                          <TableColumn>Vocabulary</TableColumn>
                           <TableColumn>{group.vocabulary.length}</TableColumn>
                           <TableColumn>{group.vocabulary.length === 0
                             ? "(None)"
@@ -389,7 +389,7 @@ export default function Wanikani ({ content, updatedAt, },) {
                               },)}</FlexWrapper>}</TableColumn>
                         </TableRow>
                         <TableRow key={`${group.level}-vocabulary`} index={index}>
-                          <TableColumn>Kanji</TableColumn>
+                          <TableColumn>Vocabulary</TableColumn>
                           <TableColumn>{group.vocabulary.length}</TableColumn>
                           <TableColumn>{group.vocabulary.length === 0
                             ? "(None)"
@@ -480,7 +480,7 @@ export default function Wanikani ({ content, updatedAt, },) {
                                   },)}</FlexWrapper>}</TableColumn>
                             </TableRow>
                             <TableRow key={`${group.level}-vocabulary`} index={index}>
-                              <TableColumn>Kanji</TableColumn>
+                              <TableColumn>Vocabulary</TableColumn>
                               <TableColumn>
                                 {group.vocabulary.length}
                               </TableColumn>
@@ -581,7 +581,7 @@ export default function Wanikani ({ content, updatedAt, },) {
                               },)}</FlexWrapper>}</TableColumn>
                         </TableRow>
                         <TableRow key={`${group.level}-vocabulary`} index={index}>
-                          <TableColumn>Kanji</TableColumn>
+                          <TableColumn>Vocabulary</TableColumn>
                           <TableColumn>{group.vocabulary.length}</TableColumn>
                           <TableColumn>{group.vocabulary.length === 0
                             ? "(None)"
