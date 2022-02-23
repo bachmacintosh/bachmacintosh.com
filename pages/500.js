@@ -1,14 +1,16 @@
 import { ErrorCode, Paragraph, } from "../components/layout/Typography";
 import DefaultLayout from "../components/DefaultLayout";
 import { NextSeo, } from "next-seo";
+import { getPageSEO, } from "../lib/seo";
+import { useRouter, } from "next/router";
 
 export default function Custom500 () {
+  const title = "500 Server Error";
+  const description = "Whoops. Something went wrong with the server.";
+  const router = useRouter();
   return (
     <>
-      <NextSeo
-        title="500 Server Error"
-        description="Whoops. Something went wrong with the server."
-      />
+      <NextSeo noindex nofollow {...getPageSEO(title, description, router,)} />
       <ErrorCode>500</ErrorCode>
       <Paragraph>
         Whoops. Something went wrong with the server. There might be some kind

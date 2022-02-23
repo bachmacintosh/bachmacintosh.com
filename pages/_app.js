@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import { DefaultSeo, } from "next-seo";
-import SEO from "../next-seo.config";
+import { getDefaultSeo, } from "../lib/seo";
 
 function MyApp ({ Component, pageProps, },) {
   const getLayout = Component.getLayout || ((page,) => {
@@ -8,7 +8,7 @@ function MyApp ({ Component, pageProps, },) {
   });
   return getLayout(
     <>
-      <DefaultSeo {...SEO} />
+      <DefaultSeo {...getDefaultSeo()} />
       <Component {...pageProps} />
     </>,
   );

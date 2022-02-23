@@ -1,14 +1,16 @@
 import { ErrorCode, Paragraph, } from "../components/layout/Typography";
 import DefaultLayout from "../components/DefaultLayout";
 import { NextSeo, } from "next-seo";
+import { getPageSEO, } from "../lib/seo";
+import { useRouter, } from "next/router";
 
 export default function Custom404 () {
+  const title = "404 Not Found";
+  const description = "The page you were looking for wasn't found.";
+  const router = useRouter();
   return (
     <>
-      <NextSeo
-        title="404 Not Found"
-        description="The page you were looking for wasn't found."
-      />
+      <NextSeo noindex nofollow {...getPageSEO(title, description, router,)} />
       <ErrorCode>404</ErrorCode>
       <Paragraph>
         The page you were looking for was not found at this URL. This could be

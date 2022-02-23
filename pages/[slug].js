@@ -1,17 +1,32 @@
+import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
 import { getPage, getPageSlugs, getPreviewPage, } from "../lib/contentful/page";
 import DefaultLayout from "../components/DefaultLayout";
-import { NextSeo, } from "next-seo";
 import React from "react";
 import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
+import { getPageSEO, } from "../lib/seo";
+import { useRouter, } from "next/router";
 
 export default function Page ({ page, preview, },) {
+  const { title, description, } = page;
+  const breadcrumbs = [
+    {
+      position: 1,
+      name: "BachMacintosh",
+      item: process.env.baseUrl,
+    },
+    {
+      position: 2,
+      name: title,
+      item: `${process.env.baseUrl}/${page.slug}`,
+    },
+  ];
+
+  const router = useRouter();
   return (
     <>
-      <NextSeo
-        title={page.title}
-        description={page.description}
-      />
+      <NextSeo {...getPageSEO(title, description, router,)} />
+      <BreadcrumbJsonLd itemListElements={breadcrumbs} />
       {preview && <Warning title="Preview Mode">
         This content has not been published yet.
         {` `}
