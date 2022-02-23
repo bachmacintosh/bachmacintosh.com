@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
 import {
   Heading1, Heading2, Heading3,
   Hyperlink, Paragraph, TitleLink,
@@ -6,7 +7,6 @@ import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import AniListImage from "../../components/anime/AniListImage";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
-import { NextSeo, } from "next-seo";
 import React from "react";
 import { getAnime, } from "../../lib/anilist/anime";
 import { getPageSEO, } from "../../lib/seo";
@@ -16,6 +16,23 @@ export default function Anime ({ anime, },) {
   const title = "Anime";
   const description = "Fun facts about Collin Bachman's anime watching habits.";
   const router = useRouter();
+  const breadcrumbs = [
+    {
+      position: 1,
+      name: "BachMacintosh",
+      item: process.env.baseUrl,
+    },
+    {
+      position: 2,
+      name: "Japanese",
+      item: `${process.env.baseUrl}/jpn`,
+    },
+    {
+      position: 3,
+      name: title,
+      item: process.env.baseUrl + router.asPath,
+    },
+  ];
 
   const formats = {
     TV: "TV",
@@ -29,6 +46,7 @@ export default function Anime ({ anime, },) {
   return (
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
+      <BreadcrumbJsonLd itemListElements={breadcrumbs} />
       <Heading1>Anime</Heading1>
       <Paragraph>You can check out more info on my AniList profile:
         {" "}

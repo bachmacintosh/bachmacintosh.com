@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
 import {
   Heading1, Heading2, Heading3,
   Paragraph,
@@ -6,7 +7,6 @@ import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
 import { ExternalLinkIcon, } from "@heroicons/react/outline";
-import { NextSeo, } from "next-seo";
 import React from "react";
 import { SmallButtonLink, } from "../../components/layout/Buttons";
 import { getGtaSheets, } from "../../lib/google/sheets";
@@ -17,9 +17,27 @@ export default function GtaOnline ({ content, },) {
   const title = "GTA Online";
   const description = "BachMacintosh in the wonderful city of Los Santos";
   const router = useRouter();
+  const breadcrumbs = [
+    {
+      position: 1,
+      name: "BachMacintosh",
+      item: process.env.baseUrl,
+    },
+    {
+      position: 2,
+      name: "Gaming",
+      item: `${process.env.baseUrl}/gaming`,
+    },
+    {
+      position: 3,
+      name: title,
+      item: process.env.baseUrl + router.asPath,
+    },
+  ];
   return (
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
+      <BreadcrumbJsonLd itemListElements={breadcrumbs} />
       <Heading1>GTA Online</Heading1>
       <Disclosure defaultOpen="open">
         {({ open, },) => {

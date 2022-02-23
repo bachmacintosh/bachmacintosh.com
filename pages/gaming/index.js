@@ -1,9 +1,9 @@
+import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
 import {
   Heading1, Heading2, Hyperlink,
   Paragraph,
 } from "../../components/layout/Typography";
 import DefaultLayout from "../../components/DefaultLayout";
-import { NextSeo, } from "next-seo";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
@@ -11,9 +11,23 @@ export default function Gaming () {
   const title = "Gaming";
   const description = "Collin G. Bachman's gaming-related stuff goes here.";
   const router = useRouter();
+  const breadcrumbs = [
+    {
+      position: 1,
+      name: "BachMacintosh",
+      item: process.env.baseUrl,
+    },
+    {
+      position: 2,
+      name: title,
+      item: process.env.baseUrl + router.asPath,
+    },
+  ];
+
   return (
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
+      <BreadcrumbJsonLd itemListElements={breadcrumbs} />
       <Heading1>
         Gaming
       </Heading1>

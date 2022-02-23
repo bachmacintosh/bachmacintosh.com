@@ -1,3 +1,4 @@
+import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
 import {
   Heading1, Heading2,
   Heading3, Hyperlink, Paragraph,
@@ -6,7 +7,6 @@ import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
 import FlexWrapper from "../../components/layout/FlexWrapper";
-import { NextSeo, } from "next-seo";
 import ProgressBar from "../../components/layout/ProgressBar";
 import React from "react";
 import
@@ -22,6 +22,23 @@ export default function Wanikani ({ content, },) {
   const description = "Learning kanji ain't easy, but we can make it better "
     + "spaced repetition... and burning things, sort of.";
   const router = useRouter();
+  const breadcrumbs = [
+    {
+      position: 1,
+      name: "BachMacintosh",
+      item: process.env.baseUrl,
+    },
+    {
+      position: 2,
+      name: "Japanese",
+      item: `${process.env.baseUrl}/jpn`,
+    },
+    {
+      position: 3,
+      name: title,
+      item: process.env.baseUrl + router.asPath,
+    },
+  ];
 
   let reviews = [];
   for (const [key, value,] of Object.entries(content.studyQueue.reviews,)) {
@@ -35,6 +52,7 @@ export default function Wanikani ({ content, },) {
   return (
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
+      <BreadcrumbJsonLd itemListElements={breadcrumbs} />
       <Heading1>WaniKani</Heading1>
       <Paragraph
         indent={false}>
