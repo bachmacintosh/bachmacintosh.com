@@ -10,7 +10,7 @@ export default function Custom500 () {
   const router = useRouter();
   return (
     <>
-      <NextSeo {...getPageSEO(title, description, router,)} />
+      <NextSeo noindex nofollow {...getPageSEO(title, description, router,)} />
       <ErrorCode>500</ErrorCode>
       <Paragraph>
         Whoops. Something went wrong with the server. There might be some kind

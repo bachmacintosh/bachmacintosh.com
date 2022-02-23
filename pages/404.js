@@ -10,7 +10,7 @@ export default function Custom404 () {
   const router = useRouter();
   return (
     <>
-      <NextSeo {...getPageSEO(title, description, router,)} />
+      <NextSeo noindex nofollow {...getPageSEO(title, description, router,)} />
       <ErrorCode>404</ErrorCode>
       <Paragraph>
         The page you were looking for was not found at this URL. This could be
