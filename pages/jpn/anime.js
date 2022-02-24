@@ -114,7 +114,9 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.media.duration} min.`}
+                              {item.media.format === "MOVIE"
+                                ? `${item.media.duration} min.`
+                                : `${item.media.duration} min. x ${item.media.episodes} eps.`}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -202,7 +204,9 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.media.duration} min.`}
+                              {item.media.format === "MOVIE"
+                                ? `${item.media.duration} min.`
+                                : `${item.media.duration} min. x ${item.media.episodes} eps.`}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -279,7 +283,9 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.media.duration} min.`}
+                              {item.media.format === "MOVIE"
+                                ? `${item.media.duration} min.`
+                                : `${item.media.duration} min. x ${item.media.episodes} eps.`}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -363,7 +369,9 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.media.duration} min.`}
+                              {item.media.format === "MOVIE"
+                                ? `${item.media.duration} min.`
+                                : `${item.media.duration} min. x ${item.media.episodes} eps.`}
                             </span>
                           </TableColumn>
                           <TableColumn>
