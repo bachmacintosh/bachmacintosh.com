@@ -53,6 +53,10 @@ export async function getStaticProps ({ params, preview = false, },) {
     page = await getPage(params.slug,);
   }
 
+  if (typeof page === "undefined") {
+    return { notFound: true, };
+  }
+
   return {
     props: {
       preview,
@@ -68,6 +72,6 @@ export async function getStaticPaths () {
     paths: slugs?.map(({ slug, },) => {
       return `/${slug}`;
     },) ?? [],
-    fallback: false,
+    fallback: "blocking",
   };
 }
