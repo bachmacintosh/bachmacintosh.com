@@ -1,9 +1,17 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
+import
+{ NsfwButton, NsfwSpoilerButton, SpoilerButton, }
+  from "../../../components/layout/Buttons";
+import
+{ NsfwWarning, PostLede, PostTitle, SpoilerWarning, }
+  from "../../../components/layout/Typography";
 import {
   getBlogPost, getBlogPostSlugs,
   getPreviewBlogPost,
 } from "../../../lib/contentful/blogpost";
+import CoverImage from "../../../components/contentful/CoverImage";
 import DefaultLayout from "../../../components/DefaultLayout";
+import { Disclosure, } from "@headlessui/react";
 import React from "react";
 import RichText from "../../../components/contentful/RichText";
 import Warning from "../../../components/layout/Warning";
@@ -11,7 +19,10 @@ import { getBlogPostSeo, } from "../../../lib/seo";
 import { useRouter, } from "next/router";
 
 export default function BlogPost ({ post, preview, },) {
-  const { title, } = post;
+  const {
+    title, coverImage, summary, publishDate, notSafeForWork, spoilers,
+    spoilerName,
+  } = post;
   const router = useRouter();
   const breadcrumbs = [
     {
@@ -30,6 +41,82 @@ export default function BlogPost ({ post, preview, },) {
       item: process.env.baseUrl + router.asPath,
     },
   ];
+  let header = <PostTitle>{title}</PostTitle>;
+  if (coverImage !== null) {
+    header = <CoverImage asset={coverImage} />;
+  }
+  const dateOptions = {
+    dateStyle: "short",
+    timeStyle: "short",
+    hour12: false,
+    timeZone: "America/New_York",
+  };
+  let content = <RichText content={post.content} indentParagraphs={true} />;
+  if (!notSafeForWork && spoilers) {
+    content = <>
+      <Disclosure>
+        {({ open, },) => {
+          return <>
+            {!open
+              && <>
+                <SpoilerWarning spoilerName={spoilerName} />
+                <Disclosure.Button>
+                  <SpoilerButton />
+                </Disclosure.Button>
+              </>
+            }
+            <Disclosure.Panel>
+              <RichText content={post.content} indentParagraphs={true} />
+            </Disclosure.Panel>
+          </>;
+        }
+        }
+      </Disclosure>
+    </>;
+  } else if (notSafeForWork && !spoilers) {
+    content = <>
+      <Disclosure>
+        {({ open, },) => {
+          return <>
+            {!open
+              && <>
+                <NsfwWarning />
+                <Disclosure.Button>
+                  <NsfwButton />
+                </Disclosure.Button>
+              </>
+            }
+            <Disclosure.Panel>
+              <RichText content={post.content} indentParagraphs={true} />
+            </Disclosure.Panel>
+          </>;
+        }
+        }
+      </Disclosure>
+    </>;
+  } else if (notSafeForWork && spoilers) {
+    content = <>
+      <Disclosure>
+        {({ open, },) => {
+          return <>
+            {!open
+              && <>
+                <NsfwWarning />
+                <SpoilerWarning spoilerName={spoilerName} />
+                <Disclosure.Button>
+                  <NsfwSpoilerButton />
+                </Disclosure.Button>
+              </>
+            }
+            <Disclosure.Panel>
+              <RichText content={post.content} indentParagraphs={true} />
+            </Disclosure.Panel>
+          </>;
+        }
+        }
+      </Disclosure>
+    </>;
+  }
   return (
     <>
       <NextSeo {...getBlogPostSeo(post, router,)} />
@@ -39,7 +126,15 @@ export default function BlogPost ({ post, preview, },) {
         {` `}
         Make sure to publish it before going live.
       </Warning>}
-      <RichText content={post.content} indentParagraphs={true} />
+      {header}
+      <br />
+      <PostLede>{summary}</PostLede>
+      <br />
+      <span className="text-sm md:text-base text-white">
+        {`${new Date(publishDate,).toLocaleString("en-US", dateOptions,)} by Collin Bachman`}
+      </span>;
+      <hr className="mb-3" />
+      {content}
     </>
   );
 }
