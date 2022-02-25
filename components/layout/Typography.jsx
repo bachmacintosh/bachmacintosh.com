@@ -5,6 +5,18 @@ import { createPopper, } from "@popperjs/core";
 
 const commonHeadingClasses = "text-blue-diamond font-bold break-words my-5";
 
+export function PostTitle ({ children, },) {
+  return <span className={`mx-auto text-2xl md:text-4xl ${commonHeadingClasses}`}>
+    {children}
+  </span>;
+}
+
+export function PostLede ({ children, },) {
+  return <span className={`text-center text-lg md:text-2xl font-thin ${commonHeadingClasses}`}>
+    {children}
+  </span>;
+}
+
 export function Heading1 ({ children, },) {
   return <h1 className={`text-4xl md:text-6xl ${commonHeadingClasses}`}>{children}</h1>;
 }
