@@ -1,7 +1,7 @@
 const dateOptions = {
-  dateStyle: "short",
+  dateStyle: "long",
   timeStyle: "short",
-  hour12: false,
+  hour12: true,
   timeZone: "America/New_York",
 };
 module.exports = {
