@@ -1,4 +1,4 @@
-import { createRef, useState, } from "react";
+import React, { createRef, useState, } from "react";
 import { ExternalLinkIcon, } from "@heroicons/react/outline";
 import Link from "next/link";
 import { createPopper, } from "@popperjs/core";
@@ -109,6 +109,36 @@ export function TitleLink ({ href, meanings, children, },) {
         </div>
       </div>
     </div>
+  </>;
+}
+
+export function SpoilerWarning ({ spoilerName, },) {
+  return <>
+    <span
+      className={"text-center text-lg md:text-2xl font-thin"
+        + " text-orange-300 break-words my-5"}>
+      {`Note: ${spoilerName} Spoilers Ahead!`}
+    </span>
+    <Paragraph indent={false}>
+      I recommend not clicking this button if you are not caught up
+      {" "}
+      yet.
+    </Paragraph>
+  </>;
+}
+
+export function NsfwWarning () {
+  return <>
+    <span
+      className={"text-center text-lg md:text-2xl font-thin"
+        + " text-red-300 break-words my-5"}>
+      {`Warning: Post Is Not Safe For Work!`}
+    </span>
+    <Paragraph indent={false}>
+      No pornography, but you probably should avoid this at the
+      {" "}
+      office.
+    </Paragraph>
   </>;
 }
 
