@@ -20,8 +20,8 @@ import { useRouter, } from "next/router";
 
 export default function BlogPost ({ post, preview, },) {
   const {
-    title, coverImage, summary, publishDate, notSafeForWork, spoilers,
-    spoilerName,
+    title, coverImage, summary, publishDate, updateDate, notSafeForWork,
+    spoilers, spoilerName,
   } = post;
   const router = useRouter();
   const breadcrumbs = [
@@ -46,11 +46,25 @@ export default function BlogPost ({ post, preview, },) {
     header = <CoverImage asset={coverImage} />;
   }
   const dateOptions = {
-    dateStyle: "short",
+    dateStyle: "long",
     timeStyle: "short",
-    hour12: false,
+    hour12: true,
     timeZone: "America/New_York",
   };
+  let postInfo = <span className="text-sm md:text-base text-white">
+    {`Posted ${new Date(publishDate,).toLocaleString("en-US", dateOptions,)} by Collin Bachman`}
+  </span>;
+  if (updateDate !== null) {
+    postInfo = <>
+      <span className="text-sm md:text-base text-white">
+        {`Posted ${new Date(publishDate,).toLocaleString("en-US", dateOptions,)}`}
+      </span>
+      <br />
+      <span className="text-sm md:text-base text-white">
+        {`Updated ${new Date(updateDate,).toLocaleString("en-US", dateOptions,)} by Collin Bachman`}
+      </span>
+    </>;
+  }
   let content = <RichText content={post.content} indentParagraphs={true} />;
   if (!notSafeForWork && spoilers) {
     content = <>
@@ -130,9 +144,7 @@ export default function BlogPost ({ post, preview, },) {
       <br />
       <PostLede>{summary}</PostLede>
       <br />
-      <span className="text-sm md:text-base text-white">
-        {`${new Date(publishDate,).toLocaleString("en-US", dateOptions,)} by Collin Bachman`}
-      </span>;
+      {postInfo}
       <hr className="mb-3" />
       {content}
     </>
