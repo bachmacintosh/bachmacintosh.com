@@ -53,9 +53,10 @@ export function BlockQuote ({ children, },) {
 }
 
 export function Hyperlink ({ href, external, children, },) {
+  const linkClass = "text-blue-diamond hover:text-white underline";
   if (external === true) {
     return <a
-      className="text-blue-diamond hover:text-white underline"
+      className={linkClass}
       href={href}
       target="_blank"
       rel="nofollow noreferrer noopener">
@@ -63,7 +64,7 @@ export function Hyperlink ({ href, external, children, },) {
     </a>;
   } else {
     return <Link href={href}>
-      <a className="text-blue-diamond hover:text-white underline">
+      <a className={linkClass}>
         {children}
       </a>
     </Link>;
