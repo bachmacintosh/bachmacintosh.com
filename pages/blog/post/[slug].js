@@ -140,14 +140,20 @@ export default function BlogPost ({ post, preview, },) {
         {` `}
         Make sure to publish it before going live.
       </Warning>}
-      {header}
-      <br />
-      {postInfo}
-      <hr className="mb-3" />
-      <PostLede>{summary}</PostLede>
-      <br />
-      <br />
-      {content}
+      <article>
+        <header>
+          {header}
+          <br />
+          {postInfo}
+        </header>
+        <hr className="mb-3" />
+        <main>
+          <PostLede>{summary}</PostLede>
+          <br />
+          <br />
+          {content}
+        </main>
+      </article>
     </>
   );
 }
