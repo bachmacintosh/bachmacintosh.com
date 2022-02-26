@@ -6,7 +6,6 @@ import {
 import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
-import { ExternalLinkIcon, } from "@heroicons/react/outline";
 import React from "react";
 import { SmallButtonLink, } from "../../components/layout/Buttons";
 import { getGtaSheets, } from "../../lib/google/sheets";
@@ -203,12 +202,16 @@ export default function GtaOnline ({ content, },) {
                         <TableRow index={index}>
                           <TableColumn colSpan="2">
                             <SmallButtonLink
-                              href={row.gtaWikiLink}>
-                              GTA Wiki<ExternalLinkIcon className="w-3 h-3"/>
+                              href={row.gtaWikiLink}
+                              external={true}
+                            >
+                              GTA Wiki
                             </SmallButtonLink>
                             <SmallButtonLink
-                              href={row.gtaBaseLink}>
-                              GTA Base<ExternalLinkIcon className="w-3 h-3"/>
+                              href={row.gtaBaseLink}
+                              external={true}
+                            >
+                              GTA Base
                             </SmallButtonLink>
                           </TableColumn>
                         </TableRow>
@@ -249,12 +252,16 @@ export default function GtaOnline ({ content, },) {
                         <TableRow index={index}>
                           <TableColumn colSpan="2">
                             <SmallButtonLink
-                              href={row.gtaWikiLink}>
-                              GTA Wiki<ExternalLinkIcon className="w-3 h-3"/>
+                              href={row.gtaWikiLink}
+                              external={true}
+                            >
+                              GTA Wiki
                             </SmallButtonLink>
                             <SmallButtonLink
-                              href={row.gtaBaseLink}>
-                              GTA Base<ExternalLinkIcon className="w-3 h-3"/>
+                              href={row.gtaBaseLink}
+                              external={true}
+                            >
+                              GTA Base
                             </SmallButtonLink>
                           </TableColumn>
                         </TableRow>

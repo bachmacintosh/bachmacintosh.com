@@ -1,13 +1,28 @@
-export function SmallButtonLink ({ href, children, },) {
-  return (
-    <a className="bg-blue-ultra text-white active:bg-blue-diamond font-bold
-    uppercase px-4 py-2 rounded shadow
-    hover:shadow-md outline-none focus:outline-none mr-1 mb-1
-    ease-linear transition-all duration-150" type="button"
-    href={href} target="_blank" rel="nofollow noreferrer noopener">
-      {children}
-    </a>
-  );
+import { ExternalLinkIcon, } from "@heroicons/react/outline";
+import Link from "next/link";
+
+export function SmallButtonLink ({ href, external, children, },) {
+  const buttonClass = "bg-blue-ultra text-white active:bg-blue-diamond "
+  + "font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md "
+  + "outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all "
+  + "duration-150";
+  if (external === true) {
+    return (
+      <a className={buttonClass} type="button"
+        href={href} target="_blank" rel="nofollow noreferrer noopener">
+        {children}
+        <ExternalLinkIcon className="w-3 h-3"/>
+      </a>
+    );
+  } else {
+    return (
+      <Link href={href}>
+        <a className={buttonClass} type="button">
+          {children}
+        </a>
+      </Link>
+    );
+  }
 }
 
 export function NsfwButton () {
