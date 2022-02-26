@@ -4,10 +4,10 @@ import {
   Paragraph,
 } from "../../components/layout/Typography";
 import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
+import { ButtonLink, } from "../../components/layout/Buttons";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
 import React from "react";
-import { SmallButtonLink, } from "../../components/layout/Buttons";
 import { getGtaSheets, } from "../../lib/google/sheets";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
@@ -201,18 +201,18 @@ export default function GtaOnline ({ content, },) {
                         </TableRow>
                         <TableRow index={index}>
                           <TableColumn colSpan="2">
-                            <SmallButtonLink
+                            <ButtonLink
                               href={row.gtaWikiLink}
                               external={true}
                             >
                               GTA Wiki
-                            </SmallButtonLink>
-                            <SmallButtonLink
+                            </ButtonLink>
+                            <ButtonLink
                               href={row.gtaBaseLink}
                               external={true}
                             >
                               GTA Base
-                            </SmallButtonLink>
+                            </ButtonLink>
                           </TableColumn>
                         </TableRow>
                       </React.Fragment>;
@@ -251,18 +251,18 @@ export default function GtaOnline ({ content, },) {
                         </TableRow>
                         <TableRow index={index}>
                           <TableColumn colSpan="2">
-                            <SmallButtonLink
+                            <ButtonLink
                               href={row.gtaWikiLink}
                               external={true}
                             >
                               GTA Wiki
-                            </SmallButtonLink>
-                            <SmallButtonLink
+                            </ButtonLink>
+                            <ButtonLink
                               href={row.gtaBaseLink}
                               external={true}
                             >
                               GTA Base
-                            </SmallButtonLink>
+                            </ButtonLink>
                           </TableColumn>
                         </TableRow>
                       </React.Fragment>;

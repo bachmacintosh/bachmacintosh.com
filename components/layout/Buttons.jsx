@@ -1,7 +1,7 @@
 import { ExternalLinkIcon, } from "@heroicons/react/outline";
 import Link from "next/link";
 
-export function SmallButtonLink ({ href, external, children, },) {
+export function ButtonLink ({ href, external, children, },) {
   const buttonClass = "bg-blue-ultra text-white active:bg-blue-diamond "
   + "font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md "
   + "outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all "
