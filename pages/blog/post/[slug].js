@@ -142,10 +142,11 @@ export default function BlogPost ({ post, preview, },) {
       </Warning>}
       {header}
       <br />
-      <PostLede>{summary}</PostLede>
-      <br />
       {postInfo}
       <hr className="mb-3" />
+      <PostLede>{summary}</PostLede>
+      <br />
+      <br />
       {content}
     </>
   );
