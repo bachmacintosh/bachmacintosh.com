@@ -13,11 +13,12 @@ import {
 } from "../../../lib/contentful/blogpost";
 import CoverImage from "../../../components/contentful/CoverImage";
 import DefaultLayout from "../../../components/DefaultLayout";
+import PageSelector from "../../../components/blog/PageSelector";
 import { getPageSEO, } from "../../../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Archive ({ posts, },) {
-  const title = "Blog - Archive";
+export default function Archive ({ posts, page, pageCount, },) {
+  const title = `Blog - Archive - Page ${page}`;
   const description = "Collin G. Bachman's blog entries from some time ago...";
   const router = useRouter();
   const breadcrumbs = [
@@ -44,20 +45,19 @@ export default function Archive ({ posts, },) {
       <Heading1>
         Blog - Archive
       </Heading1>
-      <Paragraph indent={false}>
-        This is where I sometimes share my personal thoughts, usually cause I
-        {" "}
-        want to share them with a broader audience than just my friends, or
-        {" "}
-        it is long-form content that isn&apos;t suitable for Facebook or
-        {" "}
-        Twitter. It gets updated when it gets updated; I make zero promises on
-        {" "}
-        that.
-      </Paragraph>
-      <Paragraph indent={false}>
-        This page shows the 10 most recent posts; for more, visit the Archive.
-      </Paragraph>
+      <PageSelector page={page} pageCount={pageCount} scroll={false} />
+      <br />
+      { page === "1"
+        && <Paragraph indent={false}>
+          Sounds like a trip down Memory Lane is in order. Or at the very least,
+          {" "}
+          to look at some older Blog Posts (i.e. older than the 10 most recent
+          {" "}
+          ones). These Archive pages are dynamic as more things get posted,
+          {" "}
+          but these posts themselves? Timeless (and perma-linked).
+        </Paragraph>
+      }
       <hr className="mb-5" />
       {posts && posts.map((post,) => {
         const {
@@ -118,6 +118,8 @@ export default function Archive ({ posts, },) {
           <hr className="my-5" />
         </>;
       },)}
+      <PageSelector page={page} pageCount={pageCount} scroll={true} />
+      <br />
     </>
   );
 }
@@ -132,7 +134,8 @@ Archive.getLayout = function getLayout (page,) {
 
 export async function getStaticProps ({ params, },) {
   const totalPosts = await getTotalBlogPosts();
-  if (parseInt(params.page, 10,) > Math.ceil(totalPosts / 10,) - 1) {
+  const pageCount = Math.ceil(totalPosts / 10,) - 1;
+  if (parseInt(params.page, 10,) > pageCount) {
     return { notFound: true, };
   }
 
@@ -142,7 +145,13 @@ export async function getStaticProps ({ params, },) {
     return { notFound: true, };
   }
   
-  return { props: { posts, }, };
+  return {
+    props: {
+      posts,
+      page: params.page,
+      pageCount,
+    },
+  };
 }
 
 export async function getStaticPaths () {
