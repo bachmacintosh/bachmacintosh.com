@@ -80,13 +80,13 @@ export default function Anime ({ anime, },) {
                   "Progress",
                   "Avg. Score",
                 ]}>
-                {anime.currentlyWatching === null
+                {anime.watching === null
                   ? <TableRow index={1}>
                     <TableColumn colSpan={5}>
                       I am not watching any anime at this time.
                     </TableColumn>
                   </TableRow>
-                  : anime.currentlyWatching.map((item,) => {
+                  : anime.watching.map((item,) => {
                     return (
                       <React.Fragment key={item.media.title.native}>
                         <TableRow index={1}>
@@ -152,31 +152,31 @@ export default function Anime ({ anime, },) {
         {({ open, },) => {
           return <>
             <Disclosure.Button>
-              <Heading3>[{open ? "-" : "+"}] Watch Pool</Heading3>
+              <Heading3>[{open ? "-" : "+"}] On Deck</Heading3>
             </Disclosure.Button>
             <Disclosure.Panel>
               <Paragraph>
-                The Watch Pool holds anime that is &quot;on deck&quot; to watch
+                These anime are &quot;on deck&quot; to watch in the near future.
                 {" "}
-                in the near future. Every time I finish an anime, I roll a
+                Every time I finish an anime, I roll a six-sided die, and the
                 {" "}
-                six-sided die, and the anime in that row number in the Watch
+                anime in that row number in the On Deck List becomes the next
                 {" "}
-                Pool becomes the next anime to watch. I then use my Commit to
+                anime to watch. I then use my Commit to Watch tool to pull a
                 {" "}
-                Watch tool to pull a random anime from my Planning list and move
+                random anime from my Planning list and move it to the Watch
                 {" "}
-                it to the Watch Pool.
+                Pool.
               </Paragraph>
               <Table
                 headers={["Title", "Format", "Length", "Avg. Score",]}>
-                {anime.watchPool === null
+                {anime.onDeck === null
                   ? <TableRow index={1}>
                     <TableColumn colSpan={4}>
                       There is no anime in my Watch Pool at this time.
                     </TableColumn>
                   </TableRow>
-                  : anime.watchPool.map((item,) => {
+                  : anime.onDeck.map((item,) => {
                     return (
                       <React.Fragment key={item.media.title.native}>
                         <TableRow index={1}>
@@ -408,7 +408,7 @@ export default function Anime ({ anime, },) {
         }}
       </Disclosure>
       <hr />
-      <Heading2>Details</Heading2>
+      <Heading2>Other Lists</Heading2>
       <Paragraph>
         These sections contain data from the Completed, Planning, Dropped, and
         {" "}
@@ -436,13 +436,13 @@ export default function Anime ({ anime, },) {
                   "Avg. Score",
                   "My Score",
                 ]}>
-                {anime.details.completed === null
+                {anime.other.completed === null
                   ? <TableRow index={1}>
                     <TableColumn colSpan={5}>
                       There is no anime in the Completed at this time.
                     </TableColumn>
                   </TableRow>
-                  : anime.details.completed.map((item,) => {
+                  : anime.other.completed.map((item,) => {
                     return (
                       <React.Fragment key={item.media.title.native}>
                         <TableRow index={1}>
@@ -518,13 +518,13 @@ export default function Anime ({ anime, },) {
               </Paragraph>
               <Table
                 headers={["Title", "Format", "Length", "Avg. Score",]}>
-                {anime.details.planning === null
+                {anime.other.planning === null
                   ? <TableRow index={1}>
                     <TableColumn colSpan={4}>
                       There is no anime in my Planning list at this time.
                     </TableColumn>
                   </TableRow>
-                  : anime.details.planning.map((item,) => {
+                  : anime.other.planning.map((item,) => {
                     return (
                       <React.Fragment key={item.media.title.native}>
                         <TableRow index={1}>
@@ -601,13 +601,13 @@ export default function Anime ({ anime, },) {
                   "Progress",
                   "Avg. Score",
                 ]}>
-                {anime.details.paused === null
+                {anime.other.paused === null
                   ? <TableRow index={1}>
                     <TableColumn colSpan={5}>
                       I am not watching any anime at this time.
                     </TableColumn>
                   </TableRow>
-                  : anime.details.paused.map((item,) => {
+                  : anime.other.paused.map((item,) => {
                     return (
                       <React.Fragment key={item.media.title.native}>
                         <TableRow index={1}>
@@ -689,13 +689,13 @@ export default function Anime ({ anime, },) {
                   "Progress",
                   "My Score",
                 ]}>
-                {anime.details.dropped === null
+                {anime.other.dropped === null
                   ? <TableRow index={1}>
                     <TableColumn colSpan={5}>
                       I have no dropped anime at this time.
                     </TableColumn>
                   </TableRow>
-                  : anime.details.dropped.map((item,) => {
+                  : anime.other.dropped.map((item,) => {
                     return (
                       <React.Fragment key={item.media.title.native}>
                         <TableRow index={1}>
