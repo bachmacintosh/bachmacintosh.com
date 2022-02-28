@@ -15,7 +15,7 @@ export default function PageSelector ({ page, pageCount, scroll, },) {
   return (
     <div>
       <label htmlFor="page" className="block text-sm font-medium text-white">
-        {`Page (out of ${pageCount})`}
+        {`Page (out of ${pageCount}):`}
       </label>
       <div className="w-20">
         <select
