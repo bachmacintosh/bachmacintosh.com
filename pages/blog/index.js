@@ -7,6 +7,7 @@ import {
   getBlogPagePosts,
   getTotalBlogPosts,
 } from "../../lib/contentful/blogpost";
+import { ButtonLink, } from "../../components/layout/Buttons";
 import DefaultLayout from "../../components/DefaultLayout";
 import PostList from "../../components/blog/PostList";
 import { getPageSEO, } from "../../lib/seo";
@@ -47,12 +48,35 @@ export default function Blog ({ posts, totalPosts, },) {
         that.
       </Paragraph>
       {totalPosts > 10
-        && <Paragraph indent={false}>
-          This page shows the 10 most recent posts; for more, visit the Archive.
-        </Paragraph>
+        && <>
+          <Paragraph indent={false}>
+            This page shows the 10 most recent posts; for more, visit the
+            {" "}
+            Archive.
+          </Paragraph>
+          <ButtonLink href="/blog/archive/1" external={false}>
+            Go to Archive
+          </ButtonLink>
+          <br />
+          <br />
+        </>
       }
       <hr className="mb-5" />
       {posts && <PostList posts={posts} /> }
+      {totalPosts > 10
+        && <>
+          <Paragraph indent={false}>
+            This page shows the 10 most recent posts; for more, visit the
+            {" "}
+            Archive.
+          </Paragraph>
+          <ButtonLink href="/blog/archive/1" external={false}>
+            Go to Archive
+          </ButtonLink>
+          <br />
+          <br />
+        </>
+      }
     </>
   );
 }

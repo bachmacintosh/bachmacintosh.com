@@ -7,6 +7,7 @@ import {
   getBlogArchivePosts,
   getTotalBlogPosts,
 } from "../../../lib/contentful/blogpost";
+import { ButtonLink, } from "../../../components/layout/Buttons";
 import DefaultLayout from "../../../components/DefaultLayout";
 import PageSelector from "../../../components/blog/PageSelector";
 import PostList from "../../../components/blog/PostList";
@@ -41,6 +42,11 @@ export default function Archive ({ posts, page, pageCount, },) {
       <Heading1>
         Blog - Archive
       </Heading1>
+      <ButtonLink href="/blog" external={false}>
+        Back to Recent Posts
+      </ButtonLink>
+      <br />
+      <br />
       <PageSelector page={page} pageCount={pageCount} scroll={false} />
       <br />
       { page === "1"
