@@ -4,11 +4,11 @@ import {
   Hyperlink, Paragraph, TitleLink,
 } from "../../components/layout/Typography";
 import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
+import { getAnime, useCommitToWatch, } from "../../lib/anilist/anime";
 import AniListImage from "../../components/anime/AniListImage";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Disclosure, } from "@headlessui/react";
 import React from "react";
-import { getAnime, } from "../../lib/anilist/anime";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
@@ -43,6 +43,7 @@ export default function Anime ({ anime, },) {
     ONA: "ONA",
     MUSIC: "Music Video",
   };
+  const { commitToWatch, isLoading, isError, } = useCommitToWatch();
   return (
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
@@ -249,63 +250,62 @@ export default function Anime ({ anime, },) {
               </Paragraph>
               <Table
                 headers={["Title", "Format", "Length", "Avg. Score",]}>
-                {anime.commitToWatch === null
-                  ? <TableRow index={1}>
-                    <TableColumn colSpan={4}>
-                      There is no anime in my Planning list at this time.
-                    </TableColumn>
-                  </TableRow>
-                  : anime.commitToWatch.map((item,) => {
-                    return (
-                      <React.Fragment key={item.media.title.native}>
-                        <TableRow index={1}>
-                          <TableColumn colSpan={4}>
-                            <TitleLink href={item.media.siteUrl}
-                              meanings={item.media.title.english === null
-                                ? item.media.title.romaji
-                                : item.media.title.english}>
-                              {item.media.title.native}
-                            </TitleLink>
-                          </TableColumn>
-                        </TableRow>
-                        <TableRow index={1}>
-                          <TableColumn rowSpan={2}>
-                            <AniListImage src={item.media.coverImage.large}
-                              alt={item.media.title.english === null
-                                ? item.media.title.romaji
-                                : item.media.title.english}
-                            />
-                          </TableColumn>
-                          <TableColumn>
-                            <span className="text-sm md:text-base text-white">
-                              {formats[item.media.format]}
-                            </span>
-                          </TableColumn>
-                          <TableColumn>
-                            <span className="text-sm md:text-base text-white">
-                              {item.media.format === "MOVIE"
-                                ? `${item.media.duration} min.`
-                                : `${item.media.duration} min. x ${item.media.episodes} eps.`}
-                            </span>
-                          </TableColumn>
-                          <TableColumn>
-                            <span className="text-sm md:text-base text-white">
-                              {item.media.averageScore / 10}
-                            </span>
-                          </TableColumn>
-                        </TableRow>
-                        <TableRow index={1}>
-                          <TableColumn colSpan={3}>
-                            <p
-                              className="text-sm md:text-base text-white"
-                              dangerouslySetInnerHTML={
-                                { __html: item.media.description, }
-                              } />
-                          </TableColumn>
-                        </TableRow>
-                      </React.Fragment>
-                    );
-                  },)}
+                {!isLoading && !isError
+                  ? <>
+                    <TableRow index={1}>
+                      <TableColumn colSpan={4}>
+                        <TitleLink href={commitToWatch.media.siteUrl}
+                          meanings={commitToWatch.media.title.english === null
+                            ? commitToWatch.media.title.romaji
+                            : commitToWatch.media.title.english}>
+                          {commitToWatch.media.title.native}
+                        </TitleLink>
+                      </TableColumn>
+                    </TableRow>
+                    <TableRow index={1}>
+                      <TableColumn rowSpan={2}>
+                        <AniListImage src={commitToWatch.media.coverImage.large}
+                          alt={commitToWatch.media.title.english === null
+                            ? commitToWatch.media.title.romaji
+                            : commitToWatch.media.title.english}
+                        />
+                      </TableColumn>
+                      <TableColumn>
+                        <span className="text-sm md:text-base text-white">
+                          {formats[commitToWatch.media.format]}
+                        </span>
+                      </TableColumn>
+                      <TableColumn>
+                        <span className="text-sm md:text-base text-white">
+                          {commitToWatch.media.format === "MOVIE"
+                            ? `${commitToWatch.media.duration} min.`
+                            : `${commitToWatch.media.duration} min. x ${commitToWatch.media.episodes} eps.`}
+                        </span>
+                      </TableColumn>
+                      <TableColumn>
+                        <span className="text-sm md:text-base text-white">
+                          {commitToWatch.media.averageScore / 10}
+                        </span>
+                      </TableColumn>
+                    </TableRow>
+                    <TableRow index={1}>
+                      <TableColumn colSpan={3}>
+                        <p
+                          className="text-sm md:text-base text-white"
+                          dangerouslySetInnerHTML={
+                            { __html: commitToWatch.media.description, }
+                          } />
+                      </TableColumn>
+                    </TableRow>
+                  </>
+                  : <>
+                    <TableRow index={1}>
+                      <TableColumn colSpan={6}>
+                        Loading... still loading? This could be an error.
+                      </TableColumn>
+                    </TableRow>
+                  </>
+                }
               </Table>
             </Disclosure.Panel>
           </>;
