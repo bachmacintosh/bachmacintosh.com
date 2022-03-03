@@ -5,7 +5,7 @@ import {
 } from "../../components/layout/Typography";
 import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import AniListImage from "../../components/anime/AniListImage";
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultView from "../../components/views/DefaultView";
 import { Disclosure, } from "@headlessui/react";
 import React from "react";
 import { getAnime, } from "../../lib/anilist/anime";
@@ -760,11 +760,11 @@ export default function Anime ({ anime, },) {
   );
 }
 
-Anime.getLayout = function getLayout (page,) {
+Anime.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
 

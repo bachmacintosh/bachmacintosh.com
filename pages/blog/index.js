@@ -8,7 +8,7 @@ import {
   getTotalBlogPosts,
 } from "../../lib/contentful/blogpost";
 import { ButtonLink, } from "../../components/layout/Buttons";
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultView from "../../components/views/DefaultView";
 import PostList from "../../components/blog/PostList";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
@@ -81,11 +81,11 @@ export default function Blog ({ posts, totalPosts, },) {
   );
 }
 
-Blog.getLayout = function getLayout (page,) {
+Blog.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
 

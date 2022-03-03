@@ -5,7 +5,7 @@ import {
 } from "../../components/layout/Typography";
 import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
 import { ButtonLink, } from "../../components/layout/Buttons";
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultView from "../../components/views/DefaultView";
 import { Disclosure, } from "@headlessui/react";
 import React from "react";
 import { getGtaSheets, } from "../../lib/google/sheets";
@@ -317,11 +317,11 @@ export default function GtaOnline ({ content, },) {
   );
 }
 
-GtaOnline.getLayout = function getLayout (page,) {
+GtaOnline.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
 

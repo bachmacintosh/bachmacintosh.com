@@ -1,5 +1,5 @@
 import { Heading1, Paragraph, } from "../components/layout/Typography";
-import DefaultLayout from "../components/DefaultLayout";
+import DefaultView from "../components/views/DefaultView";
 import { NextSeo, } from "next-seo";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
@@ -19,10 +19,10 @@ export default function Home () {
   );
 }
 
-Home.getLayout = function getLayout (page,) {
+Home.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
