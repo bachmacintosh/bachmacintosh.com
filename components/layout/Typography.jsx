@@ -45,6 +45,15 @@ export function Paragraph ({ indent, children, },) {
   return <p className={`text-sm md:text-base text-white mb-4 ${indent ? "indent-6" : ""}`}>{children}</p>;
 }
 
+export function Japanese ({ children, },) {
+  return <p
+    className="text-sm md:text-base text-white mb-4"
+    style={{ fontFamily: "Noto Sans JP", }}
+  >
+    {children}
+  </p>;
+}
+
 export function BlockQuote ({ children, },) {
   return <blockquote
     className="border-l-8 border-blue-mariner pl-2">
