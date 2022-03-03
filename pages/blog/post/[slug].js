@@ -10,7 +10,7 @@ import {
   getPreviewBlogPost,
 } from "../../../lib/contentful/blogpost";
 import CoverImage from "../../../components/contentful/CoverImage";
-import DefaultLayout from "../../../components/DefaultLayout";
+import DefaultView from "../../../components/views/DefaultView";
 import { Disclosure, } from "@headlessui/react";
 import React from "react";
 import RichText from "../../../components/contentful/RichText";
@@ -158,11 +158,11 @@ export default function BlogPost ({ post, preview, },) {
   );
 }
 
-BlogPost.getLayout = function getLayout (page,) {
+BlogPost.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
 

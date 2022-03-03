@@ -1,6 +1,6 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
 import { getPage, getPageSlugs, getPreviewPage, } from "../lib/contentful/page";
-import DefaultLayout from "../components/DefaultLayout";
+import DefaultView from "../components/views/DefaultView";
 import React from "react";
 import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
@@ -37,11 +37,11 @@ export default function Page ({ page, preview, },) {
   );
 }
 
-Page.getLayout = function getLayout (page,) {
+Page.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
 

@@ -8,7 +8,7 @@ import {
   getTotalBlogPosts,
 } from "../../../lib/contentful/blogpost";
 import { ButtonLink, } from "../../../components/layout/Buttons";
-import DefaultLayout from "../../../components/DefaultLayout";
+import DefaultView from "../../../components/views/DefaultView";
 import PageSelector from "../../../components/blog/PageSelector";
 import PostList from "../../../components/blog/PostList";
 import { getPageSEO, } from "../../../lib/seo";
@@ -68,11 +68,11 @@ export default function Archive ({ posts, page, pageCount, },) {
   );
 }
 
-Archive.getLayout = function getLayout (page,) {
+Archive.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
 

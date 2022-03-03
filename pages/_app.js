@@ -3,10 +3,10 @@ import { DefaultSeo, } from "next-seo";
 import { getDefaultSeo, } from "../lib/seo";
 
 function MyApp ({ Component, pageProps, },) {
-  const getLayout = Component.getLayout || ((page,) => {
+  const getView = Component.getView || ((page,) => {
     return page;
   });
-  return getLayout(
+  return getView(
     <>
       <DefaultSeo {...getDefaultSeo()} />
       <Component {...pageProps} />
