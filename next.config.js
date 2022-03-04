@@ -4,6 +4,8 @@ const dateOptions = {
   hour12: true,
   timeZone: "America/New_York",
 };
+const isDeployPreview = process.env.NETLIFY
+  && process.env.CONTEXT === "deploy-preview";
 module.exports = {
   reactStrictMode: true,
   swcMinify: true,
@@ -12,5 +14,6 @@ module.exports = {
     baseUrl: "https://bachmacintosh.com",
     version: "0.4 Beta",
     buildTime: new Date().toLocaleString("en-US", dateOptions,),
+    isDeployPreview,
   },
 };
