@@ -5,14 +5,20 @@ import {
 import HomeView from "../components/views/HomeView";
 import { NextSeo, } from "next-seo";
 import PostList from "../components/blog/PostList";
+import YouTube from "react-youtube";
 import { getHomePageBlogPosts, } from "../lib/contentful/blogpost";
+import { getLatestYouTubeVideo, } from "../lib/google/youtube";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Home ({ posts, },) {
+export default function Home ({ posts, youTubeVideoId, },) {
   const title = "Home";
   const description = "The Website of Collin G. Bachman";
   const router = useRouter();
+  const playerOptions = {
+    width: "400",
+    height: "225",
+  };
   return (
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
@@ -25,6 +31,10 @@ export default function Home ({ posts, },) {
       <Paragraph>
         Mostly just gaming videos, but maybe some music in the future...
       </Paragraph>
+      <YouTube
+        videoId={youTubeVideoId}
+        opts={playerOptions}
+      />
       <Heading1>We Play GTA Online</Heading1>
       <Paragraph>Party Cannon -- Making Los Santos better since 2016</Paragraph>
       <Heading1>We Watch Anime</Heading1>
@@ -45,10 +55,11 @@ Home.getView = function getView (page,) {
 
 export async function getStaticProps () {
   const posts = await getHomePageBlogPosts();
-
-  if (typeof posts === "undefined") {
-    return { props: { posts: null, }, };
-  }
+  const youTubeVideoId = await getLatestYouTubeVideo();
+  const props = {
+    posts,
+    youTubeVideoId,
+  };
   
-  return { props: { posts, }, };
+  return { props, };
 }
