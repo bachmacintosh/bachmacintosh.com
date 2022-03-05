@@ -23,10 +23,21 @@ export default function Home ({ posts, youTubeVideoId, },) {
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
       <Heading1>We Write Blogs</Heading1>
-      <Paragraph>
-        Here&apos;s the latest one.
-      </Paragraph>
-      { posts && <PostList posts={posts} /> }
+      { posts.length > 0
+        && <>
+          <Paragraph>
+            Here&apos;s the latest one.
+          </Paragraph>
+          <PostList posts={posts} />
+        </>
+      }
+      { posts.length === 0
+        && <>
+          <Paragraph>
+            ...I mean there&apos;s nothing there yet, but there will be soon.
+          </Paragraph>
+        </>
+      }
       <Heading1>We Make Videos</Heading1>
       <Paragraph>
         Mostly just gaming videos, but maybe some music in the future...
@@ -54,7 +65,10 @@ Home.getView = function getView (page,) {
 };
 
 export async function getStaticProps () {
-  const posts = await getHomePageBlogPosts();
+  let posts = await getHomePageBlogPosts();
+  if (typeof posts === "undefined") {
+    posts = null;
+  }
   const youTubeVideoId = await getLatestYouTubeVideo();
   const props = {
     posts,

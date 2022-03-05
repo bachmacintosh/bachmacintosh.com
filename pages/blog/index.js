@@ -1,6 +1,6 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
 import {
-  Heading1,
+  Heading1, Heading2,
   Paragraph,
 } from "../../components/layout/Typography";
 import {
@@ -63,6 +63,14 @@ export default function Blog ({ posts, totalPosts, },) {
       }
       <hr className="mb-5" />
       {posts && <PostList posts={posts} /> }
+      {posts.length === 0
+        && <>
+          <Heading2>No Posts Yet!</Heading2>
+          <Paragraph>
+            Don&apos;t worry though, they&apos;ll be here soon enough...
+          </Paragraph>
+        </>
+      }
       {totalPosts > 10
         && <>
           <Paragraph indent={false}>
