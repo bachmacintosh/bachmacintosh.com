@@ -4,11 +4,10 @@ import {
   Paragraph,
 } from "../../components/layout/Typography";
 import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
-import DefaultLayout from "../../components/DefaultLayout";
+import { ButtonLink, } from "../../components/layout/Buttons";
+import DefaultView from "../../components/views/DefaultView";
 import { Disclosure, } from "@headlessui/react";
-import { ExternalLinkIcon, } from "@heroicons/react/outline";
 import React from "react";
-import { SmallButtonLink, } from "../../components/layout/Buttons";
 import { getGtaSheets, } from "../../lib/google/sheets";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
@@ -202,14 +201,18 @@ export default function GtaOnline ({ content, },) {
                         </TableRow>
                         <TableRow index={index}>
                           <TableColumn colSpan="2">
-                            <SmallButtonLink
-                              href={row.gtaWikiLink}>
-                              GTA Wiki<ExternalLinkIcon className="w-3 h-3"/>
-                            </SmallButtonLink>
-                            <SmallButtonLink
-                              href={row.gtaBaseLink}>
-                              GTA Base<ExternalLinkIcon className="w-3 h-3"/>
-                            </SmallButtonLink>
+                            <ButtonLink
+                              href={row.gtaWikiLink}
+                              external={true}
+                            >
+                              GTA Wiki
+                            </ButtonLink>
+                            <ButtonLink
+                              href={row.gtaBaseLink}
+                              external={true}
+                            >
+                              GTA Base
+                            </ButtonLink>
                           </TableColumn>
                         </TableRow>
                       </React.Fragment>;
@@ -248,14 +251,18 @@ export default function GtaOnline ({ content, },) {
                         </TableRow>
                         <TableRow index={index}>
                           <TableColumn colSpan="2">
-                            <SmallButtonLink
-                              href={row.gtaWikiLink}>
-                              GTA Wiki<ExternalLinkIcon className="w-3 h-3"/>
-                            </SmallButtonLink>
-                            <SmallButtonLink
-                              href={row.gtaBaseLink}>
-                              GTA Base<ExternalLinkIcon className="w-3 h-3"/>
-                            </SmallButtonLink>
+                            <ButtonLink
+                              href={row.gtaWikiLink}
+                              external={true}
+                            >
+                              GTA Wiki
+                            </ButtonLink>
+                            <ButtonLink
+                              href={row.gtaBaseLink}
+                              external={true}
+                            >
+                              GTA Base
+                            </ButtonLink>
                           </TableColumn>
                         </TableRow>
                       </React.Fragment>;
@@ -310,11 +317,11 @@ export default function GtaOnline ({ content, },) {
   );
 }
 
-GtaOnline.getLayout = function getLayout (page,) {
+GtaOnline.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
 

@@ -1,19 +1,19 @@
 import {
-  getPreviewPage,
-  getPreviewPageSlugs,
-} from "../../../lib/contentful/page";
+  getPreviewBlogPost,
+  getPreviewBlogPostSlugs,
+} from "../../../lib/contentful/blogpost";
 
-export default async function page (req, res,) {
+export default async function blogPost (req, res,) {
   if (req.query.secret !== process.env.CONTENTFUL_PREVIEW_SECRET
     || !req.query.slug) {
     return res.status(401,).json({ message: "Invalid token", },);
   }
 
-  const slugs = await getPreviewPageSlugs();
+  const slugs = await getPreviewBlogPostSlugs();
   const foundItem = slugs.find(({ slug, },) => {
     return slug === req.query.slug;
   }, );
-  const pageResult = await getPreviewPage(foundItem?.slug,);
+  const pageResult = await getPreviewBlogPost(foundItem?.slug,);
 
   if (!foundItem) {
     return res.status(401,).json({ message: "Invalid slug", },);
@@ -21,7 +21,7 @@ export default async function page (req, res,) {
 
   res.setPreviewData({},);
 
-  const url = `/${pageResult.slug}`;
+  const url = `/blog/post/${pageResult.slug}`;
 
   res.write(
     `<!DOCTYPE html><html lang="en">

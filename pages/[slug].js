@@ -1,6 +1,6 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
 import { getPage, getPageSlugs, getPreviewPage, } from "../lib/contentful/page";
-import DefaultLayout from "../components/DefaultLayout";
+import DefaultView from "../components/views/DefaultView";
 import React from "react";
 import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
@@ -25,7 +25,7 @@ export default function Page ({ page, preview, },) {
   const router = useRouter();
   return (
     <>
-      <NextSeo {...getPageSEO(title, description, router,)} />
+      <NextSeo {...getPageSEO(title, description, router, preview,)} />
       <BreadcrumbJsonLd itemListElements={breadcrumbs} />
       {preview && <Warning title="Preview Mode">
         This content has not been published yet.
@@ -37,11 +37,11 @@ export default function Page ({ page, preview, },) {
   );
 }
 
-Page.getLayout = function getLayout (page,) {
+Page.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
 
@@ -51,6 +51,10 @@ export async function getStaticProps ({ params, preview = false, },) {
     page = await getPreviewPage(params.slug,);
   } else {
     page = await getPage(params.slug,);
+  }
+
+  if (typeof page === "undefined") {
+    return { notFound: true, };
   }
 
   return {
@@ -68,6 +72,6 @@ export async function getStaticPaths () {
     paths: slugs?.map(({ slug, },) => {
       return `/${slug}`;
     },) ?? [],
-    fallback: false,
+    fallback: "blocking",
   };
 }

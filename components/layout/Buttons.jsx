@@ -1,11 +1,119 @@
-export function SmallButtonLink ({ href, children, },) {
+import { ExternalLinkIcon, } from "@heroicons/react/outline";
+import Link from "next/link";
+
+export function ButtonLink ({ href, external, children, },) {
+  const buttonClass = "mx-1 my-4 w-full inline-flex items-center "
+    + "justify-center px-5 py-3 border border-transparent text-base "
+    + "font-medium rounded-md text-white bg-blue-ultra md:w-auto";
+  if (external === true) {
+    return (
+      <a className={buttonClass} type="button"
+        href={href} target="_blank" rel="nofollow noreferrer noopener">
+        {children}
+        <ExternalLinkIcon className="w-3 h-3"/>
+      </a>
+    );
+  } else {
+    return (
+      <Link href={href}>
+        <a className={buttonClass} type="button">
+          {children}
+        </a>
+      </Link>
+    );
+  }
+}
+
+export function NsfwButton () {
   return (
-    <a className="bg-blue-ultra text-white active:bg-blue-diamond font-bold
-    uppercase px-4 py-2 rounded shadow
-    hover:shadow-md outline-none focus:outline-none mr-1 mb-1
-    ease-linear transition-all duration-150" type="button"
-    href={href} target="_blank" rel="nofollow noreferrer noopener">
-      {children}
-    </a>
+    <button className={`mx-1 my-4 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 md:w-auto`}>
+      Show NSFW Content
+    </button>
+  );
+}
+
+export function NsfwButtonLink ({ href, external, children, },) {
+  const buttonClass = "mx-1 my-4 w-full inline-flex items-center "
+    + "justify-center px-5 py-3 border border-transparent text-base "
+    + "font-medium rounded-md text-white bg-red-600 md:w-auto";
+  if (external === true) {
+    return (
+      <a className={buttonClass} type="button"
+        href={href} target="_blank" rel="nofollow noreferrer noopener">
+        {children}
+        <ExternalLinkIcon className="w-3 h-3"/>
+      </a>
+    );
+  } else {
+    return (
+      <Link href={href}>
+        <a className={buttonClass} type="button">
+          {children}
+        </a>
+      </Link>
+    );
+  }
+}
+
+export function SpoilerButton () {
+  return (
+    <button className={`mx-1 my-4 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-600 md:w-auto`}>
+      Show Spoiler Content
+    </button>
+  );
+}
+
+export function SpoilerButtonLink ({ href, external, children, },) {
+  const buttonClass = "mx-1 my-4 w-full inline-flex items-center "
+    + "justify-center px-5 py-3 border border-transparent text-base "
+    + "font-medium rounded-md text-white bg-gray-600 md:w-auto";
+  if (external === true) {
+    return (
+      <a className={buttonClass} type="button"
+        href={href} target="_blank" rel="nofollow noreferrer noopener">
+        {children}
+        <ExternalLinkIcon className="w-3 h-3"/>
+      </a>
+    );
+  } else {
+    return (
+      <Link href={href}>
+        <a className={buttonClass} type="button">
+          {children}
+        </a>
+      </Link>
+    );
+  }
+}
+
+export function NsfwSpoilerButtonLink ({ href, external, children, },) {
+  const buttonClass = "mx-1 my-4 w-full inline-flex items-center "
+    + "justify-center px-5 py-3 border border-transparent text-base "
+    + "font-medium rounded-md text-white bg-red-400 md:w-auto";
+  if (external === true) {
+    return (
+      <a className={buttonClass} type="button"
+        href={href} target="_blank" rel="nofollow noreferrer noopener">
+        {children}
+        <ExternalLinkIcon className="w-3 h-3"/>
+      </a>
+    );
+  } else {
+    return (
+      <Link href={href}>
+        <a className={buttonClass} type="button">
+          {children}
+        </a>
+      </Link>
+    );
+  }
+}
+
+export function NsfwSpoilerButton () {
+  return (
+    <button className={`mx-1 my-4 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-400 md:w-auto`}
+    >
+      Show NSFW Spoiler Content
+    </button>
   );
 }

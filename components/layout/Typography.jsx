@@ -1,9 +1,21 @@
-import { createRef, useState, } from "react";
+import React, { createRef, useState, } from "react";
 import { ExternalLinkIcon, } from "@heroicons/react/outline";
 import Link from "next/link";
 import { createPopper, } from "@popperjs/core";
 
 const commonHeadingClasses = "text-blue-diamond font-bold break-words my-5";
+
+export function PostTitle ({ children, },) {
+  return <span className={`mx-auto text-2xl md:text-4xl ${commonHeadingClasses}`}>
+    {children}
+  </span>;
+}
+
+export function PostLede ({ children, },) {
+  return <span className={`text-center text-lg md:text-2xl font-thin ${commonHeadingClasses}`}>
+    {children}
+  </span>;
+}
 
 export function Heading1 ({ children, },) {
   return <h1 className={`text-4xl md:text-6xl ${commonHeadingClasses}`}>{children}</h1>;
@@ -33,6 +45,15 @@ export function Paragraph ({ indent, children, },) {
   return <p className={`text-sm md:text-base text-white mb-4 ${indent ? "indent-6" : ""}`}>{children}</p>;
 }
 
+export function Japanese ({ children, },) {
+  return <p
+    className="text-sm md:text-base text-white mb-4"
+    style={{ fontFamily: "Noto Sans JP", }}
+  >
+    {children}
+  </p>;
+}
+
 export function BlockQuote ({ children, },) {
   return <blockquote
     className="border-l-8 border-blue-mariner pl-2">
@@ -41,9 +62,10 @@ export function BlockQuote ({ children, },) {
 }
 
 export function Hyperlink ({ href, external, children, },) {
+  const linkClass = "text-blue-diamond hover:text-white underline";
   if (external === true) {
     return <a
-      className="text-blue-diamond hover:text-white underline"
+      className={linkClass}
       href={href}
       target="_blank"
       rel="nofollow noreferrer noopener">
@@ -51,7 +73,7 @@ export function Hyperlink ({ href, external, children, },) {
     </a>;
   } else {
     return <Link href={href}>
-      <a className="text-blue-diamond hover:text-white underline">
+      <a className={linkClass}>
         {children}
       </a>
     </Link>;
@@ -97,6 +119,36 @@ export function TitleLink ({ href, meanings, children, },) {
         </div>
       </div>
     </div>
+  </>;
+}
+
+export function SpoilerWarning ({ spoilerName, },) {
+  return <>
+    <span
+      className={"text-center text-lg md:text-2xl font-thin"
+        + " text-orange-300 break-words my-5"}>
+      {`Note: ${spoilerName} Spoilers Ahead!`}
+    </span>
+    <Paragraph indent={false}>
+      I recommend not clicking this button if you are not caught up
+      {" "}
+      yet.
+    </Paragraph>
+  </>;
+}
+
+export function NsfwWarning () {
+  return <>
+    <span
+      className={"text-center text-lg md:text-2xl font-thin"
+        + " text-red-300 break-words my-5"}>
+      {`Warning: Post Is Not Safe For Work!`}
+    </span>
+    <Paragraph indent={false}>
+      No pornography, but you probably should avoid this at the
+      {" "}
+      office.
+    </Paragraph>
   </>;
 }
 

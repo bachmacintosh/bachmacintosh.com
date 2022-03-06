@@ -3,7 +3,7 @@ import {
   Heading1, Heading2, Hyperlink,
   Paragraph,
 } from "../../components/layout/Typography";
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultView from "../../components/views/DefaultView";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
@@ -71,10 +71,10 @@ export default function Jpn () {
   );
 }
 
-Jpn.getLayout = function getLayout (page,) {
+Jpn.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };

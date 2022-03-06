@@ -26,5 +26,8 @@ module.exports = {
     },
     fontFamily: { sans: ["Noto Sans", "Arial", "sans-serif",], },
   },
-  plugins: [require("@tailwindcss/aspect-ratio",),],
+  plugins: [
+    require("@tailwindcss/aspect-ratio",),
+    require("@tailwindcss/forms",),
+  ],
 };

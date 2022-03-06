@@ -4,7 +4,7 @@ import {
   Heading3, Hyperlink, Paragraph,
 } from "../../components/layout/Typography";
 import { Table, TableColumn, TableRow, } from "../../components/layout/Table";
-import DefaultLayout from "../../components/DefaultLayout";
+import DefaultView from "../../components/views/DefaultView";
 import { Disclosure, } from "@headlessui/react";
 import FlexWrapper from "../../components/layout/FlexWrapper";
 import ProgressBar from "../../components/layout/ProgressBar";
@@ -91,6 +91,9 @@ export default function Wanikani ({ content, },) {
           </TableRow>;
         },)}
       </Table>
+      <Paragraph indent={false}>
+        *Items that are at SRS Stage Guru or higher
+      </Paragraph>
       <hr />
       <Disclosure>
         {({ open, },) => {
@@ -639,11 +642,11 @@ export default function Wanikani ({ content, },) {
   );
 }
 
-Wanikani.getLayout = function getLayout (page,) {
+Wanikani.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
 

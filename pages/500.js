@@ -1,5 +1,5 @@
 import { ErrorCode, Paragraph, } from "../components/layout/Typography";
-import DefaultLayout from "../components/DefaultLayout";
+import DefaultView from "../components/views/DefaultView";
 import { NextSeo, } from "next-seo";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
@@ -25,10 +25,10 @@ export default function Custom500 () {
   );
 }
 
-Custom500.getLayout = function getLayout (page,) {
+Custom500.getView = function getView (page,) {
   return (
-    <DefaultLayout>
+    <DefaultView>
       {page}
-    </DefaultLayout>
+    </DefaultView>
   );
 };
