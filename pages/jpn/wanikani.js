@@ -91,6 +91,9 @@ export default function Wanikani ({ content, },) {
           </TableRow>;
         },)}
       </Table>
+      <Paragraph indent={false}>
+        *Items that are at SRS Stage Guru or higher
+      </Paragraph>
       <hr />
       <Disclosure>
         {({ open, },) => {
