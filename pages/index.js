@@ -23,7 +23,7 @@ export default function Home ({ posts, youTubeVideoId, },) {
   return (
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
-      <Heading1>We Write Blogs</Heading1>
+      <Heading1>I Write Blogs</Heading1>
       { posts.length > 0
         && <>
           <Paragraph>
@@ -44,7 +44,7 @@ export default function Home ({ posts, youTubeVideoId, },) {
           </Paragraph>
         </>
       }
-      <Heading1>We Make Videos</Heading1>
+      <Heading1>I Make Videos</Heading1>
       <Paragraph>
         Mostly just gaming videos, but maybe some music in the future...
       </Paragraph>
@@ -57,7 +57,7 @@ export default function Home ({ posts, youTubeVideoId, },) {
         external={true}>
         More on YouTube
       </ButtonLink>
-      <Heading1>We Play GTA Online</Heading1>
+      <Heading1>I Play GTA Online</Heading1>
       <Paragraph>
         Party Cannon Inc. &mdash; Making Los Santos, San Andreas a better place
         {" "}
@@ -68,7 +68,7 @@ export default function Home ({ posts, youTubeVideoId, },) {
         external={false}>
         GTA Stats
       </ButtonLink>
-      <Heading1>We Like Japan</Heading1>
+      <Heading1>I Like Japan</Heading1>
       <Paragraph>Whether it&apos;s the culture or the language...</Paragraph>
       <ButtonLink
         href="/jpn/anime"
