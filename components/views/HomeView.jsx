@@ -7,17 +7,16 @@ export default function HomeView ({ children, },) {
       <Navigation />
       <div className="bg-blue-racing">
         <div
-          className="max-w-7xl mx-auto text-center py-16 px-4 md:py-20 sm:px-6
-          lg:px-8">
-          <span className="block text-3xl font-extrabold md:text-4xl
+          className="max-w-7xl mx-auto text-center pt-12 md:pt-16 pb-4 px-4
+          sm:px-6 lg:px-8">
+          <span className="hidden md:block text-3xl font-extrabold md:text-4xl
           text-blue-diamond uppercase">
             BachMacintosh
           </span>
-          <span className="block text-2xl font-extrabold md:text-3xl
-          text-blue-diamond">
-            (a.k.a Collin G. Bachman)
-          </span>
           <p className="mt-4 text-lg leading-6 text-white">
+            Collin G. Bachman
+          </p>
+          <p className="text-lg leading-6 text-white">
             The Guy With the White Hair -- Musician, Gamer, Writer
           </p>
         </div>
