@@ -25,7 +25,7 @@ export default function Page ({ page, preview, },) {
   const router = useRouter();
   return (
     <>
-      <NextSeo {...getPageSEO(title, description, router,)} />
+      <NextSeo {...getPageSEO(title, description, router, preview,)} />
       <BreadcrumbJsonLd itemListElements={breadcrumbs} />
       {preview && <Warning title="Preview Mode">
         This content has not been published yet.

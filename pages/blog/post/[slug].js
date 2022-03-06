@@ -133,7 +133,7 @@ export default function BlogPost ({ post, preview, },) {
   }
   return (
     <>
-      <NextSeo {...getBlogPostSeo(post, router,)} />
+      <NextSeo {...getBlogPostSeo(post, router, preview,)} />
       <BreadcrumbJsonLd itemListElements={breadcrumbs} />
       {preview && <Warning title="Preview Mode">
         This content has not been published yet.
