@@ -1,7 +1,8 @@
 import {
-  Heading1, Japanese,
+  Heading1,
   Paragraph,
 } from "../components/layout/Typography";
+import { ButtonLink, } from "../components/layout/Buttons";
 import HomeView from "../components/views/HomeView";
 import { NextSeo, } from "next-seo";
 import PostList from "../components/blog/PostList";
@@ -29,6 +30,11 @@ export default function Home ({ posts, youTubeVideoId, },) {
             Here&apos;s the latest one.
           </Paragraph>
           <PostList posts={posts} />
+          <ButtonLink
+            href="/blog"
+            external={false}>
+            More Blog Posts
+          </ButtonLink>
         </>
       }
       { posts.length === 0
@@ -46,12 +52,34 @@ export default function Home ({ posts, youTubeVideoId, },) {
         videoId={youTubeVideoId}
         opts={playerOptions}
       />
+      <ButtonLink
+        href={"https://www.youtube.com/channel/UCBBx2jqpysI7Yte3Lj96iWw"}
+        external={true}>
+        More on YouTube
+      </ButtonLink>
       <Heading1>We Play GTA Online</Heading1>
-      <Paragraph>Party Cannon -- Making Los Santos better since 2016</Paragraph>
-      <Heading1>We Watch Anime</Heading1>
-      <Paragraph>And a lot of it, too.</Paragraph>
-      <Heading1>We Study Japanese</Heading1>
-      <Japanese>重要な日本語で話すのが上手だと思う。</Japanese>
+      <Paragraph>
+        Party Cannon Inc. &mdash; Making Los Santos, San Andreas a better place
+        {" "}
+        (to die) since 2016
+      </Paragraph>
+      <ButtonLink
+        href="/gaming/gta-online"
+        external={false}>
+        GTA Stats
+      </ButtonLink>
+      <Heading1>We Like Japan</Heading1>
+      <Paragraph>Whether it&apos;s the culture or the language...</Paragraph>
+      <ButtonLink
+        href="/jpn/anime"
+        external={false}>
+        Anime Stats
+      </ButtonLink>
+      <ButtonLink
+        href="/jpn/wanikani"
+        external={false}>
+        WaniKani Stats
+      </ButtonLink>
     </>
   );
 }
