@@ -2,11 +2,11 @@
 
 A website that will soon be live at https://bachmacintosh.com
 
-| Item                                                         | Status                                                                                                                                                                                                              |
-|--------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Item                                                         | Status                                                                                                                                                                                                        |
+|--------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [CI](https://en.wikipedia.org/wiki/Continuous_integration)                                                       | [![Tests](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/test_main.yml/badge.svg?branch=main&event=push)](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/test_main.yml) |
-| [CodeQL](https://codeql.github.com/)                         | [![CodeQL](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/codeql-analysis.yml)           |
-| [Netlify](https://www.netlify.com/)                          | (soon)                                                                                                                                                                                                              |
+| [CodeQL](https://codeql.github.com/)                         | [![CodeQL](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/bachmacintosh/bachmacintosh.com/actions/workflows/codeql-analysis.yml)     |
+| [Netlify](https://www.netlify.com/)                          | [![Netlify Status](https://api.netlify.com/api/v1/badges/7ab2190c-7a11-4335-bd35-f6cbb49f1a24/deploy-status)](https://app.netlify.com/sites/bachmacintosh/deploys)                                                                                                                                                                                                              |
 
 ## Development
 
