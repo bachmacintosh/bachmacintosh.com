@@ -48,10 +48,12 @@ export default function Home ({ posts, youTubeVideoId, },) {
       <Paragraph>
         Mostly just gaming videos, but maybe some music in the future...
       </Paragraph>
-      <YouTube
-        videoId={youTubeVideoId}
-        opts={playerOptions}
-      />
+      <div style={{ width: 400, height: 225, }}>
+        <YouTube
+          videoId={youTubeVideoId}
+          opts={playerOptions}
+        />
+      </div>
       <ButtonLink
         href={"https://www.youtube.com/channel/UCBBx2jqpysI7Yte3Lj96iWw"}
         external={true}>
