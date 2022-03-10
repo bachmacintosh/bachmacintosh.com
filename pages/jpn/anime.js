@@ -43,6 +43,7 @@ export default function Anime ({ anime, },) {
     ONA: "ONA",
     MUSIC: "Music Video",
   };
+  const movieStatus = ["Incomplete", "Complete",];
   return (
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
@@ -66,11 +67,11 @@ export default function Anime ({ anime, },) {
         {({ open, },) => {
           return <>
             <Disclosure.Button>
-              <Heading3>[{open ? "-" : "+"}] Currently Watching</Heading3>
+              <Heading3>[{open ? "-" : "+"}] Scheduled Watching</Heading3>
             </Disclosure.Button>
             <Disclosure.Panel>
               <Paragraph>
-                Anime in my (Re)Watching list with 1 or more episodes completed.
+                Anime that has been scheduled for watching sometime this year.
               </Paragraph>
               <Table
                 headers={[
@@ -121,7 +122,10 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.progress} / ${item.media.episodes}`}
+                              {item.media.format === "MOVIE"
+                                ? movieStatus[item.progress]
+                                : `${item.progress} / ${item.media.episodes}`
+                              }
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -156,17 +160,17 @@ export default function Anime ({ anime, },) {
             </Disclosure.Button>
             <Disclosure.Panel>
               <Paragraph>
-                These anime are &quot;on deck&quot; to watch in the near future.
+                These anime are &quot;on deck&quot; to watch this year.
                 {" "}
-                Every time I finish an anime, I roll a six-sided die, and the
+                Twice a night, I roll a six-sided die, and the anime in that
                 {" "}
-                anime in that row number in the On Deck List becomes the next
+                row number in the On Deck List becomes the next anime to watch.
                 {" "}
-                anime to watch. I then use my Commit to Watch tool to pull a
+                I then use my Commit to Watch tool to pull a
                 {" "}
-                random anime from my Planning list and move it to the Watch
+                random anime from my Planning list and move it to the On Deck
                 {" "}
-                Pool.
+                list.
               </Paragraph>
               <Table
                 headers={["Title", "Format", "Length", "Avg. Score",]}>
@@ -412,7 +416,9 @@ export default function Anime ({ anime, },) {
       <Paragraph>
         These sections contain data from the Completed, Planning, Dropped, and
         {" "}
-        Paused anime lists. Just a heads up -- these lists are very long.
+        Paused anime lists. Just a heads up -- these lists are very long, and
+        {" "}
+        may take some time to load.
       </Paragraph>
       <Disclosure>
         {({ open, },) => {
@@ -470,7 +476,9 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.media.duration} min.`}
+                              {item.media.format === "MOVIE"
+                                ? `${item.media.duration} min.`
+                                : `${item.media.duration} min. x ${item.media.episodes} eps.`}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -554,7 +562,9 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.media.duration} min.`}
+                              {item.media.format === "MOVIE"
+                                ? `${item.media.duration} min.`
+                                : `${item.media.duration} min. x ${item.media.episodes} eps.`}
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -635,12 +645,17 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.media.duration} min.`}
+                              {item.media.format === "MOVIE"
+                                ? `${item.media.duration} min.`
+                                : `${item.media.duration} min. x ${item.media.episodes} eps.`}
                             </span>
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.progress} / ${item.media.episodes}`}
+                              {item.media.format === "MOVIE"
+                                ? movieStatus[item.progress]
+                                : `${item.progress} / ${item.media.episodes}`
+                              }
                             </span>
                           </TableColumn>
                           <TableColumn>
@@ -723,12 +738,17 @@ export default function Anime ({ anime, },) {
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.media.duration} min.`}
+                              {item.media.format === "MOVIE"
+                                ? `${item.media.duration} min.`
+                                : `${item.media.duration} min. x ${item.media.episodes} eps.`}
                             </span>
                           </TableColumn>
                           <TableColumn>
                             <span className="text-sm md:text-base text-white">
-                              {`${item.progress} / ${item.media.episodes}`}
+                              {item.media.format === "MOVIE"
+                                ? movieStatus[item.progress]
+                                : `${item.progress} / ${item.media.episodes}`
+                              }
                             </span>
                           </TableColumn>
                           <TableColumn>
