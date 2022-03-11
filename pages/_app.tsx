@@ -6,7 +6,6 @@ import { NextPage, } from "next";
 import { getDefaultSeo, } from "../lib/seo";
 
 type NextPageWithLayout = NextPage & {
-    // eslint-disable-next-line no-unused-vars
     getView?: (page: ReactElement) => ReactNode
 }
 
