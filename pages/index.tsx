@@ -19,7 +19,7 @@ type pageProps = {
     youTubeVideoId: string,
 };
 
-const Home = ({ posts, youTubeVideoId, }: pageProps,) => {
+export default function Home ({ posts, youTubeVideoId, }: pageProps,) {
   const title = "Home";
   const description = "The Website of Collin G. Bachman";
   const router = useRouter();
@@ -93,7 +93,7 @@ const Home = ({ posts, youTubeVideoId, }: pageProps,) => {
       </ButtonLink>
     </>
   );
-};
+}
 
 Home.getView = (page: ReactElement,) => {
   return (
@@ -103,13 +103,8 @@ Home.getView = (page: ReactElement,) => {
   );
 };
 
-export default Home;
-
 export const getStaticProps: GetStaticProps = async () => {
-  let posts = await getHomePageBlogPosts();
-  if (typeof posts === "undefined") {
-    posts = null;
-  }
+  const posts = await getHomePageBlogPosts();
   const youTubeVideoId = await getLatestYouTubeVideo();
   const props = {
     posts,

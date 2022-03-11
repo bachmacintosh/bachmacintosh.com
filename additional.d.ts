@@ -27,6 +27,19 @@ export type ContentfulSlug = {
     slug?: string,
 };
 
+export type ContentfulBlogPost = {
+    title: string,
+    slug: string,
+    publishDate: string,
+    updateDate: string,
+    notSafeForWork: boolean,
+    spoilers: boolean,
+    spoilerName?: string,
+    coverImage?: Asset,
+    summary: string,
+    content: ContentfulRichText,
+};
+
 type ContentfulGraphQLErrorLocation = {
     line: number,
     column: number,
@@ -49,6 +62,10 @@ export type ContentfulGraphQLResponse = {
     data?: {
         pageCollection?: {
             items?: Array<ContentfulPage> | Array<ContentfulSlug>,
+        },
+        blogPostCollection?: {
+            total: number,
+            items?: Array<ContentfulBlogPost> | Array<ContentfulSlug>
         }
     },
     errors?: Array<ContentfulGraphQLError>,
