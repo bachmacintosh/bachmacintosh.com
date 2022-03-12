@@ -1,4 +1,5 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
+import { GetStaticPaths, GetStaticProps, } from "next";
 import {
   Heading1,
   Paragraph,
@@ -8,13 +9,21 @@ import {
   getTotalBlogPosts,
 } from "../../../lib/contentful/blogpost";
 import { ButtonLink, } from "../../../components/layout/Buttons";
+import { ContentfulBlogPost, } from "../../../additional";
 import DefaultView from "../../../components/views/DefaultView";
 import PageSelector from "../../../components/blog/PageSelector";
 import PostList from "../../../components/blog/PostList";
+import { ReactElement, } from "react";
 import { getPageSEO, } from "../../../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Archive ({ posts, page, pageCount, },) {
+type PageProps = {
+  posts: Array<ContentfulBlogPost>,
+  page: string,
+  pageCount: number,
+};
+
+export default function Archive ({ posts, page, pageCount, }: PageProps,) {
   const title = `Blog - Archive - Page ${page}`;
   const description = "Collin G. Bachman's blog entries from some time ago...";
   const router = useRouter();
@@ -68,7 +77,7 @@ export default function Archive ({ posts, page, pageCount, },) {
   );
 }
 
-Archive.getView = function getView (page,) {
+Archive.getView = function getView (page: ReactElement,) {
   return (
     <DefaultView>
       {page}
@@ -76,14 +85,25 @@ Archive.getView = function getView (page,) {
   );
 };
 
-export async function getStaticProps ({ params, },) {
+export const getStaticProps: GetStaticProps = async ({ params, },) => {
   const totalPosts = await getTotalBlogPosts();
-  const pageCount = Math.ceil(totalPosts / 10,) - 1;
-  if (parseInt(params.page, 10,) > pageCount) {
+  let pageCount = 0;
+  if (totalPosts) {
+    pageCount = Math.ceil(totalPosts / 10,) - 1;
+  }
+  let pageNum = 0;
+  if (typeof params !== "undefined"
+      && typeof params.page === "string"
+      && !Array.isArray(params,)
+      && params.page && parseInt(params.page, 10,) > pageCount) {
+    pageNum = parseInt(params.page, 10,);
+  }
+  
+  if (pageNum > pageCount || pageNum === 0) {
     return { notFound: true, };
   }
 
-  const posts = await getBlogArchivePosts(params.page,);
+  const posts = await getBlogArchivePosts(params?.page,);
   
   if (typeof posts === "undefined") {
     return { notFound: true, };
@@ -92,18 +112,18 @@ export async function getStaticProps ({ params, },) {
   return {
     props: {
       posts,
-      page: params.page,
+      page: params?.page,
       pageCount,
     },
   };
-}
+};
 
-export async function getStaticPaths () {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [];
   
   const totalPosts = await getTotalBlogPosts();
   
-  if (totalPosts > 10) {
+  if (totalPosts && totalPosts > 10) {
     const pageCount = Math.ceil(totalPosts / 10,) - 1;
     for (let page = 1; page <= pageCount; page++) {
       paths.push({ params: { page: page.toString(), }, },);
@@ -114,4 +134,4 @@ export async function getStaticPaths () {
     paths,
     fallback: "blocking",
   };
-}
+};
