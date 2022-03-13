@@ -9,12 +9,12 @@ import Warning from "../components/layout/Warning";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-type pageProps = {
+type PageProps = {
   page: ContentfulPage,
   preview: boolean,
 };
 
-export default function Page ({ page, preview, }: pageProps,) {
+export default function Page ({ page, preview, }: PageProps,) {
   const { title, description, } = page;
   const breadcrumbs = [
     {

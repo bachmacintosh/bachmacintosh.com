@@ -14,12 +14,12 @@ import { getLatestYouTubeVideo, } from "../lib/google/youtube";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-type pageProps = {
+type PageProps = {
     posts: Array<object>,
     youTubeVideoId: string,
 };
 
-export default function Home ({ posts, youTubeVideoId, }: pageProps,) {
+export default function Home ({ posts, youTubeVideoId, }: PageProps,) {
   const title = "Home";
   const description = "The Website of Collin G. Bachman";
   const router = useRouter();
