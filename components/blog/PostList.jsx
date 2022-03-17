@@ -10,11 +10,14 @@ export default function PostList ({ posts, },) {
     posts.map((post,) => {
       const {
         coverImage, summary, publishDate, updateDate, slug,
-        notSafeForWork, spoilers, spoilerName,
+        notSafeForWork, spoilers,
       } = post;
       let header = <PostTitle>{post.title}</PostTitle>;
       if (coverImage !== null) {
-        header = <CoverImage asset={coverImage} />;
+        header = <>
+          <CoverImage asset={coverImage} />
+          <PostTitle>{post.title}</PostTitle>
+        </>;
       }
       const dateOptions = {
         dateStyle: "long",
@@ -41,7 +44,7 @@ export default function PostList ({ posts, },) {
       </ButtonLink>;
       if (!notSafeForWork && spoilers) {
         readMore = <SpoilerButtonLink href={`blog/post/${slug}`} external={false}>
-          {`Read More (${spoilerName} SPOILERS)`}
+          {`Read More (SPOILERS)`}
         </SpoilerButtonLink>;
       } else if (notSafeForWork && !spoilers) {
         readMore = <NsfwButtonLink href={`blog/post/${slug}`} external={false}>
@@ -49,7 +52,7 @@ export default function PostList ({ posts, },) {
         </NsfwButtonLink>;
       } else if (notSafeForWork && spoilers) {
         readMore = <NsfwSpoilerButtonLink href={`blog/post/${slug}`} external={false}>
-          {`Read More (NSFW / ${spoilerName} SPOILERS)`}
+          {`Read More (NSFW / SPOILERS)`}
         </NsfwSpoilerButtonLink>;
       }
       return <>

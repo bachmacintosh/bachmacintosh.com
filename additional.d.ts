@@ -5,13 +5,13 @@ export type ContentfulRichText = {
     json: Document,
     links?: {
         entries?: {
-            inline?: Array<Entry>,
-            block?: Array<Entry>,
-            hyperlink?: Array<Entry>,
+            inline?: Entry[],
+            block?: Entry[],
+            hyperlink?: Entry[],
         },
         assets?: {
-            block?: Array<Asset>,
-            hyperlink?: Array<Asset>,
+            block?: Asset[],
+            hyperlink?: Asset[],
         }
     }
 }
@@ -33,8 +33,9 @@ export type ContentfulBlogPost = {
     publishDate: string,
     updateDate: string,
     notSafeForWork: boolean,
+    notSafeForWorkContext: string[],
     spoilers: boolean,
-    spoilerName?: string,
+    spoilerContext: string[],
     coverImage?: Asset,
     summary: string,
     content: ContentfulRichText,
@@ -47,8 +48,8 @@ type ContentfulGraphQLErrorLocation = {
 
 type ContentfulGraphQLError = {
     message: string,
-    location: Array<ContentfulGraphQLErrorLocation>,
-    path: Array<string>,
+    location: ContentfulGraphQLErrorLocation[],
+    path: string[],
     extensions: {
         contentful: {
             code: string,
@@ -61,12 +62,12 @@ type ContentfulGraphQLError = {
 export type ContentfulGraphQLResponse = {
     data?: {
         pageCollection?: {
-            items?: Array<ContentfulPage> | Array<ContentfulSlug>,
+            items?: ContentfulPage[] | ContentfulSlug[],
         },
         blogPostCollection?: {
             total: number,
-            items?: Array<ContentfulBlogPost> | Array<ContentfulSlug>
+            items?: ContentfulBlogPost[] | ContentfulSlug[]
         }
     },
-    errors?: Array<ContentfulGraphQLError>,
+    errors?: ContentfulGraphQLError[],
 }

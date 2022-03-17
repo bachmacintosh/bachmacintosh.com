@@ -3,6 +3,7 @@ import {
   Paragraph,
 } from "../components/layout/Typography";
 import { ButtonLink, } from "../components/layout/Buttons";
+import { ContentfulBlogPost, } from "../additional";
 import { GetStaticProps, } from "next";
 import HomeView from "../components/views/HomeView";
 import { NextSeo, } from "next-seo";
@@ -15,7 +16,7 @@ import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
 type PageProps = {
-    posts: Array<object>,
+    posts: ContentfulBlogPost[],
     youTubeVideoId: string,
 };
 

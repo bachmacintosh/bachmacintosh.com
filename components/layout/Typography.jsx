@@ -122,42 +122,52 @@ export function TitleLink ({ href, meanings, children, },) {
   </>;
 }
 
-export function SpoilerWarning ({ spoilerName, },) {
+export function SpoilerWarning ({ spoilerContext, },) {
   return <>
     <span
       className={"text-center text-lg md:text-2xl font-thin"
         + " text-orange-300 break-words my-5"}>
-      {`Note: ${spoilerName} Spoilers Ahead!`}
+      Spoilers Ahead!
     </span>
     <Paragraph indent={false}>
-      I recommend not clicking this button if you are not caught up
-      {" "}
-      yet.
+      This post contains spoilers for the following media:
     </Paragraph>
+    <UnorderedList>
+      {spoilerContext.map((spoilerName,) => {
+        return <ListItem key={spoilerName}>{spoilerName}</ListItem>;
+      },)}
+    </UnorderedList>
   </>;
 }
 
-export function NsfwWarning () {
+export function NsfwWarning ( { notSafeForWorkContext, }, ) {
   return <>
     <span
       className={"text-center text-lg md:text-2xl font-thin"
         + " text-red-300 break-words my-5"}>
-      {`Warning: Post Is Not Safe For Work!`}
+      Warning: Post Is Not Safe For Work
     </span>
     <Paragraph indent={false}>
-      No pornography, but you probably should avoid this at the
+      This post contains the following content that may be obscene and/or
       {" "}
-      office.
+      disturbing to some viewers and/or in some settings:
     </Paragraph>
+    <UnorderedList>
+      {notSafeForWorkContext.map((notSafeForWorkItem,) => {
+        return <ListItem key={notSafeForWorkItem}>
+          {notSafeForWorkItem}
+        </ListItem>;
+      },)}
+    </UnorderedList>
   </>;
 }
 
 export function UnorderedList ({ children, },) {
-  return <ul className="list-disc text-white ml-11">{children}</ul>;
+  return <ul className="list-disc text-white ml-11 mb-4">{children}</ul>;
 }
 
 export function OrderedList ({ children, },) {
-  return <ol className="list-decimal text-white ml-6">{children}</ol>;
+  return <ol className="list-decimal text-white ml-11 mb-4">{children}</ol>;
 }
 
 export function ListItem ({ children, },) {
