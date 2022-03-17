@@ -18,7 +18,7 @@ import { getPageSEO, } from "../../../lib/seo";
 import { useRouter, } from "next/router";
 
 type PageProps = {
-  posts: Array<ContentfulBlogPost>,
+  posts: ContentfulBlogPost[],
   page: string,
   pageCount: number,
 };

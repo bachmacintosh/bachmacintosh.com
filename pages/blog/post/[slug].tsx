@@ -36,7 +36,7 @@ type DateOptions = {
 export default function BlogPost ({ post, preview, }: PageProps,) {
   const {
     title, coverImage, summary, publishDate, updateDate, notSafeForWork,
-    spoilers, spoilerName,
+    notSafeForWorkContext, spoilers, spoilerContext,
   } = post;
   const router = useRouter();
   const breadcrumbs = [
@@ -58,7 +58,10 @@ export default function BlogPost ({ post, preview, }: PageProps,) {
   ];
   let header = <PostTitle>{title}</PostTitle>;
   if (coverImage !== null) {
-    header = <CoverImage asset={coverImage} />;
+    header = <>
+      <CoverImage asset={coverImage} />
+      <PostTitle>{title}</PostTitle>
+    </>;
   }
   const dateOptions: DateOptions = {
     dateStyle: "long",
@@ -88,8 +91,8 @@ export default function BlogPost ({ post, preview, }: PageProps,) {
           return <>
             {!open
               && <>
-                <SpoilerWarning spoilerName={spoilerName} />
-                <Disclosure.Button>
+                <SpoilerWarning spoilerContext={spoilerContext} />
+                <Disclosure.Button as="div">
                   <SpoilerButton />
                 </Disclosure.Button>
               </>
@@ -109,8 +112,8 @@ export default function BlogPost ({ post, preview, }: PageProps,) {
           return <>
             {!open
               && <>
-                <NsfwWarning />
-                <Disclosure.Button>
+                <NsfwWarning notSafeForWorkContext={notSafeForWorkContext} />
+                <Disclosure.Button as="div">
                   <NsfwButton />
                 </Disclosure.Button>
               </>
@@ -130,9 +133,9 @@ export default function BlogPost ({ post, preview, }: PageProps,) {
           return <>
             {!open
               && <>
-                <NsfwWarning />
-                <SpoilerWarning spoilerName={spoilerName} />
-                <Disclosure.Button>
+                <NsfwWarning notSafeForWorkContext={notSafeForWorkContext} />
+                <SpoilerWarning spoilerContext={spoilerContext} />
+                <Disclosure.Button as="div">
                   <NsfwSpoilerButton />
                 </Disclosure.Button>
               </>

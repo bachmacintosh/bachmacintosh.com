@@ -10,8 +10,9 @@ slug
 publishDate
 updateDate
 notSafeForWork
+notSafeForWorkContext
 spoilers
-spoilerName
+spoilerContext
 coverImage {
   url
   width
