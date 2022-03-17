@@ -1,3 +1,6 @@
+import { ContentfulBlogPost, } from "../../additional";
+import { NextRouter, } from "next/router";
+
 export function getDefaultSeo () {
   return {
     titleTemplate: "%s | BachMacintosh",
@@ -25,7 +28,8 @@ export function getDefaultSeo () {
   };
 }
 
-export function getPageSEO (title, description, router, preview = false,) {
+export function getPageSEO (title: string,
+  description: string, router: NextRouter, preview = false,) {
   return {
     title,
     description,
@@ -44,7 +48,9 @@ export function getPageSEO (title, description, router, preview = false,) {
   };
 }
 
-export function getBlogPostSeo (post, router, preview = false,) {
+export function getBlogPostSeo (post: ContentfulBlogPost,
+  router: NextRouter,
+  preview = false,) {
   const twitter = {
     cardType: "summary_large_image",
     site: "@BachMacintosh",
@@ -54,7 +60,7 @@ export function getBlogPostSeo (post, router, preview = false,) {
     title: post.title,
     url: process.env.baseUrl + router.asPath,
     type: "article",
-    article: { publishedTime: post.publishDate, },
+    article: { publishedTime: post.publishDate, modifiedTime: "", },
   };
   if (post.coverImage === null) {
     twitter.cardType = "summary";
