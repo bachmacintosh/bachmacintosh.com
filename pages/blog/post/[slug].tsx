@@ -1,24 +1,39 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
+import { GetStaticPaths, GetStaticProps, } from "next";
 import
 { NsfwButton, NsfwSpoilerButton, SpoilerButton, }
   from "../../../components/layout/Buttons";
 import
 { NsfwWarning, PostLede, PostTitle, SpoilerWarning, }
   from "../../../components/layout/Typography";
+import React, { ReactElement, } from "react";
 import {
   getBlogPost, getBlogPostSlugs,
   getPreviewBlogPost,
 } from "../../../lib/contentful/blogpost";
+import { ContentfulBlogPost, } from "../../../additional";
 import CoverImage from "../../../components/contentful/CoverImage";
 import DefaultView from "../../../components/views/DefaultView";
 import { Disclosure, } from "@headlessui/react";
-import React from "react";
 import RichText from "../../../components/contentful/RichText";
 import Warning from "../../../components/layout/Warning";
 import { getBlogPostSeo, } from "../../../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function BlogPost ({ post, preview, },) {
+type PageProps = {
+  post: ContentfulBlogPost,
+  preview: boolean,
+};
+
+type DateOptions = {
+  dateStyle: "long" | "medium" | "short",
+  timeStyle: "long" | "medium" | "short",
+  hour12: boolean,
+  timeZone: string,
+}
+
+
+export default function BlogPost ({ post, preview, }: PageProps,) {
   const {
     title, coverImage, summary, publishDate, updateDate, notSafeForWork,
     spoilers, spoilerName,
@@ -45,7 +60,7 @@ export default function BlogPost ({ post, preview, },) {
   if (coverImage !== null) {
     header = <CoverImage asset={coverImage} />;
   }
-  const dateOptions = {
+  const dateOptions: DateOptions = {
     dateStyle: "long",
     timeStyle: "short",
     hour12: true,
@@ -158,7 +173,7 @@ export default function BlogPost ({ post, preview, },) {
   );
 }
 
-BlogPost.getView = function getView (page,) {
+BlogPost.getView = function getView (page: ReactElement,) {
   return (
     <DefaultView>
       {page}
@@ -166,12 +181,14 @@ BlogPost.getView = function getView (page,) {
   );
 };
 
-export async function getStaticProps ({ params, preview = false, },) {
+export const getStaticProps: GetStaticProps = async (
+  { params, preview = false, },
+) => {
   let post = null;
   if (preview) {
-    post = await getPreviewBlogPost(params.slug,);
+    post = await getPreviewBlogPost(params?.slug,);
   } else {
-    post = await getBlogPost(params.slug,);
+    post = await getBlogPost(params?.slug,);
   }
 
   if (typeof post === "undefined") {
@@ -184,16 +201,14 @@ export async function getStaticProps ({ params, preview = false, },) {
       post: post ?? null,
     },
   };
-}
+};
 
-export async function getStaticPaths () {
-  const paths = [];
+export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = await getBlogPostSlugs();
-  slugs.forEach((item,) => {
-    paths.push({ params: { slug: item.slug, }, },);
-  },);
   return {
-    paths,
+    paths: slugs?.map(({ slug, },) => {
+      return `/blog/post/${slug}`;
+    },) ?? [],
     fallback: "blocking",
   };
-}
+};

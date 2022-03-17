@@ -1,13 +1,20 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
+import { GetStaticPaths, GetStaticProps, } from "next";
+import React, { ReactElement, } from "react";
 import { getPage, getPageSlugs, getPreviewPage, } from "../lib/contentful/page";
+import { ContentfulPage, } from "../additional";
 import DefaultView from "../components/views/DefaultView";
-import React from "react";
 import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Page ({ page, preview, },) {
+type PageProps = {
+  page: ContentfulPage,
+  preview: boolean,
+};
+
+export default function Page ({ page, preview, }: PageProps,) {
   const { title, description, } = page;
   const breadcrumbs = [
     {
@@ -37,7 +44,7 @@ export default function Page ({ page, preview, },) {
   );
 }
 
-Page.getView = function getView (page,) {
+Page.getView = function getView (page: ReactElement,) {
   return (
     <DefaultView>
       {page}
@@ -45,12 +52,14 @@ Page.getView = function getView (page,) {
   );
 };
 
-export async function getStaticProps ({ params, preview = false, },) {
+export const getStaticProps: GetStaticProps = async (
+  { params, preview = false, },
+) => {
   let page = null;
   if (preview) {
-    page = await getPreviewPage(params.slug,);
+    page = await getPreviewPage(params?.slug,);
   } else {
-    page = await getPage(params.slug,);
+    page = await getPage(params?.slug,);
   }
 
   if (typeof page === "undefined") {
@@ -63,9 +72,9 @@ export async function getStaticProps ({ params, preview = false, },) {
       page: page ?? null,
     },
   };
-}
+};
 
-export async function getStaticPaths () {
+export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = await getPageSlugs();
 
   return {
@@ -74,4 +83,4 @@ export async function getStaticPaths () {
     },) ?? [],
     fallback: "blocking",
   };
-}
+};

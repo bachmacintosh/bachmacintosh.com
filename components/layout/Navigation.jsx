@@ -15,13 +15,6 @@ const navigation = [
   { name: "JPN", basePath: "jpn", href: "/jpn", },
 ];
 
-const MobileLink = React.forwardRef(({ item, basePath, }, ref,) => {
-  MobileLink.displayName = "MobileLink";
-  return <Link href={item.href} passHref>
-    <MobileAnchor basePath={basePath} item={item} ref={ref} />
-  </Link>;
-},);
-
 const MobileAnchor = React.forwardRef(
   ({ item, basePath, onClick, href, }, ref,) => {
     MobileAnchor.displayName = "MobileAnchor";
@@ -43,6 +36,13 @@ const MobileAnchor = React.forwardRef(
       </a>
     );
   },);
+
+const MobileLink = React.forwardRef(({ item, basePath, }, ref,) => {
+  MobileLink.displayName = "MobileLink";
+  return <Link href={item.href} passHref>
+    <MobileAnchor basePath={basePath} item={item} ref={ref} />
+  </Link>;
+},);
 
 export default function Navigation () {
   const router = useRouter();

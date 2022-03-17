@@ -3,16 +3,23 @@ import {
   Paragraph,
 } from "../components/layout/Typography";
 import { ButtonLink, } from "../components/layout/Buttons";
+import { GetStaticProps, } from "next";
 import HomeView from "../components/views/HomeView";
 import { NextSeo, } from "next-seo";
 import PostList from "../components/blog/PostList";
+import { ReactElement, } from "react";
 import YouTube from "react-youtube";
 import { getHomePageBlogPosts, } from "../lib/contentful/blogpost";
 import { getLatestYouTubeVideo, } from "../lib/google/youtube";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Home ({ posts, youTubeVideoId, },) {
+type PageProps = {
+    posts: Array<object>,
+    youTubeVideoId: string,
+};
+
+export default function Home ({ posts, youTubeVideoId, }: PageProps,) {
   const title = "Home";
   const description = "The Website of Collin G. Bachman";
   const router = useRouter();
@@ -26,7 +33,7 @@ export default function Home ({ posts, youTubeVideoId, },) {
       <Heading1>I Write Blogs</Heading1>
       { posts.length > 0
         && <>
-          <Paragraph>
+          <Paragraph indent={false}>
             Here&apos;s the latest one.
           </Paragraph>
           <PostList posts={posts} />
@@ -39,13 +46,13 @@ export default function Home ({ posts, youTubeVideoId, },) {
       }
       { posts.length === 0
         && <>
-          <Paragraph>
+          <Paragraph indent={false}>
             ...I mean there&apos;s nothing there yet, but there will be soon.
           </Paragraph>
         </>
       }
       <Heading1>I Make Videos</Heading1>
-      <Paragraph>
+      <Paragraph indent={false}>
         Mostly just gaming videos, but maybe some music in the future...
       </Paragraph>
       <div style={{ width: 400, height: 225, }}>
@@ -60,7 +67,7 @@ export default function Home ({ posts, youTubeVideoId, },) {
         More on YouTube
       </ButtonLink>
       <Heading1>I Play GTA Online</Heading1>
-      <Paragraph>
+      <Paragraph indent={false}>
         Party Cannon Inc. &mdash; Making Los Santos, San Andreas a better place
         {" "}
         (to die) since 2016
@@ -71,7 +78,9 @@ export default function Home ({ posts, youTubeVideoId, },) {
         GTA Stats
       </ButtonLink>
       <Heading1>I Like Japan</Heading1>
-      <Paragraph>Whether it&apos;s the culture or the language...</Paragraph>
+      <Paragraph indent={false}>
+          Whether it&apos;s the culture or the language...
+      </Paragraph>
       <ButtonLink
         href="/jpn/anime"
         external={false}>
@@ -86,7 +95,7 @@ export default function Home ({ posts, youTubeVideoId, },) {
   );
 }
 
-Home.getView = function getView (page,) {
+Home.getView = (page: ReactElement,) => {
   return (
     <HomeView>
       {page}
@@ -94,16 +103,13 @@ Home.getView = function getView (page,) {
   );
 };
 
-export async function getStaticProps () {
-  let posts = await getHomePageBlogPosts();
-  if (typeof posts === "undefined") {
-    posts = null;
-  }
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await getHomePageBlogPosts();
   const youTubeVideoId = await getLatestYouTubeVideo();
   const props = {
     posts,
     youTubeVideoId,
   };
-  
+
   return { props, };
-}
+};

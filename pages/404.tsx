@@ -1,6 +1,7 @@
 import { ErrorCode, Paragraph, } from "../components/layout/Typography";
 import DefaultView from "../components/views/DefaultView";
 import { NextSeo, } from "next-seo";
+import { ReactElement, } from "react";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
@@ -10,9 +11,9 @@ export default function Custom404 () {
   const router = useRouter();
   return (
     <>
-      <NextSeo noindex nofollow {...getPageSEO(title, description, router,)} />
+      <NextSeo {...getPageSEO(title, description, router,)} noindex nofollow />
       <ErrorCode>404</ErrorCode>
-      <Paragraph>
+      <Paragraph indent={false}>
         The page you were looking for was not found at this URL. This could be
         {" "}
         due to a typo, or if the page was deleted. Either way, fret not, cause
@@ -23,7 +24,7 @@ export default function Custom404 () {
   );
 }
 
-Custom404.getView = function getView (page,) {
+Custom404.getView = function getView (page: ReactElement,) {
   return (
     <DefaultView>
       {page}

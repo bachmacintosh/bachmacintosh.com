@@ -4,6 +4,7 @@ import {
   Paragraph,
 } from "../../components/layout/Typography";
 import DefaultView from "../../components/views/DefaultView";
+import { ReactElement, } from "react";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
@@ -28,21 +29,21 @@ export default function Jpn () {
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
       <BreadcrumbJsonLd itemListElements={breadcrumbs} />
-      <Heading1 style={{ fontFamily: "Noto Sans JP", }}>
+      <Heading1>
         Japanese - 日本語
       </Heading1>
-      <Paragraph>
+      <Paragraph indent={false}>
         I have an interest in things related to Japan. I enjoy watching anime,
         {" "}
         as well as learning the Japanese language. This section of the site
         {" "}
         contains multiple pages pertaining to these things.
       </Paragraph>
-      <Paragraph>
+      <Paragraph indent={false}>
         This page is a stub; I hope to improve on its detail someday...
       </Paragraph>
       <Heading2>Anime</Heading2>
-      <Paragraph>
+      <Paragraph indent={false}>
         This page pulls info from my AniList profile to show what anime I am
         {" "}
         watching, have completed/dropped, and how it compares to others. The
@@ -52,7 +53,7 @@ export default function Jpn () {
       <Hyperlink href="/jpn/anime" external={false}>Go to Anime</Hyperlink>
       <hr />
       <Heading2>WaniKani</Heading2>
-      <Paragraph>
+      <Paragraph indent={false}>
         WaniKani is a service that helps you learn kanji by giving you lessons
         {" "}
         in radicals, that build kanji, that build vocabulary. It uses spaced
@@ -71,7 +72,7 @@ export default function Jpn () {
   );
 }
 
-Jpn.getView = function getView (page,) {
+Jpn.getView = function getView (page: ReactElement,) {
   return (
     <DefaultView>
       {page}

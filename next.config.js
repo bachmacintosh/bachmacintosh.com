@@ -1,3 +1,4 @@
+// @ts-check
 const dateOptions = {
   dateStyle: "long",
   timeStyle: "short",
@@ -6,7 +7,11 @@ const dateOptions = {
 };
 const isDeployPreview = process.env.NETLIFY
   && process.env.CONTEXT === "deploy-preview";
-module.exports = {
+
+/**
+ * @type {import('next').NextConfig}
+ **/
+const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: { domains: ["s4.anilist.co",], loader: "custom", },
@@ -17,3 +22,5 @@ module.exports = {
     isDeployPreview,
   },
 };
+
+module.exports = nextConfig;

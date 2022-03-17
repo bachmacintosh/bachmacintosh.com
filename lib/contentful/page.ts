@@ -1,3 +1,7 @@
+import {
+  ContentfulGraphQLResponse,
+  ContentfulPage, ContentfulSlug,
+} from "../../additional";
 import fetchGraphQL from "./graphql";
 
 const PAGE_GRAPHQL = `
@@ -22,7 +26,8 @@ content {
 }
 `;
 
-export async function getPage (slug,) {
+export async function getPage (slug: string | string[] | undefined,)
+    : Promise<ContentfulPage | undefined> {
   const query = `
     query {
       pageCollection(where: { slug: "${slug}" }, preview: false , limit: 1) {
@@ -36,7 +41,8 @@ export async function getPage (slug,) {
   return extractPage(response,);
 }
 
-export async function getPageSlugs () {
+export async function getPageSlugs ()
+: Promise<Array<ContentfulSlug> | undefined> {
   const query = `
     query {
       pageCollection(preview: false) {
@@ -47,10 +53,10 @@ export async function getPageSlugs () {
     }
     `;
   const response = await fetchGraphQL(query, false,);
-  return extractPages(response,);
+  return extractPageSlugs(response,);
 }
 
-export async function getPreviewPage (slug,) {
+export async function getPreviewPage (slug: string | string[] | undefined,) {
   const query = `
     query {
       pageCollection(where: { slug: "${slug}" }, preview: true , limit: 1) {
@@ -75,13 +81,15 @@ export async function getPreviewPageSlugs () {
     }
     `;
   const response = await fetchGraphQL(query, true,);
-  return extractPages(response,);
+  return extractPageSlugs(response,);
 }
 
-function extractPage (fetchResponse,) {
-  return fetchResponse?.data?.pageCollection?.items?.[0];
+function extractPage (fetchResponse: ContentfulGraphQLResponse,)
+    : ContentfulPage | undefined {
+  return <ContentfulPage> fetchResponse?.data?.pageCollection?.items?.[0];
 }
 
-function extractPages (fetchResponse,) {
+function extractPageSlugs (fetchResponse: ContentfulGraphQLResponse,)
+    : Array<ContentfulSlug> | undefined {
   return fetchResponse?.data?.pageCollection?.items;
 }

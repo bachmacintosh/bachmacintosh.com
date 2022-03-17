@@ -1,3 +1,7 @@
+import {
+  ContentfulBlogPost,
+  ContentfulGraphQLResponse, ContentfulSlug,
+} from "../../additional";
 import fetchGraphQL from "./graphql";
 
 const BLOG_POST_GRAPHQL = `
@@ -36,7 +40,8 @@ content {
 }
 `;
 
-export async function getBlogPost (slug,) {
+export async function getBlogPost (slug: string | string[] | undefined,)
+: Promise<ContentfulBlogPost | undefined> {
   const query = `
   query {
     blogPostCollection(where: {slug: "${slug}"}, preview: false, limit: 1) {
@@ -62,10 +67,11 @@ export async function getBlogPostSlugs () {
     }
     `;
   const response = await fetchGraphQL(query, false,);
-  return extractBlogPosts(response,);
+  return extractBlogPostSlugs(response,);
 }
 
-export async function getPreviewBlogPost (slug,) {
+export async function getPreviewBlogPost
+(slug: string | string[] | undefined,) {
   const query = `
   query {
     blogPostCollection(where: {slug: "${slug}"}, preview: true, limit: 1) {
@@ -91,7 +97,7 @@ export async function getPreviewBlogPostSlugs () {
     }
     `;
   const response = await fetchGraphQL(query, true,);
-  return extractBlogPosts(response,);
+  return extractBlogPostSlugs(response,);
 }
 
 export async function getBlogPagePosts () {
@@ -122,8 +128,12 @@ export async function getHomePageBlogPosts () {
   return extractBlogPosts(response,);
 }
 
-export async function getBlogArchivePosts (page,) {
-  const pageNum = parseInt(page, 10,);
+export async function getBlogArchivePosts
+(page: string | string[] | undefined,) {
+  let pageNum = 0;
+  if (typeof page === "string") {
+    pageNum = parseInt(page, 10,);
+  }
   if (pageNum < 1) {
     throw Error("Invalid Archive Page Number",);
   }
@@ -152,10 +162,20 @@ export async function getTotalBlogPosts () {
   return response?.data?.blogPostCollection?.total;
 }
 
-function extractBlogPost (fetchResponse,) {
-  return fetchResponse?.data?.blogPostCollection?.items?.[0];
+function extractBlogPost (fetchResponse: ContentfulGraphQLResponse,)
+: ContentfulBlogPost | undefined {
+  return <ContentfulBlogPost>
+      fetchResponse?.data?.blogPostCollection?.items?.[0];
 }
 
-function extractBlogPosts (fetchResponse,) {
-  return fetchResponse?.data?.blogPostCollection?.items;
+function extractBlogPosts (fetchResponse: ContentfulGraphQLResponse,)
+: Array<ContentfulBlogPost> | undefined {
+  return <Array<ContentfulBlogPost>>
+      fetchResponse?.data?.blogPostCollection?.items;
+}
+
+function extractBlogPostSlugs (fetchResponse: ContentfulGraphQLResponse,)
+    : Array<ContentfulSlug> | undefined {
+  return <Array<ContentfulBlogPost>>
+      fetchResponse?.data?.blogPostCollection?.items;
 }
