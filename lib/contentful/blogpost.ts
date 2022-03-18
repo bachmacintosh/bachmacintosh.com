@@ -87,20 +87,6 @@ export async function getPreviewBlogPost
   return extractBlogPost(response,);
 }
 
-export async function getPreviewBlogPostSlugs () {
-  const query = `
-    query {
-      blogPostCollection(preview: true, where: {sys: {publishedAt_exists: false}}) {
-        items {
-          slug
-        }
-      }
-    }
-    `;
-  const response = await fetchGraphQL(query, true,);
-  return extractBlogPostSlugs(response,);
-}
-
 export async function getBlogPagePosts () {
   const query = `
   query {
