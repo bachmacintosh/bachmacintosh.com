@@ -70,20 +70,6 @@ export async function getPreviewPage (slug: string | string[] | undefined,) {
   return extractPage(response,);
 }
 
-export async function getPreviewPageSlugs () {
-  const query = `
-    query {
-      pageCollection(preview: true, where: {sys: {publishedAt_exists: false}}) {
-        items {
-          slug
-        }
-      }
-    }
-    `;
-  const response = await fetchGraphQL(query, true,);
-  return extractPageSlugs(response,);
-}
-
 function extractPage (fetchResponse: ContentfulGraphQLResponse,)
     : ContentfulPage | undefined {
   return <ContentfulPage> fetchResponse?.data?.pageCollection?.items?.[0];
