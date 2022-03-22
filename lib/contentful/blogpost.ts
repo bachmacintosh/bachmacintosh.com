@@ -32,6 +32,7 @@ content {
           id
         }
         url
+        title
         description
         width
         height
