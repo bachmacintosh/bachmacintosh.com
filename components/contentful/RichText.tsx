@@ -18,6 +18,7 @@ import { Options, documentToReactComponents, }
   from "@contentful/rich-text-react-renderer";
 import Asset from "./Asset";
 import { ContentfulRichText, } from "../../additional";
+import EntryHyperlink from "./EntryHyperlink";
 import { ReactNode, } from "react";
 import nodeToReactComponent from "../../lib/contentful/nodeToReactComponent";
 
@@ -90,6 +91,13 @@ const markdownOptions = (content: ContentfulRichText, indent: boolean,)
           external={true}>
           {children}
         </Hyperlink>;
+      },
+      [INLINES.ENTRY_HYPERLINK]: (node, children,) => {
+        return <EntryHyperlink
+          id={node.data.target.sys.id}
+          entries={content?.links?.entries?.hyperlink}>
+          {children}
+        </EntryHyperlink>;
       },
     },
   };
