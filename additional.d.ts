@@ -1,17 +1,33 @@
-import { Asset, Entry, } from "contentful";
 import { Document, } from "@contentful/rich-text-types";
+
+export type ContentfulEntryLink = {
+    sys: {
+        id: string,
+    },
+    __typename: string,
+    title: string,
+    slug: string,
+};
+
+export type ContentfulAssetLink = {
+    sys: {
+        id: string,
+    },
+    url: string,
+    title: string,
+    description: string,
+    width: number,
+    height: number,
+};
 
 export type ContentfulRichText = {
     json: Document,
     links?: {
         entries?: {
-            inline?: Entry[],
-            block?: Entry[],
-            hyperlink?: Entry[],
+            hyperlink?: ContentfulEntryLink[],
         },
         assets?: {
-            block?: Asset[],
-            hyperlink?: Asset[],
+            block?: ContentfulAssetLink[],
         }
     }
 }
@@ -27,6 +43,13 @@ export type ContentfulSlug = {
     slug?: string,
 };
 
+export type ContentfulCoverImage = {
+    url: string,
+    width: number,
+    height: number,
+    description: string,
+};
+
 export type ContentfulBlogPost = {
     title: string,
     slug: string,
@@ -36,7 +59,7 @@ export type ContentfulBlogPost = {
     notSafeForWorkContext: string[],
     spoilers: boolean,
     spoilerContext: string[],
-    coverImage?: Asset,
+    coverImage?: ContentfulCoverImage,
     summary: string,
     content: ContentfulRichText,
 };
