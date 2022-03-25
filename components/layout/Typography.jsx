@@ -61,18 +61,22 @@ export function BlockQuote ({ children, },) {
   </blockquote>;
 }
 
-export function Hyperlink ({ href, external, children, },) {
+export function Code ({ children, },) {
+  return <code className={"font-mono text-gray-400 mb-20"}>{children}</code>;
+}
+
+export function Hyperlink ({ external, children, ...props },) {
   const linkClass = "text-blue-diamond hover:text-white underline";
   if (external === true) {
     return <a
       className={linkClass}
-      href={href}
+      href={props.href}
       target="_blank"
       rel="nofollow noreferrer noopener">
       {children}<ExternalLinkIcon className="inline w-4 h-4" />
     </a>;
   } else {
-    return <Link href={href}>
+    return <Link href={props.href}>
       <a className={linkClass}>
         {children}
       </a>

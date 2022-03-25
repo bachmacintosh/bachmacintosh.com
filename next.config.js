@@ -17,7 +17,7 @@ const nextConfig = {
   images: { domains: ["s4.anilist.co",], loader: "custom", },
   env: {
     baseUrl: "https://bachmacintosh.com",
-    version: "0.6 Beta",
+    version: "2022.03.25",
     buildTime: new Date().toLocaleString("en-US", dateOptions,),
     isDeployPreview,
   },
