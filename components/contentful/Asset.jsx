@@ -16,8 +16,8 @@ export default function Asset ({ id, assets, },) {
           width={asset.width}
           height={asset.height} />
         <figcaption
-          className="text-gray-400 mb-3 text-sm indent-2">
-          {asset.description}
+          className="text-gray-400 text-sm md:text-base mb-3 indent-2">
+          {asset.title}
         </figcaption>
       </figure>
     );

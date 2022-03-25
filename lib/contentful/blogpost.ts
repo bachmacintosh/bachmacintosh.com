@@ -32,11 +32,28 @@ content {
           id
         }
         url
+        title
         description
         width
         height
       }
     }
+    entries {
+        hyperlink {
+          sys {
+            id
+          }
+          __typename
+          ... on Page {
+            title
+            slug
+          }
+          ... on BlogPost {
+            title
+            slug
+          }
+        }
+      }
   }
 }
 `;
