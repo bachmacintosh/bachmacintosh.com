@@ -11,7 +11,13 @@ export default function Footer () {
         {" "}
         <Hyperlink href={"/privacy"} external={false}>Privacy</Hyperlink>
         <br />
-        Version {process.env.version} | Site last updated on
+        Version
+        {" "}
+        <Hyperlink
+          external={false}
+          href="/changelog">
+          {process.env.version}
+        </Hyperlink> | Site last built on
         {` ${process.env.buildTime} ET`}
       </span>
     </>
