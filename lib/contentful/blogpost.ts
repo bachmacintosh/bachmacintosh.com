@@ -38,6 +38,22 @@ content {
         height
       }
     }
+    entries {
+        hyperlink {
+          sys {
+            id
+          }
+          __typename
+          ... on Page {
+            title
+            slug
+          }
+          ... on BlogPost {
+            title
+            slug
+          }
+        }
+      }
   }
 }
 `;
