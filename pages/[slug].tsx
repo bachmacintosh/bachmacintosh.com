@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps, } from "next";
 import React, { ReactElement, } from "react";
 import { getPage, getPageSlugs, getPreviewPage, } from "../lib/contentful/page";
 import { ContentfulPage, } from "../additional";
-import DefaultView from "../components/views/DefaultView";
+import LongContentView from "../components/views/LongContentView";
 import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
 import { getPageSEO, } from "../lib/seo";
@@ -46,9 +46,9 @@ export default function Page ({ page, preview, }: PageProps,) {
 
 Page.getView = function getView (page: ReactElement,) {
   return (
-    <DefaultView>
+    <LongContentView>
       {page}
-    </DefaultView>
+    </LongContentView>
   );
 };
 
