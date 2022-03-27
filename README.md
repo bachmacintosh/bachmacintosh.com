@@ -1,6 +1,6 @@
 # bachmacintosh.com
 
-A website that will soon be live at https://bachmacintosh.com
+A website live at https://bachmacintosh.com
 
 | Item                                                         | Status                                                                                                                                                                                                        |
 |--------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -11,8 +11,6 @@ A website that will soon be live at https://bachmacintosh.com
 ## Development
 
 Create a `.env.local` file with values from the `ENVIRONMENT_VARIABLES` file.
-
-Create a `cypress.env.json` file with values from the `cypress.env-example.json` file.
 
 Install Dependencies
 
@@ -28,12 +26,6 @@ $ npm run dev
 
 # Build an optimized Next.js App
 $ npm run build
-
-# Export Static HTML
-$ npm run export
-
-# Combine build and export for deploying to Netlify
-$ npm run export:netlify
 
 # Start serving using the Next.js server
 $ npm run start
@@ -51,6 +43,9 @@ $ npm run start
 
 # Terminal 2
 $ npm run cypress
+
+# run Cypress headless
+$ npm run cypress:headless
 ```
 
 ## Contributing

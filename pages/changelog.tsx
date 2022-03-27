@@ -1,5 +1,5 @@
-import DefaultView from "../components/views/DefaultView";
 import { GetStaticProps, } from "next";
+import LongContentView from "../components/views/LongContentView";
 import Markdown from "../components/layout/Markdown";
 import { NextSeo, } from "next-seo";
 import { ReactElement, } from "react";
@@ -27,9 +27,9 @@ export default function Changelog ({ changelogMarkdown, }: PageProps,) {
 
 Changelog.getView = (page: ReactElement,) => {
   return (
-    <DefaultView>
+    <LongContentView>
       {page}
-    </DefaultView>
+    </LongContentView>
   );
 };
 

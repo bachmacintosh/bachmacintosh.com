@@ -13,8 +13,8 @@ import {
 } from "../../../lib/contentful/blogpost";
 import { ContentfulBlogPost, } from "../../../additional";
 import CoverImage from "../../../components/contentful/CoverImage";
-import DefaultView from "../../../components/views/DefaultView";
 import { Disclosure, } from "@headlessui/react";
+import LongContentView from "../../../components/views/LongContentView";
 import RichText from "../../../components/contentful/RichText";
 import Warning from "../../../components/layout/Warning";
 import { getBlogPostSeo, } from "../../../lib/seo";
@@ -178,9 +178,9 @@ export default function BlogPost ({ post, preview, }: PageProps,) {
 
 BlogPost.getView = function getView (page: ReactElement,) {
   return (
-    <DefaultView>
+    <LongContentView>
       {page}
-    </DefaultView>
+    </LongContentView>
   );
 };
 
