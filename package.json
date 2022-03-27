@@ -30,7 +30,7 @@
     "eslint-config-next": "12.1.1",
     "googleapis": "^97.0.0",
     "next": "12.1.0",
-    "next-seo": "^5.1.0",
+    "next-seo": "^5.2.0",
     "next-sitemap": "^2.5.12",
     "postcss": "^8.4.12",
     "react": "17.0.2",
