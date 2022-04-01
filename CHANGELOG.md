@@ -4,9 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/).
 
-## [Unreleased]
+## [2022.03.31]
 
 ### Changed
+* Types are now declared instead of exported in `additional.d.ts`
+* Test and CodeQL GitHub Actions now run on the `develop` branch in addition to `main`
+* Updated badges in README to include the `develop` branch
 * Dependency Updates
   * ESLint - 8.11.0 to 8.12.0
   * eslint-config-next - 12.1.0 to 12.1.1
@@ -52,6 +55,6 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 * Site Version now uses Calendar Versioning (CalVer)
 * Footer now indicates date when site was "last built" instead of "last updated," for clarity
 
-[Unreleased]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.27...develop
+[2022.03.31]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.27...v2022.03.31
 [2022.03.27]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.25...v2022.03.27
 [2022.03.25]: https://github.com/bachmacintosh/bachmacintosh.com/releases/tag/v2022.03.25
