@@ -1,6 +1,6 @@
 import { Document, } from "@contentful/rich-text-types";
 
-export type ContentfulEntryLink = {
+declare type ContentfulEntryLink = {
     sys: {
         id: string,
     },
@@ -9,7 +9,7 @@ export type ContentfulEntryLink = {
     slug: string,
 };
 
-export type ContentfulAssetLink = {
+declare type ContentfulAssetLink = {
     sys: {
         id: string,
     },
@@ -20,7 +20,7 @@ export type ContentfulAssetLink = {
     height: number,
 };
 
-export type ContentfulRichText = {
+declare type ContentfulRichText = {
     json: Document,
     links?: {
         entries?: {
@@ -32,25 +32,25 @@ export type ContentfulRichText = {
     }
 }
 
-export type ContentfulPage = {
+declare type ContentfulPage = {
     title: string,
     description: string,
     slug: string,
     content: ContentfulRichText,
 };
 
-export type ContentfulSlug = {
+declare type ContentfulSlug = {
     slug?: string,
 };
 
-export type ContentfulCoverImage = {
+declare type ContentfulCoverImage = {
     url: string,
     width: number,
     height: number,
     description: string,
 };
 
-export type ContentfulBlogPost = {
+declare type ContentfulBlogPost = {
     title: string,
     slug: string,
     publishDate: string,
@@ -64,12 +64,12 @@ export type ContentfulBlogPost = {
     content: ContentfulRichText,
 };
 
-type ContentfulGraphQLErrorLocation = {
+declare type ContentfulGraphQLErrorLocation = {
     line: number,
     column: number,
 }
 
-type ContentfulGraphQLError = {
+declare type ContentfulGraphQLError = {
     message: string,
     location: ContentfulGraphQLErrorLocation[],
     path: string[],
@@ -82,7 +82,7 @@ type ContentfulGraphQLError = {
     }
 }
 
-export type ContentfulGraphQLResponse = {
+declare type ContentfulGraphQLResponse = {
     data?: {
         pageCollection?: {
             items?: ContentfulPage[] | ContentfulSlug[],
