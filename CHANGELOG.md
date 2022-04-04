@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/).
 
+## [2022.04.04]
+
+### Changed
+* Dependabot now allows up to 20 open Pull Requests
+* Dependency Updates
+  * Cypress - 9.5.2 to 9.5.3
+  * eslint-config-next - 12.1.1 to 12.1.4
+  * Google APIs - 99.0.0 to 100.0.0
+  * Next.js - 12.1.1 to 12.1.4
+  * next-sitemap - 2.5.14 to 2.5.17
+  * next-seo - 5.2.0 to 5.3.0
+  * React - 17 to 18
+  * react-markdown - 8.0.1 to 8.0.2
+  * @typescript-eslint/eslint-plugin - 5.16.0 to 5.18.0
+  * @typescript-eslint/parser - 5.16.0 to 5.18.0
+
 ## [2022.03.31]
 
 ### Changed
@@ -55,6 +71,7 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 * Site Version now uses Calendar Versioning (CalVer)
 * Footer now indicates date when site was "last built" instead of "last updated," for clarity
 
+[2022.04.04]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.31...v2022.04.04
 [2022.03.31]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.27...v2022.03.31
 [2022.03.27]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.25...v2022.03.27
 [2022.03.25]: https://github.com/bachmacintosh/bachmacintosh.com/releases/tag/v2022.03.25
