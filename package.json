@@ -31,7 +31,7 @@
     "googleapis": "^100.0.0",
     "next": "12.1.5",
     "next-seo": "^5.4.0",
-    "next-sitemap": "^2.5.17",
+    "next-sitemap": "^2.5.20",
     "postcss": "^8.4.12",
     "react": "18.0.0",
     "react-dom": "18.0.0",
