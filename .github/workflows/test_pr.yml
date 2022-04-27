@@ -28,17 +28,20 @@ jobs:
         with:
           ref: ${{github.event.pull_request.head.ref}}
           repository: ${{github.event.pull_request.head.repo.full_name}}
-      - name: Install Dependencies
-        uses: cypress-io/github-action@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          runTests: false
+          node-version: '16'
+      - name: Cache NPM
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install Dependencies
+        run: npm ci
       - name: Run ESLint
         run: npm run lint
       - name: Build Next.js App
         run: npm run build
-      - name: Run Cypress Tests
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          start: npm run start
-          wait-on: http://localhost:3000
