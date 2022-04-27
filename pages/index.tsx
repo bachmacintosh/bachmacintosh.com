@@ -52,9 +52,9 @@ export default function Home ({ posts, youTubeVideoId, }: PageProps,) {
           </Paragraph>
         </>
       }
-      <Heading1>I Make Videos</Heading1>
+      <Heading1>I&apos;m on YouTube</Heading1>
       <Paragraph indent={false}>
-        Mostly just gaming videos, but maybe some music in the future...
+        Mostly just gaming videos, both on my own channel and with Lord Galen.
       </Paragraph>
       <div style={{ width: 400, height: 225, }}>
         <YouTube
@@ -63,9 +63,14 @@ export default function Home ({ posts, youTubeVideoId, }: PageProps,) {
         />
       </div>
       <ButtonLink
-        href={"https://www.youtube.com/channel/UCBBx2jqpysI7Yte3Lj96iWw"}
+        href={"https://www.youtube.com/c/BachMacintosh"}
         external={true}>
-        More on YouTube
+        My YouTube
+      </ButtonLink>
+      <ButtonLink
+        href={"https://www.youtube.com/c/LordGalenYT"}
+        external={true}>
+            LordGalen on YouTube
       </ButtonLink>
       <Heading1>I Play GTA Online</Heading1>
       <Paragraph indent={false}>

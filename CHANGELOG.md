@@ -4,6 +4,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/).
 
+## [2022.04.27]
+
+### Changed
+* The method for fetching AniList anime now expects a new "AMV Hell (Re)Watches" list
+* Dependabot now runs monthly
+* Updated the YouTube section of the home page to feature videos I'm featured in
+* Dependency Updates
+  * @contentful/rich-text-react-renderer - 15.12.0 to 15.12.1
+  * @contentful/rich-text-types - 15.12.0 to 15.12.1
+  * @popperjs/core - 2.11.4 to 2.11.5
+  * @types/node - 17.0.23 to 17.0.29
+  * @types/react - 17.0.43 to 18.0.6
+  * @typescript-eslint/eslint-plugin - 5.18.0 to 5.21.0
+  * @typescript-eslint/parser - 5.18.0 to 5.21.0
+  * Autoprefixer - 10.4.4 to 10.4.5
+  * Contentful - 9.1.18 to 9.1.26
+  * Cypress - 9.5.3 to 9.5.4
+  * ESLint - 8.12.0 to 8.14.0
+  * eslint-config-next - 12.1.4 to 12.1.5
+  * Next.js - 12.1.4 to 12.1.5
+  * next-seo - 5.3.0 to 5.4.0
+  * next-sitemap - 2.5.17 to 2.5.20
+  * react-markdown - 8.0.2 to 8.0.3
+  * react-youtube - 7.14.0 to 8.2.1
+  * Tailwind CSS - 3.0.23 to 3.0.24
+
+### Removed
+* Cypress tests in GitHub actions will eventually be replaced with Jest tests
+
 ## [2022.04.04]
 
 ### Changed
@@ -71,6 +100,7 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 * Site Version now uses Calendar Versioning (CalVer)
 * Footer now indicates date when site was "last built" instead of "last updated," for clarity
 
+[2022.04.27]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.04...v2022.04.27
 [2022.04.04]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.31...v2022.04.04
 [2022.03.31]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.27...v2022.03.31
 [2022.03.27]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.25...v2022.03.27
