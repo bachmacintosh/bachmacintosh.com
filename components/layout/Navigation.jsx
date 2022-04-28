@@ -11,6 +11,7 @@ function classNames (...classes) {
 const navigation = [
   { name: "Home", basePath: "/", href: "/", },
   { name: "Blog", basePath: "blog", href: "/blog", },
+  { name: "Media", basePath: "media", href: "/media", },
   { name: "Gaming", basePath: "gaming", href: "/gaming", },
   { name: "JPN", basePath: "jpn", href: "/jpn", },
 ];
