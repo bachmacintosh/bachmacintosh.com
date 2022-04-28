@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/).
 
+
+## [2022.04.28]
+
+### Added
+* Videos page to showcase the 50 latest videos I'm featured in
+* Media page to link to Videos for now
+
+### Changed
+* Added Media page to navigation
+* Dependency Updates
+  * @headlessui/react - 1.5.0 to 1.6.0
+  * React - 18.0.0 to 18.1.0
+  * react-youtube - 8.2.1 to 8.3.0
+
+### Removed
+* Cypress and its tests/artifacts
+
 ## [2022.04.27]
 
 ### Changed
@@ -100,6 +117,7 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 * Site Version now uses Calendar Versioning (CalVer)
 * Footer now indicates date when site was "last built" instead of "last updated," for clarity
 
+[2022.04.28]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.27...v2022.04.28
 [2022.04.27]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.04...v2022.04.27
 [2022.04.04]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.31...v2022.04.04
 [2022.03.31]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.27...v2022.03.31
