@@ -7,6 +7,16 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 
 ## [2022.05.04]
 
+### Changed
+* Dependency Updates
+  * @types/node - 17.0.29 to 17.0.31
+  * PostCSS - 8.4.12 to 8.4.13
+  * react-youtube - 8.3.0 to 9.0.1
+  * TypeScript - 4.6.3 to 4.6.4
+
+### Removed
+* Contentful SDK dependency, as it was not being used in code
+
 ### Fixed
 * Some radicals were not displaying properly on the WaniKani page
 
