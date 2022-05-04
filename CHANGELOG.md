@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/).
 
 
-## [Unreleased]
+## [2022.05.04]
 
 ### Fixed
 * Some radicals were not displaying properly on the WaniKani page
@@ -123,7 +123,7 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 * Site Version now uses Calendar Versioning (CalVer)
 * Footer now indicates date when site was "last built" instead of "last updated," for clarity
 
-[Unreleased]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.28...develop
+[2022.05.04]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.28...v2022.05.04
 [2022.04.28]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.27...v2022.04.28
 [2022.04.27]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.04...v2022.04.27
 [2022.04.04]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.03.31...v2022.04.04
