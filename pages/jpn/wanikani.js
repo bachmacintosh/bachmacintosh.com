@@ -125,12 +125,18 @@ export default function Wanikani ({ content, },) {
                             ? "(None)"
                             : <FlexWrapper>
                               {group.radicals.map((radical, radIdx,) => {
-                                return <WanikaniSubject
-                                  key={radIdx} subjectType="radical"
-                                  meanings={radical.meanings}
-                                  href={radical.url}>
-                                  {radical.characters}
-                                </WanikaniSubject>;
+                                return radical.characters
+                                  ? <WanikaniSubject
+                                    key={radIdx} subjectType="radical"
+                                    meanings={radical.meanings}
+                                    href={radical.url}>
+                                    {radical.characters}
+                                  </WanikaniSubject>
+                                  : <WanikaniRadicalImage
+                                    key={radIdx} subjectType="radical"
+                                    meanings={radical.meanings}
+                                    href={radical.url}
+                                    svg={radical.characterImage}/>;
                               },)}</FlexWrapper>}</TableColumn>
                         </TableRow>
                         <TableRow key={`${group.level}-kanji`} index={index}>
@@ -206,12 +212,18 @@ export default function Wanikani ({ content, },) {
                             ? "(None)"
                             : <FlexWrapper>
                               {group.radicals.map((radical, radIdx,) => {
-                                return <WanikaniSubject
-                                  key={radIdx} subjectType="radical"
-                                  meanings={radical.meanings}
-                                  href={radical.url}>
-                                  {radical.characters}
-                                </WanikaniSubject>;
+                                return radical.characters
+                                  ? <WanikaniSubject
+                                    key={radIdx} subjectType="radical"
+                                    meanings={radical.meanings}
+                                    href={radical.url}>
+                                    {radical.characters}
+                                  </WanikaniSubject>
+                                  : <WanikaniRadicalImage
+                                    key={radIdx} subjectType="radical"
+                                    meanings={radical.meanings}
+                                    href={radical.url}
+                                    svg={radical.characterImage}/>;
                               },)}</FlexWrapper>}</TableColumn>
                         </TableRow>
                         <TableRow key={`${group.level}-kanji`} index={index}>
