@@ -29,7 +29,7 @@ export default function WanikaniSubject (
     <>
       <div className="flex flex-wrap">
         <div className="text-center">
-          <a className={`${color} text-white font-bold text-sm hover:underline hover:underline-offset-2 px-1 py-1 shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1`}
+          <a className={`${color} text-white font-bold text-sm hover:underline hover:underline-offset-2 px-1 py-1 shadow hover:shadow-lg outline-none rounded-none focus:outline-none mr-1 mb-1`}
             type="button"
             onMouseEnter={openLeftTooltip}
             onMouseLeave={closeLeftTooltip}
