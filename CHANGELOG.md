@@ -5,6 +5,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/).
 
 
+## [2022.06.28]
+
+### Added
+* Static HTML Export back to GitHub Actions since Cloudflare Pages currently uses a static export
+
+### Changed
+* Dependency Updates
+  * @headlessui/react - 1.6.0 to 1.6.4
+  * @tailwindcss/forms - 0.5.0 to 0.5.2
+  * @types/node - 17.0.31 to 18.0.0
+  * @typescript-eslint/eslint-plugin - 5.21.0 to 5.30.0
+  * @typescript-eslint/parser - 5.21.0 to 5.30.0
+  * Autoprefixer - 10.4.5 to 10.4.7
+  * ESLint - 8.14.0 to 8.18.0
+  * eslint-config-next - 12.1.5 to 12.2.0
+  * Next.js - 12.1.5 to 12.2.0
+  * next-sitemap - 2.5.20 to 3.1.7
+  * PostCSS - 8.4.13 to 8.4.14
+  * react-youtube - 9.0.1 to 9.0.2
+  * TypeScript - 4.6.4 to 4.7.4
+* Site now hosted on CloudFlare Pages
+* Version in footer now links to the CHANGELOG in GitHub
+* Deploy Preview logic is now relying on Cloudflare Pages environment variables instead of Netlify
+
+### Removed
+* Netlify badge and scheduled GitHub Action
+* Unneeded IDE config file
+
+### Fixed
+* Button rounding/border radius
+
 ## [2022.05.04]
 
 ### Changed
@@ -19,7 +50,6 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 
 ### Fixed
 * Some radicals were not displaying properly on the WaniKani page
-
 
 ## [2022.04.28]
 
@@ -133,6 +163,7 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 * Site Version now uses Calendar Versioning (CalVer)
 * Footer now indicates date when site was "last built" instead of "last updated," for clarity
 
+[2022.06.28]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.05.04...v2022.06.28
 [2022.05.04]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.28...v2022.05.04
 [2022.04.28]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.27...v2022.04.28
 [2022.04.27]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.04...v2022.04.27
