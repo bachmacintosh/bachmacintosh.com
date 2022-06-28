@@ -14,8 +14,8 @@ export default function Footer () {
         Version
         {" "}
         <Hyperlink
-          external={false}
-          href="/changelog">
+          external={true}
+          href="https://github.com/bachmacintosh/bachmacintosh.com/blob/main/CHANGELOG.md">
           {process.env.version}
         </Hyperlink> | Site last built on
         {` ${process.env.buildTime} ET`}
