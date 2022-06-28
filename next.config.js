@@ -5,8 +5,8 @@ const dateOptions = {
   hour12: true,
   timeZone: "America/New_York",
 };
-const isDeployPreview = process.env.NETLIFY
-  && process.env.CONTEXT === "deploy-preview";
+const isDeployPreview = process.env.CF_PAGES
+  && process.env.CF_PAGES_BRANCH === "develop";
 
 /**
  * @type {import('next').NextConfig}
@@ -17,7 +17,7 @@ const nextConfig = {
   images: { domains: ["s4.anilist.co",], loader: "custom", },
   env: {
     baseUrl: "https://bachmacintosh.com",
-    version: "2022.05.04",
+    version: "2022.06.28",
     buildTime: new Date().toLocaleString("en-US", dateOptions,),
     isDeployPreview,
   },
