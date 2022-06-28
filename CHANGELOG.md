@@ -9,6 +9,7 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 
 ### Added
 * Static HTML Export back to GitHub Actions since Cloudflare Pages currently uses a static export
+* Missing `export` command
 
 ### Changed
 * Dependency Updates
