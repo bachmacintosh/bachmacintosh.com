@@ -3,22 +3,22 @@ import {
   Paragraph,
 } from "../components/layout/Typography";
 import { ButtonLink, } from "../components/layout/Buttons";
-import { ContentfulBlogPost, } from "../additional";
-import { GetStaticProps, } from "next";
+import type { ContentfulBlogPost, } from "../additional";
+import type { GetStaticProps, } from "next";
 import HomeView from "../components/views/HomeView";
 import { NextSeo, } from "next-seo";
 import PostList from "../components/blog/PostList";
-import { ReactElement, } from "react";
+import type { ReactElement, } from "react";
 import YouTube from "react-youtube";
 import { getHomePageBlogPosts, } from "../lib/contentful/blogpost";
 import { getLatestYouTubeVideo, } from "../lib/google/youtube";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-type PageProps = {
-    posts: ContentfulBlogPost[],
-    youTubeVideoId: string,
-};
+interface PageProps {
+  posts: ContentfulBlogPost[];
+  youTubeVideoId: string;
+}
 
 export default function Home ({ posts, youTubeVideoId, }: PageProps,) {
   const title = "Home";

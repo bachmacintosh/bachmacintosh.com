@@ -8,18 +8,18 @@ import {
   getTotalBlogPosts,
 } from "../../lib/contentful/blogpost";
 import { ButtonLink, } from "../../components/layout/Buttons";
-import { ContentfulBlogPost, } from "../../additional";
+import type { ContentfulBlogPost, } from "../../additional";
 import DefaultView from "../../components/views/DefaultView";
-import { GetStaticProps, } from "next";
+import type { GetStaticProps, } from "next";
 import PostList from "../../components/blog/PostList";
-import { ReactElement, } from "react";
+import type { ReactElement, } from "react";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
-type PageProps = {
-  posts: ContentfulBlogPost[],
-  totalPosts: number,
-};
+interface PageProps {
+  posts: ContentfulBlogPost[];
+  totalPosts: number;
+}
 
 export default function Blog ({ posts, totalPosts, }: PageProps,) {
   const title = "Blog";

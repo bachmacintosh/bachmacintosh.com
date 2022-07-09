@@ -1,4 +1,4 @@
-import {
+import type {
   ContentfulGraphQLResponse,
   ContentfulPage, ContentfulSlug,
 } from "../../additional";
@@ -26,8 +26,7 @@ content {
 }
 `;
 
-export async function getPage (slug: string | string[] | undefined,)
-    : Promise<ContentfulPage | undefined> {
+export async function getPage (slug: string[] | string | undefined,): Promise<ContentfulPage | undefined> {
   const query = `
     query {
       pageCollection(where: { slug: "${slug}" }, preview: false , limit: 1) {
@@ -41,8 +40,7 @@ export async function getPage (slug: string | string[] | undefined,)
   return extractPage(response,);
 }
 
-export async function getPageSlugs ()
-: Promise<Array<ContentfulSlug> | undefined> {
+export async function getPageSlugs (): Promise<ContentfulSlug[] | undefined> {
   const query = `
     query {
       pageCollection(preview: false) {
@@ -56,7 +54,7 @@ export async function getPageSlugs ()
   return extractPageSlugs(response,);
 }
 
-export async function getPreviewPage (slug: string | string[] | undefined,) {
+export async function getPreviewPage (slug: string[] | string | undefined,) {
   const query = `
     query {
       pageCollection(where: { slug: "${slug}" }, preview: true , limit: 1) {
@@ -70,12 +68,10 @@ export async function getPreviewPage (slug: string | string[] | undefined,) {
   return extractPage(response,);
 }
 
-function extractPage (fetchResponse: ContentfulGraphQLResponse,)
-    : ContentfulPage | undefined {
-  return <ContentfulPage> fetchResponse?.data?.pageCollection?.items?.[0];
+function extractPage (fetchResponse: ContentfulGraphQLResponse,): ContentfulPage | undefined {
+  return <ContentfulPage> fetchResponse.data?.pageCollection?.items?.[0];
 }
 
-function extractPageSlugs (fetchResponse: ContentfulGraphQLResponse,)
-    : Array<ContentfulSlug> | undefined {
-  return fetchResponse?.data?.pageCollection?.items;
+function extractPageSlugs (fetchResponse: ContentfulGraphQLResponse,): ContentfulSlug[] | undefined {
+  return fetchResponse.data?.pageCollection?.items;
 }

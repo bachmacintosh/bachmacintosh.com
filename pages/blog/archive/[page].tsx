@@ -1,5 +1,5 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
-import { GetStaticPaths, GetStaticProps, } from "next";
+import type { GetStaticPaths, GetStaticProps, } from "next";
 import {
   Heading1,
   Paragraph,
@@ -9,19 +9,19 @@ import {
   getTotalBlogPosts,
 } from "../../../lib/contentful/blogpost";
 import { ButtonLink, } from "../../../components/layout/Buttons";
-import { ContentfulBlogPost, } from "../../../additional";
+import type { ContentfulBlogPost, } from "../../../additional";
 import DefaultView from "../../../components/views/DefaultView";
 import PageSelector from "../../../components/blog/PageSelector";
 import PostList from "../../../components/blog/PostList";
-import { ReactElement, } from "react";
+import type { ReactElement, } from "react";
 import { getPageSEO, } from "../../../lib/seo";
 import { useRouter, } from "next/router";
 
-type PageProps = {
-  posts: ContentfulBlogPost[],
-  page: string,
-  pageCount: number,
-};
+interface PageProps {
+  posts: ContentfulBlogPost[];
+  page: string;
+  pageCount: number;
+}
 
 export default function Archive ({ posts, page, pageCount, }: PageProps,) {
   const title = `Blog - Archive - Page ${page}`;

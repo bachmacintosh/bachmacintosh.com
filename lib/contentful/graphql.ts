@@ -1,8 +1,7 @@
-import { ContentfulGraphQLResponse, } from "../../additional";
+import type { ContentfulGraphQLResponse, } from "../../additional";
 
 export default async function fetchGraphQL
-(query: string, preview = false,)
-    : Promise<ContentfulGraphQLResponse> {
+(query: string, preview = false,): Promise<ContentfulGraphQLResponse> {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
@@ -17,7 +16,7 @@ export default async function fetchGraphQL
       },
       body: JSON.stringify({ query, },),
     },
-  ).then((response,) => {
+  ).then(async (response,) => {
     return response.json();
   },);
 }

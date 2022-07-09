@@ -1,5 +1,5 @@
-import { ContentfulBlogPost, } from "../../additional";
-import { NextRouter, } from "next/router";
+import type { ContentfulBlogPost, } from "../../additional";
+import type { NextRouter, } from "next/router";
 
 export function getDefaultSeo () {
   return {

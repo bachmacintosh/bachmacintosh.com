@@ -1,18 +1,19 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
-import { GetStaticPaths, GetStaticProps, } from "next";
-import React, { ReactElement, } from "react";
+import type { GetStaticPaths, GetStaticProps, } from "next";
+import type { ReactElement, } from "react";
+import React from "react";
 import { getPage, getPageSlugs, getPreviewPage, } from "../lib/contentful/page";
-import { ContentfulPage, } from "../additional";
+import type { ContentfulPage, } from "../additional";
 import LongContentView from "../components/views/LongContentView";
 import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-type PageProps = {
-  page: ContentfulPage,
-  preview: boolean,
-};
+interface PageProps {
+  page: ContentfulPage;
+  preview: boolean;
+}
 
 export default function Page ({ page, preview, }: PageProps,) {
   const { title, description, } = page;

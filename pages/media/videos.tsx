@@ -6,9 +6,9 @@ import {
 } from "../../components/layout/Typography";
 import DefaultView from "../../components/views/DefaultView";
 import FlexWrapper from "../../components/layout/FlexWrapper";
-import { GetStaticProps, } from "next";
+import type { GetStaticProps, } from "next";
 import Image from "next/image";
-import { ReactElement, } from "react";
+import type { ReactElement, } from "react";
 import { getPageSEO, } from "../../lib/seo";
 import { getVideosFeaturingMe, } from "../../lib/google/youtube";
 import { useRouter, } from "next/router";
@@ -17,9 +17,9 @@ import { youtube_v3, } from "googleapis";
 // eslint-disable-next-line camelcase
 import Schema$PlaylistItem = youtube_v3.Schema$PlaylistItem;
 
-type PageProps = {
+interface PageProps {
   videos: Schema$PlaylistItem[];
-};
+}
 
 export default function Videos ({ videos, }: PageProps,) {
   const title = "Videos";

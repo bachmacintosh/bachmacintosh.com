@@ -1,17 +1,18 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
-import { GetStaticPaths, GetStaticProps, } from "next";
+import type { GetStaticPaths, GetStaticProps, } from "next";
 import
 { NsfwButton, NsfwSpoilerButton, SpoilerButton, }
   from "../../../components/layout/Buttons";
 import
 { NsfwWarning, PostLede, PostTitle, SpoilerWarning, }
   from "../../../components/layout/Typography";
-import React, { ReactElement, } from "react";
+import type { ReactElement, } from "react";
+import React from "react";
 import {
   getBlogPost, getBlogPostSlugs,
   getPreviewBlogPost,
 } from "../../../lib/contentful/blogpost";
-import { ContentfulBlogPost, } from "../../../additional";
+import type { ContentfulBlogPost, } from "../../../additional";
 import CoverImage from "../../../components/contentful/CoverImage";
 import { Disclosure, } from "@headlessui/react";
 import LongContentView from "../../../components/views/LongContentView";
@@ -20,16 +21,16 @@ import Warning from "../../../components/layout/Warning";
 import { getBlogPostSeo, } from "../../../lib/seo";
 import { useRouter, } from "next/router";
 
-type PageProps = {
-  post: ContentfulBlogPost,
-  preview: boolean,
-};
+interface PageProps {
+  post: ContentfulBlogPost;
+  preview: boolean;
+}
 
-type DateOptions = {
-  dateStyle: "long" | "medium" | "short",
-  timeStyle: "long" | "medium" | "short",
-  hour12: boolean,
-  timeZone: string,
+interface DateOptions {
+  dateStyle: "long" | "medium" | "short";
+  timeStyle: "long" | "medium" | "short";
+  hour12: boolean;
+  timeZone: string;
 }
 
 

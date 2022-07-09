@@ -6,8 +6,8 @@ import {
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-type ComponentProps = {
-  children: string,
+interface ComponentProps {
+  children: string;
 }
 
 export default function Markdown ({ children, }: ComponentProps,) {

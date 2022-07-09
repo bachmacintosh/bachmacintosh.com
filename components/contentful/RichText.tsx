@@ -1,8 +1,8 @@
-import {
-  BLOCKS,
-  Block, INLINES,
+import type {
+  Block,
   Inline,
 } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES, } from "@contentful/rich-text-types";
 import {
   BlockQuote,
   Heading1,
@@ -14,16 +14,16 @@ import {
   Hyperlink, ListItem, OrderedList,
   Paragraph, UnorderedList,
 } from "../layout/Typography";
-import { Options, documentToReactComponents, }
+import type { Options, } from "@contentful/rich-text-react-renderer";
+import { documentToReactComponents, }
   from "@contentful/rich-text-react-renderer";
 import Asset from "./Asset";
-import { ContentfulRichText, } from "../../additional";
+import type { ContentfulRichText, } from "../../additional";
 import EntryHyperlink from "./EntryHyperlink";
-import { ReactNode, } from "react";
+import type { ReactNode, } from "react";
 import nodeToReactComponent from "../../lib/contentful/nodeToReactComponent";
 
-const markdownOptions = (content: ContentfulRichText, indent: boolean,)
-    : Options => {
+const markdownOptions = (content: ContentfulRichText, indent: boolean,): Options => {
   return {
     renderNode: {
       [BLOCKS.HEADING_1]: (node: Block | Inline, children: ReactNode,) => {
@@ -82,7 +82,7 @@ const markdownOptions = (content: ContentfulRichText, indent: boolean,)
       [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline,) => {
         return <Asset
           id={node.data.target.sys.id}
-          assets={content?.links?.assets?.block}
+          assets={content.links?.assets?.block}
         />;
       },
       [INLINES.HYPERLINK]: (node: Block | Inline, children: ReactNode,) => {
@@ -95,7 +95,7 @@ const markdownOptions = (content: ContentfulRichText, indent: boolean,)
       [INLINES.ENTRY_HYPERLINK]: (node, children,) => {
         return <EntryHyperlink
           id={node.data.target.sys.id}
-          entries={content?.links?.entries?.hyperlink}>
+          entries={content.links?.entries?.hyperlink}>
           {children}
         </EntryHyperlink>;
       },
@@ -103,13 +103,12 @@ const markdownOptions = (content: ContentfulRichText, indent: boolean,)
   };
 };
 
-type RichTextProps = {
-  content: ContentfulRichText,
-  indentParagraphs: boolean,
-};
+interface RichTextProps {
+  content: ContentfulRichText;
+  indentParagraphs: boolean;
+}
 
-export default function RichText ({ content, indentParagraphs, }
-                                      : RichTextProps,) {
+export default function RichText ({ content, indentParagraphs, }: RichTextProps,) {
   if (typeof content === "undefined") {
     return <></>;
   } else {

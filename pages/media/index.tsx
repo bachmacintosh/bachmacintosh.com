@@ -4,7 +4,7 @@ import {
   Paragraph,
 } from "../../components/layout/Typography";
 import DefaultView from "../../components/views/DefaultView";
-import { ReactElement, } from "react";
+import type { ReactElement, } from "react";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
