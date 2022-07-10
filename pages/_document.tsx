@@ -1,6 +1,7 @@
 import { Head, Html, Main, NextScript, } from "next/document";
+import type { ReactNode, } from "react-markdown/lib/react-markdown";
 
-export default function Document () {
+export default function Document (): ReactNode {
   return (
     <Html>
       <Head>

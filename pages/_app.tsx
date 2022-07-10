@@ -13,7 +13,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-function MyApp ({ Component, pageProps, }: AppPropsWithLayout,) {
+function MyApp ({ Component, pageProps, }: AppPropsWithLayout,): ReactNode {
   const getView = Component.getView ?? ((page,) => {
     return page;
   });

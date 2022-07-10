@@ -6,8 +6,6 @@ import
 import
 { NsfwWarning, PostLede, PostTitle, SpoilerWarning, }
   from "../../../components/layout/Typography";
-import type { ReactElement, } from "react";
-import React from "react";
 import {
   getBlogPost, getBlogPostSlugs,
   getPreviewBlogPost,
@@ -16,6 +14,8 @@ import type { ContentfulBlogPost, } from "../../../additional";
 import CoverImage from "../../../components/contentful/CoverImage";
 import { Disclosure, } from "@headlessui/react";
 import LongContentView from "../../../components/views/LongContentView";
+import React from "react";
+import type { ReactElement, } from "react";
 import RichText from "../../../components/contentful/RichText";
 import Warning from "../../../components/layout/Warning";
 import { getBlogPostSeo, } from "../../../lib/seo";
@@ -34,7 +34,12 @@ interface DateOptions {
 }
 
 
-export default function BlogPost ({ post, preview, }: PageProps,) {
+// eslint-disable-next-line complexity
+export default function BlogPost
+({ post, preview, }: PageProps,): ReactElement {
+  if (typeof process.env.baseUrl === "undefined") {
+    throw new Error("Base URL not set! Cannot build pages!",);
+  }
   const {
     title, coverImage, summary, publishDate, updateDate, notSafeForWork,
     notSafeForWorkContext, spoilers, spoilerContext,
@@ -58,7 +63,7 @@ export default function BlogPost ({ post, preview, }: PageProps,) {
     },
   ];
   let header = <PostTitle>{title}</PostTitle>;
-  if (coverImage !== null) {
+  if (typeof coverImage !== "undefined") {
     header = <>
       <CoverImage asset={coverImage} />
       <PostTitle>{title}</PostTitle>
@@ -73,7 +78,7 @@ export default function BlogPost ({ post, preview, }: PageProps,) {
   let postInfo = <span className="text-sm md:text-base text-white">
     {`Posted ${new Date(publishDate,).toLocaleString("en-US", dateOptions,)} by Collin Bachman`}
   </span>;
-  if (updateDate !== null) {
+  if (updateDate !== "") {
     postInfo = <>
       <span className="text-sm md:text-base text-white">
         {`Posted ${new Date(publishDate,).toLocaleString("en-US", dateOptions,)}`}
@@ -190,9 +195,9 @@ export const getStaticProps: GetStaticProps = async (
 ) => {
   let post = null;
   if (preview) {
-    post = await getPreviewBlogPost(params?.slug,);
+    post = await getPreviewBlogPost(params?.slug as string,);
   } else {
-    post = await getBlogPost(params?.slug,);
+    post = await getBlogPost(params?.slug as string,);
   }
 
   if (typeof post === "undefined") {
@@ -202,7 +207,7 @@ export const getStaticProps: GetStaticProps = async (
   return {
     props: {
       preview,
-      post: post ?? null,
+      post,
     },
   };
 };
@@ -211,7 +216,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = await getBlogPostSlugs();
   return {
     paths: slugs?.map(({ slug, },) => {
-      return `/blog/post/${slug}`;
+      if (typeof slug === "undefined") {
+        throw new Error("Missing slug on ContentfulSlug collection!",);
+      } else {
+        return `/${slug}`;
+      }
     },) ?? [],
     fallback: "blocking",
   };

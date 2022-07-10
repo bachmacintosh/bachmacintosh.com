@@ -5,7 +5,7 @@ import type { ReactElement, } from "react";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Custom500 () {
+export default function Custom500 (): ReactElement {
   const title = "500 Server Error";
   const description = "Whoops. Something went wrong with the server.";
   const router = useRouter();

@@ -1,7 +1,8 @@
 import type { ContentfulBlogPost, } from "../../additional";
 import type { NextRouter, } from "next/router";
+import type { NextSeoProps, } from "next-seo";
 
-export function getDefaultSeo () {
+export function getDefaultSeo (): NextSeoProps {
   return {
     titleTemplate: "%s | BachMacintosh",
     defaultTitle: "BachMacintosh",
@@ -29,11 +30,14 @@ export function getDefaultSeo () {
 }
 
 export function getPageSEO (title: string,
-  description: string, router: NextRouter, preview = false,) {
+  description: string, router: NextRouter, preview = false,): NextSeoProps {
+  if (typeof process.env.baseUrl === "undefined") {
+    throw new Error("Base URL not set! Cannot build SEO!",);
+  }
   return {
     title,
     description,
-    canonical: process.env.baseUrl + router.asPath,
+    canonical: `${process.env.baseUrl}${router.asPath}`,
     noindex: preview,
     nofollow: preview,
     twitter: {
@@ -50,14 +54,16 @@ export function getPageSEO (title: string,
 
 export function getBlogPostSeo (post: ContentfulBlogPost,
   router: NextRouter,
-  preview = false,) {
+  preview = false,): NextSeoProps {
+  if (typeof process.env.baseUrl === "undefined") {
+    throw new Error("Base URL not set! Cannot build SEO!",);
+  }
   const twitter = {
     cardType: "summary_large_image",
     site: "@BachMacintosh",
     handle: "@BachMacintosh",
   };
-  const images = post.coverImage === null
-  || typeof post.coverImage === "undefined"
+  const images = typeof post.coverImage === "undefined"
     ? [
       {
         url: "https://images.ctfassets.net/kv526tbd0cl9/5dATXnPIZ9cP6EhlClNenX/bf3a70ca5dade5c4e36dc7c08d3f699a/discord_icon.png?w=256&h=256",
@@ -81,10 +87,10 @@ export function getBlogPostSeo (post: ContentfulBlogPost,
     article: { publishedTime: post.publishDate, modifiedTime: "", },
     images,
   };
-  if (post.coverImage === null) {
+  if (typeof post.coverImage === "undefined") {
     twitter.cardType = "summary";
   }
-  if (post.updateDate !== null) {
+  if (post.updateDate !== "") {
     openGraph.article.modifiedTime = post.updateDate;
   }
   return {

@@ -1,10 +1,10 @@
 import { BreadcrumbJsonLd, NextSeo, } from "next-seo";
 import type { GetStaticPaths, GetStaticProps, } from "next";
-import type { ReactElement, } from "react";
-import React from "react";
 import { getPage, getPageSlugs, getPreviewPage, } from "../lib/contentful/page";
 import type { ContentfulPage, } from "../additional";
 import LongContentView from "../components/views/LongContentView";
+import React from "react";
+import type { ReactElement, } from "react";
 import RichText from "../components/contentful/RichText";
 import Warning from "../components/layout/Warning";
 import { getPageSEO, } from "../lib/seo";
@@ -15,7 +15,10 @@ interface PageProps {
   preview: boolean;
 }
 
-export default function Page ({ page, preview, }: PageProps,) {
+export default function Page ({ page, preview, }: PageProps,): ReactElement {
+  if (typeof process.env.baseUrl === "undefined") {
+    throw new Error("Base URL not set! Cannot build pages!",);
+  }
   const { title, description, } = page;
   const breadcrumbs = [
     {
@@ -57,10 +60,10 @@ export const getStaticProps: GetStaticProps = async (
   { params, preview = false, },
 ) => {
   let page = null;
-  if (preview) {
-    page = await getPreviewPage(params?.slug,);
-  } else {
-    page = await getPage(params?.slug,);
+  if (preview && typeof params?.slug === "string") {
+    page = await getPreviewPage(params.slug,);
+  } else if (typeof params?.slug === "string") {
+    page = await getPage(params.slug,);
   }
 
   if (typeof page === "undefined") {
@@ -70,7 +73,7 @@ export const getStaticProps: GetStaticProps = async (
   return {
     props: {
       preview,
-      page: page ?? null,
+      page,
     },
   };
 };
@@ -80,7 +83,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: slugs?.map(({ slug, },) => {
-      return `/${slug}`;
+      if (typeof slug === "undefined") {
+        throw new Error("Missing slug on ContentfulSlug collection!",);
+      } else {
+        return `/${slug}`;
+      }
     },) ?? [],
     fallback: "blocking",
   };

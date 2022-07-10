@@ -3,6 +3,7 @@ import {
   Heading5, Heading6, Hyperlink, ListItem, OrderedList, Paragraph,
   UnorderedList,
 } from "./Typography";
+import type { ReactElement, } from "react-markdown/lib/react-markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -10,7 +11,8 @@ interface ComponentProps {
   children: string;
 }
 
-export default function Markdown ({ children, }: ComponentProps,) {
+export default function Markdown
+({ children, }: ComponentProps,): ReactElement {
   // eslint-disable-next-line react/no-children-prop
   return <ReactMarkdown children={children}
     remarkPlugins={[[remarkGfm, { singleTilde: false, },],]}
@@ -32,7 +34,7 @@ export default function Markdown ({ children, }: ComponentProps,) {
       },
       // eslint-disable-next-line id-length
       a: ({ ...props },) => {
-        if (props.href?.startsWith("#",)) {
+        if (props.href?.startsWith("#",) === true) {
           return <a
             className="text-blue-diamond hover:text-white underline"
             {...props}

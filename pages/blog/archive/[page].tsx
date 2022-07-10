@@ -23,7 +23,11 @@ interface PageProps {
   pageCount: number;
 }
 
-export default function Archive ({ posts, page, pageCount, }: PageProps,) {
+export default function Archive
+({ posts, page, pageCount, }: PageProps,): ReactElement {
+  if (typeof process.env.baseUrl === "undefined") {
+    throw new Error("Base URL not set! Cannot build pages!",);
+  }
   const title = `Blog - Archive - Page ${page}`;
   const description = "Collin G. Bachman's blog entries from some time ago...";
   const router = useRouter();
@@ -70,7 +74,7 @@ export default function Archive ({ posts, page, pageCount, }: PageProps,) {
         </Paragraph>
       }
       <hr className="mb-5" />
-      {posts && <PostList posts={posts} /> }
+      {posts.length && <PostList posts={posts} /> }
       <PageSelector page={page} pageCount={pageCount} scroll={true} />
       <br />
     </>
@@ -88,7 +92,7 @@ Archive.getView = function getView (page: ReactElement,) {
 export const getStaticProps: GetStaticProps = async ({ params, },) => {
   const totalPosts = await getTotalBlogPosts();
   let pageCount = 0;
-  if (totalPosts) {
+  if (typeof totalPosts !== "undefined") {
     pageCount = Math.ceil(totalPosts / 10,) - 1;
   }
   let pageNum = 0;
@@ -123,7 +127,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   
   const totalPosts = await getTotalBlogPosts();
   
-  if (totalPosts && totalPosts > 10) {
+  if (typeof totalPosts !== "undefined" && totalPosts > 10) {
     const pageCount = Math.ceil(totalPosts / 10,) - 1;
     for (let page = 1; page <= pageCount; page++) {
       paths.push({ params: { page: page.toString(), }, },);

@@ -17,11 +17,15 @@ import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
 interface PageProps {
-  posts: ContentfulBlogPost[];
+  posts: ContentfulBlogPost[] | null;
   totalPosts: number;
 }
 
-export default function Blog ({ posts, totalPosts, }: PageProps,) {
+export default function Blog
+({ posts, totalPosts, }: PageProps,): ReactElement {
+  if (typeof process.env.baseUrl === "undefined") {
+    throw new Error("Base URL not set! Cannot build pages!",);
+  }
   const title = "Blog";
   const description = "Collin G. Bachman's latest blog posts";
   const router = useRouter();
@@ -70,8 +74,8 @@ export default function Blog ({ posts, totalPosts, }: PageProps,) {
         </>
       }
       <hr className="mb-5" />
-      {posts && <PostList posts={posts} /> }
-      {posts.length === 0
+      {posts !== null && posts.length > 0 && <PostList posts={posts} /> }
+      {posts !== null && posts.length === 0
         && <>
           <Heading2>No Posts Yet!</Heading2>
           <Paragraph indent={false}>

@@ -21,7 +21,10 @@ interface PageProps {
   videos: Schema$PlaylistItem[];
 }
 
-export default function Videos ({ videos, }: PageProps,) {
+export default function Videos ({ videos, }: PageProps,): ReactElement {
+  if (typeof process.env.baseUrl === "undefined") {
+    throw new Error("Base URL not set! Cannot build pages!",);
+  }
   const title = "Videos";
   const description = "A bunch of videos that I either made or appear in";
   const router = useRouter();
@@ -71,7 +74,7 @@ export default function Videos ({ videos, }: PageProps,) {
                     unoptimized
                   />
                 </div>
-                <Hyperlink href={`https://www.youtube.com/watch?v=${video.snippet?.resourceId?.videoId}`} external={true} >{video.snippet?.title}</Hyperlink>
+                <Hyperlink href={`https://www.youtube.com/watch?v=${video.snippet?.resourceId?.videoId as string}`} external={true} >{video.snippet?.title}</Hyperlink>
                 <span
                   className="text-sm md:text-base text-gray-400"
                 >
@@ -107,6 +110,6 @@ Videos.getView = (page: ReactElement,) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const videos = await getVideosFeaturingMe();
+  const videos = await getVideosFeaturingMe() as Schema$PlaylistItem[];
   return { props: { videos, }, };
 };

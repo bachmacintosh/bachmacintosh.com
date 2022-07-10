@@ -8,7 +8,10 @@ import type { ReactElement, } from "react";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Gaming () {
+export default function Gaming (): ReactElement {
+  if (typeof process.env.baseUrl === "undefined") {
+    throw new Error("Base URL not set! Cannot build pages!",);
+  }
   const title = "Gaming";
   const description = "Collin G. Bachman's gaming-related stuff goes here.";
   const router = useRouter();

@@ -8,7 +8,10 @@ import type { ReactElement, } from "react";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Jpn () {
+export default function Jpn (): ReactElement {
+  if (typeof process.env.baseUrl === "undefined") {
+    throw new Error("Base URL not set! Cannot build pages!",);
+  }
   const title = "Japanese";
   const description = "All the latest info on Collin Bachman's Japanese "
     + "learning";

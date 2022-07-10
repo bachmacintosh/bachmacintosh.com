@@ -26,7 +26,8 @@ content {
 }
 `;
 
-export async function getPage (slug: string[] | string | undefined,): Promise<ContentfulPage | undefined> {
+export async function getPage
+(slug: string,): Promise<ContentfulPage | undefined> {
   const query = `
     query {
       pageCollection(where: { slug: "${slug}" }, preview: false , limit: 1) {
@@ -54,7 +55,8 @@ export async function getPageSlugs (): Promise<ContentfulSlug[] | undefined> {
   return extractPageSlugs(response,);
 }
 
-export async function getPreviewPage (slug: string[] | string | undefined,) {
+export async function getPreviewPage
+(slug: string,): Promise<ContentfulPage | undefined> {
   const query = `
     query {
       pageCollection(where: { slug: "${slug}" }, preview: true , limit: 1) {
@@ -68,10 +70,12 @@ export async function getPreviewPage (slug: string[] | string | undefined,) {
   return extractPage(response,);
 }
 
-function extractPage (fetchResponse: ContentfulGraphQLResponse,): ContentfulPage | undefined {
-  return <ContentfulPage> fetchResponse.data?.pageCollection?.items?.[0];
+function extractPage
+(fetchResponse: ContentfulGraphQLResponse,): ContentfulPage | undefined {
+  return fetchResponse.data?.pageCollection?.items?.[0] as ContentfulPage;
 }
 
-function extractPageSlugs (fetchResponse: ContentfulGraphQLResponse,): ContentfulSlug[] | undefined {
+function extractPageSlugs
+(fetchResponse: ContentfulGraphQLResponse,): ContentfulSlug[] | undefined {
   return fetchResponse.data?.pageCollection?.items;
 }

@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* Contentful does not provide rich typing for NodeData,
+is Record<string, any> */
+import { BLOCKS, INLINES, } from "@contentful/rich-text-types";
 import type {
   Block,
   Inline,
 } from "@contentful/rich-text-types";
-import { BLOCKS, INLINES, } from "@contentful/rich-text-types";
 import {
   BlockQuote,
   Heading1,
@@ -14,16 +18,17 @@ import {
   Hyperlink, ListItem, OrderedList,
   Paragraph, UnorderedList,
 } from "../layout/Typography";
-import type { Options, } from "@contentful/rich-text-react-renderer";
-import { documentToReactComponents, }
-  from "@contentful/rich-text-react-renderer";
+import type { ReactElement, ReactNode, } from "react";
 import Asset from "./Asset";
 import type { ContentfulRichText, } from "../../additional";
 import EntryHyperlink from "./EntryHyperlink";
-import type { ReactNode, } from "react";
+import type { Options, } from "@contentful/rich-text-react-renderer";
+import { documentToReactComponents, }
+  from "@contentful/rich-text-react-renderer";
 import nodeToReactComponent from "../../lib/contentful/nodeToReactComponent";
 
-const markdownOptions = (content: ContentfulRichText, indent: boolean,): Options => {
+const markdownOptions
+= (content: ContentfulRichText, indent: boolean,): Options => {
   return {
     renderNode: {
       [BLOCKS.HEADING_1]: (node: Block | Inline, children: ReactNode,) => {
@@ -81,7 +86,7 @@ const markdownOptions = (content: ContentfulRichText, indent: boolean,): Options
       },
       [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline,) => {
         return <Asset
-          id={node.data.target.sys.id}
+          id={node.data.target.sys.id as string}
           assets={content.links?.assets?.block}
         />;
       },
@@ -108,7 +113,8 @@ interface RichTextProps {
   indentParagraphs: boolean;
 }
 
-export default function RichText ({ content, indentParagraphs, }: RichTextProps,) {
+export default function RichText
+({ content, indentParagraphs, }: RichTextProps,): ReactElement {
   if (typeof content === "undefined") {
     return <></>;
   } else {
