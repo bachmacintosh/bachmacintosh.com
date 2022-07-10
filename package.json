@@ -5,6 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",
+    "build:ci": "next build --no-lint",
     "export": "next export",
     "start": "next start",
     "lint": "next lint",

@@ -1,11 +1,11 @@
 import { ErrorCode, Paragraph, } from "../components/layout/Typography";
 import DefaultView from "../components/views/DefaultView";
 import { NextSeo, } from "next-seo";
-import { ReactElement, } from "react";
+import type { ReactElement, } from "react";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Custom404 () {
+export default function Custom404 (): ReactElement {
   const title = "404 Not Found";
   const description = "The page you were looking for wasn't found.";
   const router = useRouter();

@@ -1,4 +1,4 @@
-import {
+import type {
   ContentfulBlogPost,
   ContentfulGraphQLResponse, ContentfulSlug,
 } from "../../additional";
@@ -58,8 +58,8 @@ content {
 }
 `;
 
-export async function getBlogPost (slug: string | string[] | undefined,)
-: Promise<ContentfulBlogPost | undefined> {
+export async function getBlogPost
+(slug: string,): Promise<ContentfulBlogPost | undefined> {
   const query = `
   query {
     blogPostCollection(where: {slug: "${slug}"}, preview: false, limit: 1) {
@@ -74,7 +74,8 @@ export async function getBlogPost (slug: string | string[] | undefined,)
   return extractBlogPost(response,);
 }
 
-export async function getBlogPostSlugs () {
+export async function getBlogPostSlugs ():
+Promise<ContentfulSlug[] | undefined> {
   const query = `
     query {
       blogPostCollection(preview: false, limit: 10, order: publishDate_DESC) {
@@ -89,7 +90,7 @@ export async function getBlogPostSlugs () {
 }
 
 export async function getPreviewBlogPost
-(slug: string | string[] | undefined,) {
+(slug: string,): Promise<ContentfulBlogPost | undefined> {
   const query = `
   query {
     blogPostCollection(where: {slug: "${slug}"}, preview: true, limit: 1) {
@@ -104,7 +105,8 @@ export async function getPreviewBlogPost
   return extractBlogPost(response,);
 }
 
-export async function getBlogPagePosts () {
+export async function getBlogPagePosts ():
+Promise<ContentfulBlogPost[] | undefined> {
   const query = `
   query {
     blogPostCollection(preview: false, limit: 10, order: publishDate_DESC) {
@@ -118,7 +120,8 @@ export async function getBlogPagePosts () {
   return extractBlogPosts(response,);
 }
 
-export async function getHomePageBlogPosts () {
+export async function getHomePageBlogPosts ():
+Promise<ContentfulBlogPost[] | undefined> {
   const query = `
   query {
     blogPostCollection(preview: false, limit: 1, order: publishDate_DESC) {
@@ -133,7 +136,8 @@ export async function getHomePageBlogPosts () {
 }
 
 export async function getBlogArchivePosts
-(page: string | string[] | undefined,) {
+(page: string[] | string | undefined,):
+Promise<ContentfulBlogPost[] | undefined> {
   let pageNum = 0;
   if (typeof page === "string") {
     pageNum = parseInt(page, 10,);
@@ -154,7 +158,7 @@ export async function getBlogArchivePosts
   return extractBlogPosts(response,);
 }
 
-export async function getTotalBlogPosts () {
+export async function getTotalBlogPosts (): Promise<number | undefined> {
   const query = `
   query {
     blogPostCollection {
@@ -163,23 +167,23 @@ export async function getTotalBlogPosts () {
   }
   `;
   const response = await fetchGraphQL(query, false,);
-  return response?.data?.blogPostCollection?.total;
+  return response.data?.blogPostCollection?.total;
 }
 
-function extractBlogPost (fetchResponse: ContentfulGraphQLResponse,)
-: ContentfulBlogPost | undefined {
-  return <ContentfulBlogPost>
-      fetchResponse?.data?.blogPostCollection?.items?.[0];
+function extractBlogPost
+(fetchResponse: ContentfulGraphQLResponse,): ContentfulBlogPost | undefined {
+  return;
+  fetchResponse.data?.blogPostCollection?.items?.[0] as ContentfulBlogPost;
 }
 
-function extractBlogPosts (fetchResponse: ContentfulGraphQLResponse,)
-: Array<ContentfulBlogPost> | undefined {
-  return <Array<ContentfulBlogPost>>
-      fetchResponse?.data?.blogPostCollection?.items;
+function extractBlogPosts
+(fetchResponse: ContentfulGraphQLResponse,): ContentfulBlogPost[] | undefined {
+  return;
+  fetchResponse.data?.blogPostCollection?.items as ContentfulBlogPost[];
 }
 
-function extractBlogPostSlugs (fetchResponse: ContentfulGraphQLResponse,)
-    : Array<ContentfulSlug> | undefined {
-  return <Array<ContentfulBlogPost>>
-      fetchResponse?.data?.blogPostCollection?.items;
+function extractBlogPostSlugs
+(fetchResponse: ContentfulGraphQLResponse,): ContentfulSlug[] | undefined {
+  return;
+  fetchResponse.data?.blogPostCollection?.items as ContentfulBlogPost[];
 }

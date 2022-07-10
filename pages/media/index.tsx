@@ -4,11 +4,14 @@ import {
   Paragraph,
 } from "../../components/layout/Typography";
 import DefaultView from "../../components/views/DefaultView";
-import { ReactElement, } from "react";
+import type { ReactElement, } from "react";
 import { getPageSEO, } from "../../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Media () {
+export default function Media (): ReactElement {
+  if (typeof process.env.baseUrl === "undefined") {
+    throw new Error("Base URL not set! Cannot build pages!",);
+  }
   const title = "Media";
   const description = "Learn about media that I made or took part in making.";
   const router = useRouter();

@@ -1,11 +1,11 @@
 import { ErrorCode, Paragraph, } from "../components/layout/Typography";
 import DefaultView from "../components/views/DefaultView";
 import { NextSeo, } from "next-seo";
-import { ReactElement, } from "react";
+import type { ReactElement, } from "react";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-export default function Custom500 () {
+export default function Custom500 (): ReactElement {
   const title = "500 Server Error";
   const description = "Whoops. Something went wrong with the server.";
   const router = useRouter();
