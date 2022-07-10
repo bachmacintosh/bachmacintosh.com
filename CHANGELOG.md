@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/).
 
+## [Unreleased]
+
+### Changed
+* Dependency Updates
+  * @headlessui/react - 1.6.4 to 1.6.5
+  * @types/react - 18.0.8 to 18.0.15
+  * Google APIs - 100.0.0 to 105.0.0
+  * React - 18.1.0 to 18.2.0
+  * Tailwind CSS - 3.0.24 to 3.1.4
+* ESLint rules updated to match upcoming Manual of Style
+
+### Fixed
+* Various code style linting errors
 
 ## [2022.06.28]
 
@@ -164,6 +177,7 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 * Site Version now uses Calendar Versioning (CalVer)
 * Footer now indicates date when site was "last built" instead of "last updated," for clarity
 
+[Unreleased]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.06.28...develop
 [2022.06.28]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.05.04...v2022.06.28
 [2022.05.04]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.28...v2022.05.04
 [2022.04.28]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.27...v2022.04.28
