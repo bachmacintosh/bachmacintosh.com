@@ -26,6 +26,9 @@ $ npm run dev
 # Build an optimized Next.js App
 $ npm run build
 
+# Build an optimized Next.js App without linting via ESLint
+$ npm run build:ci
+
 # Start serving using the Next.js server
 $ npm run start
 
