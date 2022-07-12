@@ -63,7 +63,7 @@ export default function BlogPost
     },
   ];
   let header = <PostTitle>{title}</PostTitle>;
-  if (typeof coverImage !== "undefined") {
+  if (coverImage !== null) {
     header = <>
       <CoverImage asset={coverImage} />
       <PostTitle>{title}</PostTitle>
