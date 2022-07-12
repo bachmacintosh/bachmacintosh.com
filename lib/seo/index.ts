@@ -90,7 +90,7 @@ export function getBlogPostSeo (post: ContentfulBlogPost,
   if (typeof post.coverImage === "undefined") {
     twitter.cardType = "summary";
   }
-  if (post.updateDate !== "") {
+  if (post.updateDate !== null) {
     openGraph.article.modifiedTime = post.updateDate;
   }
   return {
