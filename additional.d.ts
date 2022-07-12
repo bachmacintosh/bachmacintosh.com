@@ -54,7 +54,7 @@ declare interface ContentfulBlogPost {
   title: string;
   slug: string;
   publishDate: string;
-  updateDate: string;
+  updateDate: string | null;
   notSafeForWork: boolean;
   notSafeForWorkContext: string[];
   spoilers: boolean;

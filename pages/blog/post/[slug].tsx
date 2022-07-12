@@ -78,7 +78,7 @@ export default function BlogPost
   let postInfo = <span className="text-sm md:text-base text-white">
     {`Posted ${new Date(publishDate,).toLocaleString("en-US", dateOptions,)} by Collin Bachman`}
   </span>;
-  if (updateDate !== "") {
+  if (updateDate !== null) {
     postInfo = <>
       <span className="text-sm md:text-base text-white">
         {`Posted ${new Date(publishDate,).toLocaleString("en-US", dateOptions,)}`}
