@@ -63,7 +63,7 @@ export function getBlogPostSeo (post: ContentfulBlogPost,
     site: "@BachMacintosh",
     handle: "@BachMacintosh",
   };
-  const images = typeof post.coverImage === "undefined"
+  const images = post.coverImage === null
     ? [
       {
         url: "https://images.ctfassets.net/kv526tbd0cl9/5dATXnPIZ9cP6EhlClNenX/bf3a70ca5dade5c4e36dc7c08d3f699a/discord_icon.png?w=256&h=256",
@@ -90,7 +90,7 @@ export function getBlogPostSeo (post: ContentfulBlogPost,
   if (typeof post.coverImage === "undefined") {
     twitter.cardType = "summary";
   }
-  if (post.updateDate !== "") {
+  if (post.updateDate !== null) {
     openGraph.article.modifiedTime = post.updateDate;
   }
   return {

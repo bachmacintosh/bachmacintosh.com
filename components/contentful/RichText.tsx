@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* Contentful does not provide rich typing for NodeData,
 is Record<string, any> */
-import { BLOCKS, INLINES, } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES, MARKS, } from "@contentful/rich-text-types";
 import type {
   Block,
   Inline,
@@ -72,6 +72,27 @@ const markdownOptions
             },
             [BLOCKS.LIST_ITEM]: (childNode, children,) => {
               return children;
+            },
+            [INLINES.HYPERLINK]: (childNode, children,) => {
+              return <Hyperlink
+                href={childNode.data.uri}
+                external={true}>
+                {children}
+              </Hyperlink>;
+            },
+          },
+          renderMark: {
+            [MARKS.BOLD]: (children,) => {
+              return <b>{children}</b>;
+            },
+            [MARKS.ITALIC]: (children,) => {
+              return <i>{children}</i>;
+            },
+            [MARKS.UNDERLINE]: (children,) => {
+              return <u>{children}</u>;
+            },
+            [MARKS.CODE]: (children,) => {
+              return <code>{children}</code>;
             },
           },
         },);

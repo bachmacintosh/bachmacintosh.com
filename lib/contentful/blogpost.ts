@@ -172,18 +172,16 @@ export async function getTotalBlogPosts (): Promise<number | undefined> {
 
 function extractBlogPost
 (fetchResponse: ContentfulGraphQLResponse,): ContentfulBlogPost | undefined {
-  return;
-  fetchResponse.data?.blogPostCollection?.items?.[0] as ContentfulBlogPost;
+  return fetchResponse.data
+    ?.blogPostCollection?.items?.[0] as ContentfulBlogPost;
 }
 
 function extractBlogPosts
 (fetchResponse: ContentfulGraphQLResponse,): ContentfulBlogPost[] | undefined {
-  return;
-  fetchResponse.data?.blogPostCollection?.items as ContentfulBlogPost[];
+  return fetchResponse.data?.blogPostCollection?.items as ContentfulBlogPost[];
 }
 
 function extractBlogPostSlugs
 (fetchResponse: ContentfulGraphQLResponse,): ContentfulSlug[] | undefined {
-  return;
-  fetchResponse.data?.blogPostCollection?.items as ContentfulBlogPost[];
+  return fetchResponse.data?.blogPostCollection?.items as ContentfulBlogPost[];
 }
