@@ -73,6 +73,13 @@ const markdownOptions
             [BLOCKS.LIST_ITEM]: (childNode, children,) => {
               return children;
             },
+            [INLINES.HYPERLINK]: (childNode, children,) => {
+              return <Hyperlink
+                href={childNode.data.uri}
+                external={true}>
+                {children}
+              </Hyperlink>;
+            },
           },
         },);
         return (
