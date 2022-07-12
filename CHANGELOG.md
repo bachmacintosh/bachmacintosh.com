@@ -14,6 +14,7 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
   * React - 18.1.0 to 18.2.0
   * Tailwind CSS - 3.0.24 to 3.1.4
 * ESLint rules updated to match upcoming Manual of Style
+* Site Version is now loaded from an Environment Variable
 
 ### Fixed
 * Various code style linting errors
