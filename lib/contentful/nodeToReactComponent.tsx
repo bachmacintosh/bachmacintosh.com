@@ -1,9 +1,12 @@
-import { CommonNode, Options, } from "@contentful/rich-text-react-renderer";
-import { Mark, helpers, } from "@contentful/rich-text-types";
-import React, { ReactNode, cloneElement, isValidElement, } from "react";
+import type { CommonNode, Options, }
+  from "@contentful/rich-text-react-renderer";
+import React, { cloneElement, isValidElement, } from "react";
+import type { Mark, } from "@contentful/rich-text-types";
+import type { ReactNode, } from "react";
+import { helpers, } from "@contentful/rich-text-types";
 
-function nodeListToReactComponents (nodes: CommonNode[], options: Options,)
-    : ReactNode {
+function nodeListToReactComponents
+(nodes: CommonNode[], options: Options,): ReactNode {
   return nodes.map(
     (node: CommonNode, index: number,): ReactNode => {
       return appendKeyToValidElement(
@@ -13,8 +16,7 @@ function nodeListToReactComponents (nodes: CommonNode[], options: Options,)
 }
 
 export default function nodeToReactComponent
-(node: CommonNode, options: Options,)
-    : ReactNode {
+(node: CommonNode, options: Options,): ReactNode {
   const { renderNode, renderMark, renderText, } = options;
   if (helpers.isText(node,)) {
     return node.marks.reduce((value: ReactNode, mark: Mark,): ReactNode => {
@@ -26,7 +28,7 @@ export default function nodeToReactComponent
   } else {
     const children: ReactNode
         = nodeListToReactComponents(node.content, options,);
-    if (!node.nodeType || !renderNode?.[node.nodeType]) {
+    if (!renderNode?.[node.nodeType]) {
       return <>{children}</>;
     }
     return renderNode[node.nodeType](node, children,);

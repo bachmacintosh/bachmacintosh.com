@@ -3,24 +3,25 @@ import {
   Paragraph,
 } from "../components/layout/Typography";
 import { ButtonLink, } from "../components/layout/Buttons";
-import { ContentfulBlogPost, } from "../additional";
-import { GetStaticProps, } from "next";
+import type { ContentfulBlogPost, } from "../additional";
+import type { GetStaticProps, } from "next";
 import HomeView from "../components/views/HomeView";
 import { NextSeo, } from "next-seo";
 import PostList from "../components/blog/PostList";
-import { ReactElement, } from "react";
+import type { ReactElement, } from "react";
 import YouTube from "react-youtube";
 import { getHomePageBlogPosts, } from "../lib/contentful/blogpost";
 import { getLatestYouTubeVideo, } from "../lib/google/youtube";
 import { getPageSEO, } from "../lib/seo";
 import { useRouter, } from "next/router";
 
-type PageProps = {
-    posts: ContentfulBlogPost[],
-    youTubeVideoId: string,
-};
+interface PageProps {
+  posts: ContentfulBlogPost[] | null;
+  youTubeVideoId: string;
+}
 
-export default function Home ({ posts, youTubeVideoId, }: PageProps,) {
+export default function Home (
+  { posts, youTubeVideoId, }: PageProps,): ReactElement {
   const title = "Home";
   const description = "The Website of Collin G. Bachman";
   const router = useRouter();
@@ -32,7 +33,7 @@ export default function Home ({ posts, youTubeVideoId, }: PageProps,) {
     <>
       <NextSeo {...getPageSEO(title, description, router,)} />
       <Heading1>I Write Blogs</Heading1>
-      { posts.length > 0
+      { posts !== null && posts.length > 0
         && <>
           <Paragraph indent={false}>
             Here&apos;s the latest one.
@@ -45,7 +46,7 @@ export default function Home ({ posts, youTubeVideoId, }: PageProps,) {
           </ButtonLink>
         </>
       }
-      { posts.length === 0
+      { posts !== null && posts.length === 0
         && <>
           <Paragraph indent={false}>
             ...I mean there&apos;s nothing there yet, but there will be soon.
@@ -108,7 +109,10 @@ Home.getView = (page: ReactElement,) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getHomePageBlogPosts();
-  const youTubeVideoId = await getLatestYouTubeVideo();
+  const youTubeVideoId = await getLatestYouTubeVideo() as string;
+  if (typeof posts === "undefined") {
+    return { props: { posts: null, youTubeVideoId, }, };
+  }
   const props = {
     posts,
     youTubeVideoId,
