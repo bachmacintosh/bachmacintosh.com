@@ -219,7 +219,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       if (typeof slug === "undefined") {
         throw new Error("Missing slug on ContentfulSlug collection!",);
       } else {
-        return `/${slug}`;
+        return `/blog/post/${slug}`;
       }
     },) ?? [],
     fallback: "blocking",
