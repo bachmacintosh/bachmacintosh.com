@@ -184,6 +184,7 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 * Site Version now uses Calendar Versioning (CalVer)
 * Footer now indicates date when site was "last built" instead of "last updated," for clarity
 
+[2022.07.17]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.07.12...v2022.07.17
 [2022.07.12]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.06.28...v2022.07.12
 [2022.06.28]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.05.04...v2022.06.28
 [2022.05.04]: https://github.com/bachmacintosh/bachmacintosh.com/compare/v2022.04.28...v2022.05.04
