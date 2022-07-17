@@ -70,16 +70,21 @@ export default function Home (
         external={false}>
         More Videos Featuring Me
       </ButtonLink>
-      <Heading1>I Play GTA Online</Heading1>
+      <Heading1>I Play Games</Heading1>
       <Paragraph indent={false}>
         Party Cannon Inc. &mdash; Making Los Santos, San Andreas a better place
         {" "}
-        (to die) since 2016
+        (to die) since 2016 -- and other games, too.
       </Paragraph>
       <ButtonLink
         href="/gaming/gta-online"
         external={false}>
-        GTA Stats
+        GTA Online
+      </ButtonLink>
+      <ButtonLink
+        href="/gaming/danganronpa"
+        external={false}>
+        Danganronpa
       </ButtonLink>
       <Heading1>I Like Japan</Heading1>
       <Paragraph indent={false}>
