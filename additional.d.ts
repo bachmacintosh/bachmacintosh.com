@@ -94,3 +94,57 @@ declare interface ContentfulGraphQLResponse {
   };
   errors?: ContentfulGraphQLError[];
 }
+
+declare interface DanganronpaChapterLogSubject {
+  id: number;
+  name: string;
+  thumb: string;
+  width: number;
+  height: number;
+}
+
+declare interface DanganronpaChapterLogEvent {
+  event: string;
+  subject1: DanganronpaChapterLogSubject;
+  action: string;
+  subject2: DanganronpaChapterLogSubject;
+  notes: string;
+}
+
+declare interface DanganronpaChapter {
+  chapter: number;
+  complete: "No" | "Yes";
+  videoId: string;
+  episodeLink: string;
+  hiddenTitle: string;
+  title: string;
+  logs: DanganronpaChapterLogEvent[];
+}
+
+declare interface DanganronpaCharacter {
+  name: string;
+  role: string;
+  thumb: string;
+  width: number;
+  height: number;
+}
+
+declare interface DanganronpaVotedCharacter extends DanganronpaCharacter {
+  votes: number;
+}
+
+declare interface DanganronpaBlogPost {
+  title: string;
+  slug: string;
+}
+
+declare interface DanganronpaSeries {
+  series: number;
+  type: "Anime" | "Game";
+  hiddenName: string;
+  name: string;
+  characters: DanganronpaCharacter[];
+  favorites: DanganronpaVotedCharacter[];
+  chapters: DanganronpaChapter[];
+  posts: DanganronpaBlogPost[];
+}

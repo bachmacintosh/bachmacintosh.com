@@ -45,6 +45,15 @@ export default function Gaming (): ReactElement {
       <Paragraph indent={false}>
         This page is a stub; I hope to improve on its detail someday...
       </Paragraph>
+      <Heading2>Danganronpa</Heading2>
+      <Paragraph indent={false}>
+        In August 2022, I played/watched all main titles in this series. Here
+        {` `}
+        is a spoiler-aware hub to see what happened.
+      </Paragraph>
+      <Hyperlink href="/gaming/danganronpa" external={false}>
+        Go to Danganronpa
+      </Hyperlink>
       <Heading2>GTA Online</Heading2>
       <Paragraph indent={false}>
         I&apos;ve been playing GTA Online for several years, and have
