@@ -1,10 +1,11 @@
-// @ts-check
+// @type Intl.DateTimeFormatOptions
 const dateOptions = {
   dateStyle: "long",
   timeStyle: "short",
   hour12: true,
   timeZone: "America/New_York",
 };
+
 const isDeployPreview = process.env.CF_PAGES
   && process.env.CF_PAGES_BRANCH === "develop";
 
