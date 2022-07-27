@@ -192,31 +192,33 @@ export default function Danganronpa ({ series, }: PageProps,): ReactElement {
                               </Heading3>
                             </Disclosure.Button>
                             { !open && <Paragraph indent={false}>
-                              View the characters viewers voted for us to spend
+                              View the characters I chose for us to spend
                               {` `}
-                              Free Time together
+                              Free Time together with
                             </Paragraph>}
                             <Disclosure.Panel>
                               <Paragraph indent={false}>
-                                We asked viewers to rank their favorite
+                                I sent all other students through a
                                 {` `}
-                                characters and help decide whom we would
+                                Preference Revealer that sorted them using
                                 {` `}
-                                spend Free Time together with. Free Time (FT)
+                                binary insertion (e.g. asking which of 2 I
                                 {` `}
-                                Points are calculated by subtracting the
+                                preferred over and over until it was sorted).
                                 {` `}
-                                rank from 15, so 1st got 14 FT Points,
+                                We will spend our Free Time with these students
                                 {` `}
-                                2nd got 13, 14th got only 1, etc.
+                                if they are available in this order, until
+                                {` `}
+                                their Report Card is completed.
                               </Paragraph>
                               <Table
                                 id={`ft-votes-${idx}`}
                                 headers={[
+                                  "Rank",
                                   "",
                                   "Name",
                                   "Role",
-                                  "Votes",
                                 ]}
                               >
                                 {srs.favorites.map((character, fidx,) => {
@@ -224,6 +226,12 @@ export default function Danganronpa ({ series, }: PageProps,): ReactElement {
                                     key={fidx}
                                     index={fidx}
                                   >
+                                    <TableColumn
+                                      rowSpan={1}
+                                      colSpan={1}
+                                    >
+                                      {character.rank}
+                                    </TableColumn>
                                     <TableColumn
                                       rowSpan={1}
                                       colSpan={1}
@@ -250,12 +258,6 @@ export default function Danganronpa ({ series, }: PageProps,): ReactElement {
                                       colSpan={1}
                                     >
                                       {character.role}
-                                    </TableColumn>
-                                    <TableColumn
-                                      rowSpan={1}
-                                      colSpan={1}
-                                    >
-                                      {character.votes}
                                     </TableColumn>
                                   </TableRow>;
                                 },)}
