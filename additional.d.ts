@@ -129,8 +129,8 @@ declare interface DanganronpaCharacter {
   height: number;
 }
 
-declare interface DanganronpaVotedCharacter extends DanganronpaCharacter {
-  votes: number;
+declare interface DanganronpaRankedCharacter extends DanganronpaCharacter {
+  rank: number;
 }
 
 declare interface DanganronpaBlogPost {
@@ -144,7 +144,7 @@ declare interface DanganronpaSeries {
   hiddenName: string;
   name: string;
   characters: DanganronpaCharacter[];
-  favorites: DanganronpaVotedCharacter[];
+  favorites: DanganronpaRankedCharacter[];
   chapters: DanganronpaChapter[];
   posts: DanganronpaBlogPost[];
 }
